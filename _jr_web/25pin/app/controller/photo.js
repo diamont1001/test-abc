@@ -74,7 +74,7 @@ class PhotoController extends Controller {
     }
 
     const [ ugirlsList, tagsList, tagDetail ] = await Promise.all([
-      this.service.ugirls.getHotUgirlsList(curTag),
+      this.service.ugirls.getUgirlsList(curTag),
       this.service.ugirls.getTagsList(),
       this.service.ugirls.getTag(curTag),
     ]);
@@ -132,7 +132,7 @@ class PhotoController extends Controller {
     const tag = parseInt(this.ctx.query.tag) || 0;
     const offset = parseInt(this.ctx.query.offset) || 0;
     const count = parseInt(this.ctx.query.count) || 20;
-    const ugirlsList = await this.service.ugirls.getHotUgirlsList(tag, offset, count);
+    const ugirlsList = await this.service.ugirls.getUgirlsList(tag, offset, count);
 
     if (ugirlsList && ugirlsList.length > 0) {
       await this.ctx.render('pages/photolist/list.ejs', {

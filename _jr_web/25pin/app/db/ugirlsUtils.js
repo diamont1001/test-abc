@@ -28,7 +28,7 @@ class DBArticleUtils {
     if (tagId && tagId > 0) {
       sql += ` and FIND_IN_SET(${tagId}, tags)`;
     }
-    sql += ` limit ${count} offset ${offset}`;
+    sql += ` ORDER BY id DESC limit ${count} offset ${offset}`;
 
     try {
       const result = await this.mysql.query(sql);
@@ -71,7 +71,7 @@ class DBArticleUtils {
     if (tagId && tagId > 0) {
       sql += ` and FIND_IN_SET(${tagId}, tags)`;
     }
-    sql += ` ORDER BY id DESC limit ${count} offset ${offset}`;
+    sql += ` ORDER BY count DESC limit ${count} offset ${offset}`;
 
     try {
       const result = await this.mysql.query(sql);
