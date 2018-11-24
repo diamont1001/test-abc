@@ -1,7 +1,7 @@
 <% if (typeof app !== 'undefined') { %>
   <li class="jr-m-list-item-app">
     <a class="link" href="/app/<%= app.packageName %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
-      <img class="icon" src="<%= app.icon %>"/>
+      <img class="icon" src="<%= app.icon %>" alt="<%= app.name %>"/>
       <div class="info">
         <h2 class="name"><%= app.name %></h2>
         <div class="size"><%= app.downloadsShow %>人安装 | <%= app.sizeShow %></div>

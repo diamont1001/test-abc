@@ -3,7 +3,7 @@
 
 <section class="app">
   <div class="info">
-    <img class="icon" src="<%= appDetail.icon %>"/>
+    <img class="icon" src="<%= appDetail.icon %>" alt="应用图标icon"/>
     <div class="info-detail">
       <h1 class="name"><%= appDetail.name %></h1>
       <p><%= appDetail.downloadsShow %>人安装 &nbsp;|&nbsp; <%= appDetail.sizeShow %></p>
@@ -38,8 +38,8 @@
     <div class="photo">
       <%- include('../../modules/title/index.ejs', {title: '屏幕截图', type: 2}) %>
       <div class="photo-list">
-        <% appDetail.images.forEach(function(image) { %>
-          <img src="<%= image %>"/>
+        <% appDetail.images.forEach(function(image, index) { %>
+          <img src="<%= image %>" alt="屏幕截图<%= index + 1 %>"/>
         <% }) %>
       </div>
     </div>

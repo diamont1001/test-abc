@@ -10,7 +10,9 @@
 
   <div class="jr-m-nav-imgs-3">
     <% list.forEach(function(item) { %>
-      <a href="<%= item.url %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>><img src="<%= item.image %>"/></a>
+      <a href="<%= item.url %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
+        <img src="<%= item.image %>" alt="<%= item.name %>"/>
+      </a>
     <% }); %>
   </div>
 <% } %>

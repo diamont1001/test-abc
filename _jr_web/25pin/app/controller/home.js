@@ -9,7 +9,7 @@ class HomeController extends Controller {
     const [ /* newsList,*/ articleList, ugirlsList, softList, gameList ] = await Promise.all([
       // this.service.home.getNewsList(6),
       this.service.article.getHotList(),
-      this.service.ugirls.getHotUgirlsList(0, 0, 6),
+      this.service.ugirls.getHotUgirlsList(0, 0, 9),
       this.service.app.getHotList(CResourceType.soft, 0, 8),
       this.service.app.getHotList(CResourceType.game, 0, 8),
     ]);
@@ -21,6 +21,7 @@ class HomeController extends Controller {
       photoList.push({
         url: '/photo/' + ugirlsList[i].id,
         image: ugirlsList[i].avatar,
+        name: '美女' + ugirlsList[i].name + '写真集',
       });
     }
 

@@ -3,7 +3,7 @@
   <% list.forEach(function(item) { %>
     <li class="list-item">
       <a href="/app/<%= item.packageName %>">
-        <img class="icon" src="<%= item.icon %>"/>
+        <img class="icon" src="<%= item.icon %>" alt="<%= item.name %>"/>
         <div class="name"><%= item.name %></div>
       </a>
     </li>
