@@ -1,0 +1,12 @@
+<% if (typeof list !== 'undefined' && list.length > 0) { %>
+<ul class="jr-m-app-rec-4">
+  <% list.forEach(function(item) { %>
+    <li class="list-item">
+      <a href="/app/<%= item.packageName %>">
+        <img class="icon" src="<%= item.icon %>"/>
+        <div class="name"><%= item.name %></div>
+      </a>
+    </li>
+  <% }) %>
+</lu>
+<% } %>

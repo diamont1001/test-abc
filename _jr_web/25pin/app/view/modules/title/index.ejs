@@ -1,0 +1,12 @@
+<% var titleClass = 'jr-m-title' %>
+<% if (typeof type !== 'undefined') { %>
+  <% if (type === 1) { %>
+    <% titleClass = 'jr-m-title-1' %>
+  <% } else if (type === 2) { %>
+    <% titleClass = 'jr-m-title-2' %>
+  <% } else if (type === 3) { %>
+    <% titleClass = 'jr-m-title-3' %>
+  <% } %>
+<% } %>
+
+<div class="<%= titleClass %>"><b><% if (typeof title !== 'undefined') { %><%= title %><% } %></b></div>

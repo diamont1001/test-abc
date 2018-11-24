@@ -1,0 +1,14 @@
+<% if (typeof app !== 'undefined') { %>
+  <li class="jr-m-list-item-topic-app">
+    <a class="link" <% if (app.packageName) { %> href="/app/<%= app.packageName %>" <% } else { %> href="<%= app.url %>" rel="nofollow"<% } %>>
+      <img class="icon" src="<%= app.icon %>"/>
+      <div class="info">
+        <b class="name"><%= app.name %></b>
+        <div class="star">爱玩品推荐指数：<span><%= app.star %> ⭐</span></div>
+      </div>
+      <% if (app.description) { %>
+        <div class="desc"><%= app.description %></div>
+      <% } %>
+    </a>
+  </li>
+<% } %>

@@ -1,0 +1,10 @@
+<ol class="jr-m-breadcrumb">
+  <li><span>你的位置：</span></li>
+  <li><a href="/">首页</a></li>
+  <% if (typeof list !== 'undefined' && list.length > 0) { %>
+    <% list.forEach(function(item) { %>
+      <li><a href="<%= item.url %>"><%= item.name %></a></li>
+    <% }) %>
+  <% } %>
+  <li><span><%= title %></span></li>
+</ol>

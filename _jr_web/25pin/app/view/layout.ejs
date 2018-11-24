@@ -1,0 +1,111 @@
+<% var _layoutVersion = '' %>
+<% if (typeof layoutVersion !== 'undefined') { %>
+    <% _layoutVersion = layoutVersion %>
+<% } %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <% if (typeof canonical !== 'undefined') { %>
+        <link rel="canonical" href="<%= canonical %>">
+    <% } %>
+    <meta name="baidu-site-verification" content="VOPAtpIGdH" />
+    <meta name="google-site-verification" content="Q0iniCfg6dLguS7cCzRQmhQJZeQ8aNtCNEHRIMFB6nk" />
+    <meta name="sogou_site_verification" content="OMBh8n2VCE"/>
+    <meta name="shenma-site-verification" content="bc700444bec3627fe7859b4d33342464_1533635260">
+    <title><% if (typeof title !== 'undefined') { %><%= title %><% if (title.indexOf('爱玩品') < 0) { %>_爱玩品<% } %><% } else { %>爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出<% } %></title>
+    <meta name="keywords" content="<% if (typeof keywords !== 'undefined') { %><%= keywords %><% } %>"/>
+    <meta name="description" content="<% if (typeof description !== 'undefined') { %><%= description %><% } %>"/>
+    <link rel="shortcut icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/public/bundle/<%= name %>.css?v=<%= _layoutVersion %>"/>
+    <% if (typeof ld_json !== 'undefined') { %>
+        <script type="application/ld+json">
+            {
+                "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+                "@id": "<%= ld_json.url %>",
+                "appid": "1608239723928687",
+                "title": "<%= ld_json.title %>",
+                "images": [
+                    <% if (ld_json.images && ld_json.images.length >= 3) { %>
+                        "<%= ld_json.images[0] %>",
+                        "<%= ld_json.images[1] %>",
+                        "<%= ld_json.images[2] %>"
+                    <% } else if (ld_json.images && ld_json.images.length >= 1) { %>
+                        "<%= ld_json.images[0] %>"
+                    <% } %>
+                ],
+                "pubDate": "<%= ld_json.pubDate %>"
+            }
+        </script>
+    <% } %>
+</head>
+
+<%- body%>
+
+<script type="text/javascript" src="/public/libs/zepto.min.js?v=<%= _layoutVersion %>"></script>
+<script type="text/javascript" src="/public/bundle/<%= name %>.js?v=<%= _layoutVersion %>"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81627907-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-81627907-4');
+</script>
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 360自动推送 -->
+<script>(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?dc26759e1f01966ffe02409d193cfbc4":"https://jspassport.ssl.qhimg.com/11.0.1.js?dc26759e1f01966ffe02409d193cfbc4";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e6d31f3846c268db3de30142c96879b2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- 熊掌号 -->
+<script src="//msite.baidu.com/sdk/c.js?appid=1608239723928687"></script>
+<div style="padding-left: 17px; padding-right: 17px;">
+    <script>cambrian.render('head')</script>
+</div>
+
+<!-- CNZZ -->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274366655'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274366655%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- firewall -->
+<script type="text/javascript" src="/public/libs/firewall-v1.js?v=<%= _layoutVersion %>"></script>
+</html>

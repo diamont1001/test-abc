@@ -1,0 +1,8 @@
+<% if (typeof banner !== 'undefined' && banner.image) { %>
+<a class="jr-m-banner" href="<%= banner.url %>">
+  <img src="<%= banner.image %>"<% if (banner.name) { %> alt="<%= banner.name %>"<% } %>/>
+  <% if (banner.name) { %>
+    <b class="banner-title"><%= banner.name %></b>
+  <% } %>
+</div>
+<% } %>

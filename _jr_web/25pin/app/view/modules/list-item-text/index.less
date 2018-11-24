@@ -1,0 +1,22 @@
+@import '../../base/mixin.less';
+
+.list-item-text {
+  border-bottom: 1px solid @colorBorder;
+
+  .list-item-text-a {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    overflow: hidden;
+    font-size: @sizeTitle;
+    color: @colorTitle;
+
+    .tips {
+      font-size: @sizeTips;
+      color: @colorTips;
+      padding-top: 4px;
+    }
+  }
+}

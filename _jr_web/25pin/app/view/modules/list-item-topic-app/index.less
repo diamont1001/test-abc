@@ -1,0 +1,56 @@
+@import '../../base/mixin.less';
+
+.jr-m-list-item-topic-app {
+  border-bottom: 1px dotted @colorBorder;
+  overflow: hidden;
+  position: relative;
+  padding: 15px 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .link {
+    min-height: 75px;
+
+    .icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 10px;
+      float: left;
+    }
+
+    .info {
+      margin-left: 85px;
+      height: 75px;
+      overflow: hidden;
+
+      .name {
+        .dot();
+        color: @colorTitle;
+        font-size: @sizeTitle;
+        display: block;
+        margin-top: 6px;
+      }
+
+      .star {
+        color: @colorContent;
+        font-size: @sizeContent;
+        margin-top: 6px;
+
+        span {
+          color: @colorHighlight;
+          font-size: @sizeTitle+2;
+        }
+      }
+    }
+
+    .desc {
+      color: @colorTips;
+      font-size: @sizeTips;
+      margin-top: 8px;
+      background: @colorTipsBG;
+      padding: 8px;
+    }
+  }
+}

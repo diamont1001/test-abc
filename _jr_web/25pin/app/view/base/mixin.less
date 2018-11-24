@@ -1,0 +1,78 @@
+@import '~jr-reset/common/mixin.less';
+
+@colorMain: #2BB2BC; // 主色调
+@colorMainText: white; // 主色调作为背景颜色时，上面的文字颜色
+
+@colorContent: #696969; // 文章内容颜色
+@colorTitle: #333; // 文章 Title 颜色
+@colorTips: #999; // 提示文字颜色
+@colorTipsBG: snow; // 提示文字块背景颜色
+@colorBorder: #eee; // border 颜色
+@colorHighlight: gold; // 高亮颜色
+
+@sizeContent: 13px; // 文章字体大小
+@sizeTitle: 16px; // Title 字体大小
+@sizeTips: 12px; // 提示文字字体大小
+
+
+.borderBlock() {
+  border-top: 8px solid @colorBorder;
+}
+
+.title() {
+  padding: 4px 12px;
+  font-size: @sizeTitle;
+  color: @colorMainText;
+  background-color: @colorMain;
+  .borderBlock();
+}
+
+.title1() {
+  padding: 12px;
+  font-weight: bold;
+  font-size: @sizeTitle;
+  color: @colorMain;
+  text-align: center;
+}
+
+.title2() {
+  padding: 0 4px;
+  margin: 4px;
+  border-left: 4px solid @colorMain;
+  font-size: @sizeTitle;
+  color: @colorTitle;
+  background-color: white;
+}
+
+.title3() {
+  .title2();
+
+  padding: 0 8px;
+  border-left: none;
+}
+
+// 实心按钮
+.btn-fill() {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  background: @colorMain;
+  color: @colorMainText;
+  border-radius: 3px;
+}
+
+// 空心按钮
+.btn-border() {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  background: white;
+  color: @colorMain;
+  border: 1px solid @colorMain;
+  border-radius: 3px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,46 @@
+@import '../../base/mixin.less';
+
+.jr-m-tags {
+  overflow: hidden;
+  padding: 12px 8px 4px;
+
+  .tag-list {
+    height: 72px;
+    overflow: hidden;
+
+    &.on {
+      height: auto;
+    }
+
+    .tag-item {
+      width: 25%;
+      float: left;
+      padding: 2px 4px;
+      box-sizing: border-box;
+      text-align: center;
+
+      a {
+        display: inline-block;
+        width: 100%;
+        color: @colorContent;
+        border: 1px solid @colorBorder;
+        padding: 4px 0;
+      }
+
+      &.current {
+        color: @colorMain;
+
+        a {
+          color: @colorMain;
+          border: 1px solid @colorMain;
+        }
+      }
+    }
+  }
+
+  #btnSwitch {
+    text-align: center;
+    color: @colorMain;
+    padding: 8px;
+  }
+}

@@ -1,0 +1,102 @@
+@import '../../../base/reset.less';
+@import '../../../base/mixin.less';
+
+.onlinegame {
+  text-align: center;
+  color: @colorContent;
+  user-select: none;
+
+  h1 {
+    font-size: @sizeTitle;
+    color: @colorTitle;
+    font-weight: bold;
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  .game-wrap {
+    margin: 12px auto 0;
+    text-align: center;
+    position: relative;
+    margin-bottom: 150px;
+    // background: rgba(0, 0, 0, .1);
+
+    #canvasBg {
+      display: none;
+      border: 1px solid @colorBorder;
+      vertical-align: middle;
+    }
+
+    .game-control, .game-over {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(0, 128, 0, .03);
+
+      dl {
+        margin-top: 20%;
+        color: #0055ff;
+        font-size: @sizeContent + 2;
+      }
+
+      .tip-click {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: #ff5500;
+        font-size: @sizeContent + 2;
+      }
+    }
+
+    .game-over {
+      display: none;
+    }
+
+    .wrap-btn {
+      height: 96px;
+      position: absolute;
+      bottom: -96px;
+      left: 0;
+      right: 0;
+      line-height: 96px;
+
+      .btn {
+        height: 100%;
+        width: 30%;
+        float: left;
+        padding: 4px 0;
+
+        .btn-inner {
+          background: @colorBorder;
+          height: 100%;
+        }
+
+        &.btn-middle {
+          width: 40%;
+
+          .btn-inner {
+            margin: 0 4px;
+          }
+
+          .btn-up {
+            height: 50%;
+            line-height: 48px;
+            border-bottom: 2px solid #fff;
+            box-sizing: border-box;
+          }
+
+          .btn-down {
+            height: 50%;
+            line-height: 48px;
+            border-top: 2px solid #fff;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+  }
+}

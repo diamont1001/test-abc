@@ -1,0 +1,43 @@
+@import '../../base/reset.less';
+@import '../../base/mixin.less';
+
+.topic_content {
+  margin: 12px;
+  color: @colorContent;
+
+  h1 {
+    .title1();
+    font-size: @sizeTitle+2;
+  }
+
+  .image-topic {
+    width: 100%;
+    vertical-align: middle;
+    margin-bottom: 12px;
+  }
+
+  .description {
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px dashed @colorBorder;
+    font-size: @sizeContent;
+  }
+
+  .wrap-subs {
+    margin: 12px 4px;
+
+    h2 {
+      .title1();
+    }
+  }
+}
+
+.topic_recommend {
+  margin: 24px 8px;
+  padding: 16px 0 0;
+  border-top: 1px solid @colorBorder;
+
+  .next {
+    margin-top: 4px;
+  }
+}

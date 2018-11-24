@@ -1,0 +1,31 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<section class="article_content">
+  <h1>
+    <%- article.title %>
+  </h1>
+  <p class="tips">
+    <span>最新发布：<%- dateFormat(article.publishTime) %></span>
+  </p>
+  <% if (article.video) { %>
+    <div class="video-player">
+      <% if (article.video.indexOf('player.youku.com/embed/') > 0) { %>
+        <iframe width="100%" src="<%= article.video %>" frameborder=0 'allowfullscreen'></iframe>
+      <% } else { %>
+        <video webkit-playsinline="true" playsinline="true" controls="controls" preload="metadata" poster src="<%= article.video %>" style="width: 100%; height: 100%; position: relative;"></video>
+      <% } %>
+    </div>
+  <% } %>
+  <%- article.contentHtml %>
+</section>
+
+<section class="article_recommend">
+  <% if (typeof preArticle !== 'undefined') { %>
+    <div class="pre">上一篇：<a href="<%= preArticle.id %>"><%= preArticle.title %></a></div>
+  <% } %>
+
+  <% if (typeof nextArticle !== 'undefined') { %>
+    <div class="next">下一篇：<a href="<%= nextArticle.id %>"><%= nextArticle.title %></a></div>
+  <% } %>
+</section>

@@ -1,0 +1,43 @@
+@import '../../base/mixin.less';
+
+.list-item-img-text {
+  border-bottom: 1px solid @colorBorder;
+
+  .list-item-img-text-a {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-height: 68px;
+    overflow: hidden;
+    padding: 12px;
+
+    .info-left {
+      float: left;
+      position: relative;
+      line-height: 0;
+      width: 89.59px;
+      height: 67.19px;
+      margin-right: 16px;
+      overflow: hidden;
+
+      .image-item {
+        width: 100%;
+      }
+    }
+    .info-right {
+      overflow: hidden;
+      min-height: 68px;
+
+      h3 {
+        color: @colorTitle;
+        font-size: @sizeTitle;
+      }
+
+      p {
+        color: @colorContent;
+        font-size: @sizeContent;
+      }
+    }
+  }
+}

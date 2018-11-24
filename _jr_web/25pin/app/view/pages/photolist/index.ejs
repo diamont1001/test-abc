@@ -1,0 +1,17 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<section class="tags">
+  <% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
+    <%- include('../../modules/tags/index.ejs', {list: tagsList, curTag: curTag}) %>
+  <% } %>
+</section>
+
+<section class="photo">
+  <div class="list">
+    <% if (typeof ugirlsList !== 'undefined' && ugirlsList.length > 0) { %>
+      <%- include('./list.ejs', {ugirlsList: ugirlsList}) %>
+    <% } %>
+  </div>
+  <%- include('../../modules/more/index.ejs', {url: 'javascript:;'}) %>
+</section>

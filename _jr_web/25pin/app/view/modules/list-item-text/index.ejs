@@ -1,0 +1,8 @@
+<li class="list-item-text">
+  <a class="list-item-text-a" href="<%= url %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
+    <%= title %>
+    <% if (typeof timeShow !== 'undefined') { %>
+      <div class="tips"><span><%= timeShow %></span></div>
+    <% } %>
+  </a>
+</li>

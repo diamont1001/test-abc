@@ -1,0 +1,38 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<% if (typeof ugirls !== 'undefined' && ugirls.images.length > 0) { %>
+  <section class="ugirls">
+    <%- include('../../modules/title/index.ejs', {title: title, type: 1}) %>
+
+    <div class="description">
+      <p><%= ugirls.description %></p>
+    </div>
+
+    <div class="list">
+      <% ugirls.images.forEach(function(url) { %>
+        <%- include('../../modules/image/index.ejs', {image: url}) %>
+      <% }) %>
+    </div>
+  </section>
+<% } %>
+
+<% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
+  <section class="tags">
+    <ul>
+    <% tagsList.forEach(function(tag) { %>
+      <li><a href="/photo/t_<%= tag.id %>">#<%= tag.name %></a></li>
+    <% }) %>
+    </ul>
+  </section>
+<% } %>
+
+<section class="recommend">
+  <% if (typeof preUgirls !== 'undefined') { %>
+    <div class="pre">上一位：<a href="/photo/<%= preUgirls.id %>"><%= preUgirls.name %></a></div>
+  <% } %>
+
+  <% if (typeof nextUgirls !== 'undefined') { %>
+    <div class="next">下一位：<a href="/photo/<%= nextUgirls.id %>"><%= nextUgirls.name %></a></div>
+  <% } %>
+</section>

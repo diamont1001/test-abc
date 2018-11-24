@@ -1,0 +1,3 @@
+<% articleList.forEach(function(article) { %>
+  <%- include('../../modules/list-item-text/index.ejs', {url: '/article/' + article.id, title: article.title, timeShow: dateFormat(article.publishTime)}) %>
+<% }); %>

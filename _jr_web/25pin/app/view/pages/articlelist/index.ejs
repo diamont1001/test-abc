@@ -1,0 +1,12 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<section class="article">
+  <%- include('../../modules/title/index.ejs', {title: title}) %>
+  <ul class="list">
+    <% if (typeof articleList !== 'undefined' && articleList.length > 0) { %>
+      <%- include('./list.ejs', {articleList: articleList, dateFormat: dateFormat}) %>
+    <% } %>
+  </ul>
+  <%- include('../../modules/more/index.ejs', {url: 'javascript:;'}) %>
+</section>

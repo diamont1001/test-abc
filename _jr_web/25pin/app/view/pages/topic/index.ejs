@@ -1,0 +1,62 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<section class="topic_content">
+  <% if (topic.content.title) { %>
+    <h1><%= topic.content.title %></h1>
+  <% } %>
+
+  <% if (topic.content.images && topic.content.images.length > 0) { %>
+    <% topic.content.images.forEach(function(image) { %>
+      <img class="image-topic" src="<%= image %>"/>
+    <% }); %>
+  <% } %>
+
+  <% if (topic.content.description) { %>
+    <p class="description"><%= topic.content.description %></p>
+  <% } %>
+
+  <% if (topic.content.apps && topic.content.apps.length > 0) { %>
+    <ul class="main-apps">
+      <% topic.content.apps.forEach(function(item) { %>
+        <%- include('../../modules/list-item-topic-app/index.ejs', {app: item}) %>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <% if (topic.content.subs && topic.content.subs.length > 0) { %>
+    <% topic.content.subs.forEach(function(subTopic) { %>
+      <div class="wrap-subs">
+        <% if (subTopic.title) { %>
+          <h2>「 <%= subTopic.title %> 」</h2>
+        <% } %>
+
+        <% if (subTopic.images && subTopic.images.length > 0) { %>
+          <% subTopic.images.forEach(function(image) { %>
+            <img class="image-topic" src="<%= image %>"/>
+          <% }); %>
+        <% } %>
+
+        <p class="description"><% if (subTopic.description) { %><%= subTopic.description %><% } %></p>
+
+        <% if (subTopic.apps && subTopic.apps.length > 0) { %>
+          <ul class="main-apps">
+            <% subTopic.apps.forEach(function(item) { %>
+              <%- include('../../modules/list-item-topic-app/index.ejs', {app: item}) %>
+            <% }); %>
+          </ul>
+        <% } %>
+      </div>
+    <% }); %>
+  <% } %>
+</section>
+
+<section class="topic_recommend">
+  <% if (typeof preTopic !== 'undefined') { %>
+    <div class="pre">上一篇：<a href="<%= preTopic.id %>"><%= preTopic.title %></a></div>
+  <% } %>
+
+  <% if (typeof nextTopic !== 'undefined') { %>
+    <div class="next">下一篇：<a href="<%= nextTopic.id %>"><%= nextTopic.title %></a></div>
+  <% } %>
+</section>

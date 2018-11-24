@@ -1,0 +1,41 @@
+<%- include('../../../modules/header/index.ejs', {}) %>
+
+<section class="onlinegame">
+  <h1>贪吃蛇</h1>
+  <p>贪吃蛇，曾经风靡一时的经典手机小游戏</p>
+  <p>属于80后一代人的回忆，你敢接受挑战吗</p>
+  <div class="game-wrap">
+    <canvas id="canvasBg">your browser doesn't support the HTML5 element canvas</canvas>
+
+    <div class="game-control">
+      <dl>
+        <dt>键盘操作：</dt>
+        <dd>方向键：「上下左右」</dd>
+        <dd>字母键：「W-S-A-D」</dd>
+      </dl>
+      <div class="tip-click">「 点击开始游戏 」</div>
+    </div>
+    <div class="game-over">
+      <dl>
+        <dt>Game Over</dt>
+        <dd>蛇总长度：<span class="length"></span></dd>
+      </dl>
+      <div class="tip-click">「 不服，再来一次 」</div>
+    </div>
+
+    <div class="wrap-btn">
+      <div class="btn btn-left">
+        <div class="btn-inner">左</div>
+      </div>
+      <div class="btn btn-middle">
+        <div class="btn-inner">
+          <div class="btn-up">上</div>
+          <div class="btn-down">下</div>
+        </div>
+      </div>
+      <div class="btn btn-right">
+        <div class="btn-inner">右</div>
+      </div>
+    </div>
+  </div>
+</section>

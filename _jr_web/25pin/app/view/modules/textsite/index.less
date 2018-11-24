@@ -1,0 +1,21 @@
+@import '../../base/mixin.less';
+
+.jr-m-textsite {
+  overflow: hidden;
+  padding: 8px 8px 8px;
+
+  a {
+    float: left;
+    width: 20%;
+    padding: 6px 0;
+    text-align: center;
+    color: @colorTitle;
+    box-sizing: border-box;
+    .dot();
+
+    &:nth-of-type(5n+1) {
+      padding-left: 10px;
+      text-align: left;
+    }
+  }
+}

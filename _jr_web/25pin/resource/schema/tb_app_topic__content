@@ -1,0 +1,44 @@
+{
+  title: '',
+  images: [],
+  description: '',
+  apps: [
+    {
+      packageName: '',
+      name: '',
+      star: 4.8, // 推荐指数（0~5.0）
+      icon: '',
+      description: ''
+    },
+    {
+      url: '', // 本站没有的应用，引入其他站链接，页面会加上nofollow
+      name: '',
+      star: 4.8,
+      icon: '',
+      description: ''
+    }
+  ],
+  subs: [
+    {
+      title: '',
+      images: [],
+      description: '',
+      apps: [
+        {
+          packageName: '',
+          name: '',
+          star: 4.8,
+          icon: '',
+          description: ''
+        },
+        {
+          url: '',
+          name: '',
+          star: 4.8,
+          icon: '',
+          description: ''
+        }
+      ],
+    }
+  ]
+}

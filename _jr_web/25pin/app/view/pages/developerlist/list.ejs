@@ -1,0 +1,3 @@
+<% list.forEach(function(item) { %>
+  <%- include('../../modules/list-item-text/index.ejs', {url: '/developer/' + encode(item), title: item}) %>
+<% }); %>

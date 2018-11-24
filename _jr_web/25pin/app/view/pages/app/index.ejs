@@ -1,0 +1,141 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<section class="app">
+  <div class="info">
+    <img class="icon" src="<%= appDetail.icon %>"/>
+    <div class="info-detail">
+      <h1 class="name"><%= appDetail.name %></h1>
+      <p><%= appDetail.downloadsShow %>人安装 &nbsp;|&nbsp; <%= appDetail.sizeShow %></p>
+      <p>更新时间：<%= appDetail.updateTimeShow %></p>
+    </div>
+    <div class="control">
+      <div class="control-item">
+        <a class="btn-download" href="<%= appDetail.downloadUrl %>" rel="nofollow" onClick='_czc.push(["_trackEvent","appDetail","download","<%= appDetail.packageName %>"]);'>直接下载</a>
+      </div>
+      <div class="control-item">
+        <a class="btn-redirect" href="https://m.wandoujia.com/apps/<%= appDetail.packageName %>" onClick='_czc.push(["_trackEvent","appDetail","go_wdj","<%= appDetail.packageName %>"]);'>去豌豆荚下载</a>
+      </div>
+    </div>
+  </div>
+
+  <% if (appDetail.developer) { %>
+    <% if (appDetail.developer && typeof sameDevList !== 'undefined' && sameDevList.length > 0) { %>
+      <div class="developer"><a href="/developer/<%= encode(appDetail.developer) %>">开发者：<%= appDetail.developer %></a></div>
+    <% } else { %>
+      <div class="developer">开发者：<%= appDetail.developer %></div>
+    <% } %>
+  <% } %>
+
+  <% if (appDetail.developer && typeof sameDevList !== 'undefined' && sameDevList.length > 0) { %>
+    <div class="same-developer-recs">
+      <%- include('../../modules/title/index.ejs', {title: '该开发者的其他APP推荐', type: 2}) %>
+      <%- include('../../modules/app-rec-4/index.ejs', {list: sameDevList}) %>
+    </div>
+  <% } %>
+
+  <% if (appDetail.images && appDetail.images.length > 0) { %>
+    <div class="photo">
+      <%- include('../../modules/title/index.ejs', {title: '屏幕截图', type: 2}) %>
+      <div class="photo-list">
+        <% appDetail.images.forEach(function(image) { %>
+          <img src="<%= image %>"/>
+        <% }) %>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="description">
+    <% if (appDetail.resourceType === 1) { %>
+      <%- include('../../modules/title/index.ejs', {title: '游戏介绍', type: 2}) %>
+    <% } else { %>
+      <%- include('../../modules/title/index.ejs', {title: '应用介绍', type: 2}) %>
+    <% } %>
+    <div class="content">
+      <% if (appDetail.editorRecommend) { %>
+        <p>推荐语：<%= appDetail.editorRecommend %></p>
+      <% } %>
+      <% if (appDetail.appDesc) { %>
+        <%- appDetail.appDesc.replace(/<\\br>/g, '<br>') %>
+      <% } %>
+    </div>
+  </div>
+
+  <% if (appDetail.verDesc) { %>
+    <div class="update-detail">
+      <%- include('../../modules/title/index.ejs', {title: '更新说明', type: 2}) %>
+      <div class="content">
+        <% if (appDetail.versionName) { %>
+          <p>当前版本：<%= appDetail.versionName %></p>
+        <% } %>
+        <p><%- appDetail.verDesc.replace(/<\\br>/g, '<br>') %></p>
+      </div>
+    </div>
+  <% } %>
+
+  <% if (appDetail.video) { %>
+    <div class="video">
+      <% if (appDetail.resourceType === 1) { %>
+        <%- include('../../modules/title/index.ejs', {title: '游戏视频', type: 2}) %>
+      <% } else { %>
+        <%- include('../../modules/title/index.ejs', {title: '应用视频', type: 2}) %>
+      <% } %>
+      <div class="video-player">
+        <video webkit-playsinline="true" playsinline="true" controls="controls" preload="metadata" poster src="<%= appDetail.video %>" style="width: 100%; height: 100%; position: relative;"></video>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="other-info">
+    <%- include('../../modules/title/index.ejs', {title: '相关信息', type: 2}) %>
+    <div class="content">
+      <p>大小：<%= appDetail.sizeShow %></p>
+      <% if (appDetail.versionName) { %>
+        <p>版本：v<%= appDetail.versionName %></p>
+      <% } %>
+      <% if (appDetail.minSdkVersion) { %>
+        <p>系统要求：Android <%= appDetail.minSdkVersion %> 以上</p>
+      <% } %>
+      <p>包名：<%= appDetail.packageName %></p>
+    </div>
+  </div>
+
+  <% if (typeof permissions !== 'undefined' && permissions.length > 0) { %>
+    <div class="permissions">
+      <%- include('../../modules/title/index.ejs', {title: '权限信息', type: 2}) %>
+      <ul class="list-ul">
+        <%- permissions %>
+      </ul>
+    </div>
+  <% } %>
+
+  <% if (typeof comments !== 'undefined' && comments.length > 0) { %>
+    <% if (comments.length > 5) { %>
+      <% comments.length = 5 %>
+    <% } %>
+    <div class="comment">
+      <%- include('../../modules/title/index.ejs', {title: '网友评论', type: 2}) %>
+      <ul class="comment-list">
+        <% comments.forEach(function(comment) { %>
+          <li class="comment-list-item">
+            <span class="from"><%= comment.from %>网友：<%= comment.user %></span>
+            <span class="date"><%= comment.date %></span>
+            <p class="content"><%= comment.content %></p>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <% if (typeof recs !== 'undefined' && recs && recs.length > 0) { %>
+    <div class="recommend">
+      <%- include('../../modules/title/index.ejs', {title: '猜你喜欢', type: 2}) %>
+      <%- include('../../modules/app-rec-4/index.ejs', {list: recs}) %>
+    </div>
+  <% } %>
+
+</section>
+
+<footer>
+  <%- include('../../modules/app-declaration/index.ejs', {}) %>
+</footer>

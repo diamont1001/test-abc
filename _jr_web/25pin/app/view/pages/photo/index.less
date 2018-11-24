@@ -1,0 +1,42 @@
+@import '../../base/reset.less';
+@import '../../base/mixin.less';
+
+.ugirls {
+  .list {
+    margin: 12px 0;
+  }
+
+  .description {
+    margin: 0 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid @colorBorder;
+  }
+}
+
+.recommend {
+  margin: 24px 8px;
+  padding: 16px 0 0;
+  border-top: 1px solid @colorBorder;
+}
+
+.tags {
+  padding: 8px 15px;
+
+  ul {
+    position: relative;
+    overflow: hidden;
+
+    li {
+      display: inline-block;
+      float: left;
+      margin: 4px;
+
+      a {
+        color: @colorMain;
+        background: @colorBorder;
+        display: inline-block;
+        padding: 2px 4px;
+      }
+    }
+  }
+}
