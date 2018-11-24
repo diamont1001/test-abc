@@ -39,6 +39,11 @@ class MApp {
     } catch (e) {
       this.images = [];
     }
+
+    // icon 处理
+    if (this.icon && this.icon.indexOf('https://android-artworks.25pp.com') === 0 && this.icon.indexOf('_130x130') < 0) {
+      this.icon = this.icon.replace('.png', '_130x130.png');
+    }
   }
 
   static get TABLE() {
