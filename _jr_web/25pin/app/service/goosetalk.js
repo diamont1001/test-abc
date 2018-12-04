@@ -62,10 +62,15 @@ module.exports = app => {
             type: 0,
             tags: '冷知识',
             author: 'goosetalk',
+            app: 'com.atonce.goosetalk',
             status: 0,
             verifyState: 0,
             images: encodeURIComponent(result.data.card.image),
           });
+
+          if (result.data.card.title.length < 8) {
+            article.keywords += ',' + result.data.card.title;
+          }
 
           // this.logger.debug(article);
           await this.dbArticleUtils.addArticle(article);

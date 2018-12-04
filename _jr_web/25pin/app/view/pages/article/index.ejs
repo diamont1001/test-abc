@@ -20,6 +20,13 @@
   <%- article.contentHtml %>
 </section>
 
+<% if (article.relativeApp) { %>
+<section class="relative_app">
+  <%- include('../../modules/title/index.ejs', {title: '相关应用', type: 1}) %>
+  <%- include('../../modules/list-item-app/index.ejs', {app: article.relativeApp}) %>
+</section>
+<% } %>
+
 <section class="article_recommend">
   <% if (typeof preArticle !== 'undefined') { %>
     <div class="pre">上一篇：<a href="<%= preArticle.id %>"><%= preArticle.title %></a></div>

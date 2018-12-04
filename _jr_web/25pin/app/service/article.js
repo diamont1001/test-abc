@@ -5,6 +5,7 @@
 'use strict';
 
 const DBArticleUtils = require('../db/articleUtils');
+const DBAppUtils = require('../db/appUtils');
 
 module.exports = app => {
 
@@ -13,11 +14,18 @@ module.exports = app => {
       super(ctx);
 
       this.dbArticleUtils = new DBArticleUtils(app);
+      this.dbAppUtils = new DBAppUtils(app);
     }
 
     // 获取文章详情
     async getDetail(id = 0) {
-      return this.dbArticleUtils.getDetail(id);
+      const article = await this.dbArticleUtils.getDetail(id);
+
+      if (article && article.app) {
+        article.relativeApp = await this.dbAppUtils.getDetail(article.app);
+      }
+
+      return Promise.resolve(article);
     }
 
     // 获取上一篇文章
