@@ -37,7 +37,7 @@
   <%- include('../../modules/title/index.ejs', {title: '精彩资讯'}) %>
   <ul class="list">
     <% articleList.forEach(function(article) { %>
-      <%- include('../../modules/list-item-text/index.ejs', {url: '/article/' + article.id, title: article.title}) %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}) %>
     <% }); %>
     <%- include('../../modules/more/index.ejs', {text: '查看更多资讯', url: '/article'}) %>
   </ul>

@@ -4,7 +4,7 @@ require('./index.less');
 require('../../modules/header');
 require('../../modules/breadcrumb');
 require('../../modules/title');
-require('../../modules/list-item-text');
+require('../../modules/list-item-img-text');
 require('../../modules/more');
 
 $(function() {
@@ -13,7 +13,7 @@ $(function() {
       return;
     }
 
-    const offset = $('.article .list .list-item-text').length;
+    const offset = $('.article .list li').length;
 
     $.get('/api/getArticleList?offset=' + offset, function(result) {
       if (result) {

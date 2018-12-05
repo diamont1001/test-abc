@@ -1,3 +1,3 @@
 <% articleList.forEach(function(article) { %>
-  <%- include('../../modules/list-item-text/index.ejs', {url: '/article/' + article.id, title: article.title, timeShow: dateFormat(article.publishTime)}) %>
+  <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: '', timeShow: dateFormat(article.publishTime)}) %>
 <% }); %>
