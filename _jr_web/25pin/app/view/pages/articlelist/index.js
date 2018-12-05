@@ -2,8 +2,7 @@
 
 require('./index.less');
 require('../../modules/header');
-require('../../modules/breadcrumb');
-require('../../modules/title');
+require('../../modules/nav');
 require('../../modules/list-item-img-text');
 require('../../modules/more');
 

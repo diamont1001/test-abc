@@ -77,7 +77,7 @@ class DeveloperController extends Controller {
       title: '应用开发者大全',
       keywords: '应用开发者大全,爱玩品',
       description: '爱玩品资源站为你提供所有的应用开发者大全，让你可以通过开发者，发现想要的应用和资讯。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
-      breadcrumb: [],
+      breadcrumb: [{ name: '应用', url: '/app' }],
       canonical: this.app.config.biz.server + '/developer',
       developerList,
       encode: Xor.encode,

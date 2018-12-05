@@ -7,7 +7,7 @@
 @colorTitle: #333; // 文章 Title 颜色
 @colorTips: #999; // 提示文字颜色
 @colorTipsBG: snow; // 提示文字块背景颜色
-@colorBorder: #eee; // border 颜色
+@colorBorder: #f5f7f9; // border 颜色
 @colorHighlight: gold; // 高亮颜色
 
 @sizeContent: 13px; // 文章字体大小
@@ -22,8 +22,10 @@
 .title() {
   padding: 4px 12px;
   font-size: @sizeTitle;
-  color: @colorMainText;
-  background-color: @colorMain;
+  // color: @colorMainText;
+  color: @colorMain;
+  border-bottom: 1px dashed @colorBorder;
+  // background-color: @colorMain;
   .borderBlock();
 }
 
@@ -36,12 +38,17 @@
 }
 
 .title2() {
-  padding: 0 4px;
   margin: 4px;
-  border-left: 4px solid @colorMain;
   font-size: @sizeTitle;
   color: @colorTitle;
   background-color: white;
+
+  &:before {
+    content: '❡';
+    display: inline-block;
+    margin-right: 4px;
+    color: @colorMain;
+  }
 }
 
 .title3() {

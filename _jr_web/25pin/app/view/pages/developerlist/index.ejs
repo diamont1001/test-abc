@@ -2,7 +2,6 @@
 <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
 <section class="developer">
-  <%- include('../../modules/title/index.ejs', {title: title}) %>
   <ul class="list">
     <% if (typeof developerList !== 'undefined' && developerList.length > 0) { %>
       <%- include('./list.ejs', {list: developerList, encode: encode}) %>

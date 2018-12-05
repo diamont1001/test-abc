@@ -2,7 +2,7 @@
 
 require('./index.less');
 require('../../modules/header');
-require('../../modules/breadcrumb');
+require('../../modules/nav');
 require('../../modules/tags');
 require('../../modules/image-2');
 require('../../modules/more');
