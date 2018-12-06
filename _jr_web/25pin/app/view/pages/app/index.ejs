@@ -3,7 +3,7 @@
 
 <section class="app">
   <div class="info">
-    <img class="icon" src="<%= appDetail.icon %>" alt="应用图标icon"/>
+    <img class="icon" src="<%= appDetail.icon %>" alt="APP图标icon"/>
     <div class="info-detail">
       <h1 class="name"><%= appDetail.name %></h1>
       <p><%= appDetail.downloadsShow %>人安装 &nbsp;|&nbsp; <%= appDetail.sizeShow %></p>
@@ -49,7 +49,7 @@
     <% if (appDetail.resourceType === 1) { %>
       <%- include('../../modules/title/index.ejs', {title: '游戏介绍', type: 2}) %>
     <% } else { %>
-      <%- include('../../modules/title/index.ejs', {title: '应用介绍', type: 2}) %>
+      <%- include('../../modules/title/index.ejs', {title: 'APP介绍', type: 2}) %>
     <% } %>
     <div class="content">
       <% if (appDetail.editorRecommend) { %>
@@ -78,7 +78,7 @@
       <% if (appDetail.resourceType === 1) { %>
         <%- include('../../modules/title/index.ejs', {title: '游戏视频', type: 2}) %>
       <% } else { %>
-        <%- include('../../modules/title/index.ejs', {title: '应用视频', type: 2}) %>
+        <%- include('../../modules/title/index.ejs', {title: 'APP视频', type: 2}) %>
       <% } %>
       <div class="video-player">
         <video webkit-playsinline="true" playsinline="true" controls="controls" preload="metadata" poster src="<%= appDetail.video %>" style="width: 100%; height: 100%; position: relative;"></video>

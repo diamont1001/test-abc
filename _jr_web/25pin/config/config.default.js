@@ -56,9 +56,9 @@ module.exports = appInfo => {
   };
 
   config.biz = {
-    title: '爱玩品资源站_游戏软件APP免费下载|美女写真',
-    keywords: '游戏,手游,软件,APP,尤果网,美女写真,爱玩品,爱玩品资源站,25pin',
-    description: '爱玩品资源站（www.25pin.com），为你推荐丰富好玩的资源，让优质资源脱颖而出。最新热门游戏、软件APP排行榜、美女写真集、生活小常识、英语学习等资源推荐。',
+    title: '爱玩品资源站_游戏软件APP免费下载|美女写真|有趣冷知识',
+    keywords: '游戏,手游,软件,APP,尤果网,美女写真,美女图片,冷知识,有趣冷知识,爱玩品,爱玩品资源站,25pin',
+    description: '爱玩品资源站（www.25pin.com），为你推荐丰富好玩的资源，让优质资源脱颖而出。游戏软件APP、美女写真集图片、超级有趣的冷知识、生活小常识等热门资源推荐。',
     server: 'http://www.25pin.com',
   };
 
@@ -76,7 +76,7 @@ module.exports = appInfo => {
   };
 
   // layout 版本号，每次发版前需要把它修改一下
-  config.layoutVersion = '2018120502';
+  config.layoutVersion = '2018120601';
   config.currentYear = new Date().getYear() + 1900;
 
   return config;

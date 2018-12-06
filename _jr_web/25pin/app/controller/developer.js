@@ -31,9 +31,9 @@ class DeveloperController extends Controller {
 
     const locals = {
       name: 'developer',
-      title: `${developer}应用大全`,
-      keywords: `${developer},应用大全,应用合集,爱玩品`,
-      description: `${developer}的应用和软件合集，每天更新。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出`,
+      title: `${developer}APP大全`,
+      keywords: `${developer},APP大全,应用合集,爱玩品`,
+      description: `${developer}的APP合集，每天更新。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出`,
       breadcrumb: [{ name: '开发者', url: '/developer' }],
       canonical: this.app.config.biz.server + '/developer/' + Xor.encode(developer),
       developer,
@@ -74,10 +74,10 @@ class DeveloperController extends Controller {
 
     const locals = {
       name: 'developerlist',
-      title: '应用开发者大全',
-      keywords: '应用开发者大全,爱玩品',
-      description: '爱玩品资源站为你提供所有的应用开发者大全，让你可以通过开发者，发现想要的应用和资讯。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
-      breadcrumb: [{ name: '应用', url: '/app' }],
+      title: '手机APP开发者大全',
+      keywords: '手机APP开发者大全,爱玩品',
+      description: '爱玩品资源站为你提供所有的手机APP开发者大全，让你可以通过开发者，发现想要的应用和资讯。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
+      breadcrumb: [{ name: 'APP', url: '/app' }],
       canonical: this.app.config.biz.server + '/developer',
       developerList,
       encode: Xor.encode,

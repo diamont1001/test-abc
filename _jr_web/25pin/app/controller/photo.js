@@ -33,7 +33,7 @@ class PhotoController extends Controller {
 
     const tagsList = await this.service.ugirls.getTags(ugirls.tags);
     const keywords = tagsList.map(tag => { return tag.name; }).join(',');
-    let title = '美女' + ugirls.name + '写真集';
+    let title = '美女' + ugirls.name + '人体写真';
 
     if (tagsList.length > 0) {
       title += '|' + tagsList[tagsList.length - 1].name;
@@ -56,7 +56,7 @@ class PhotoController extends Controller {
       keywords,
       description: ugirls.description,
       canonical: this.app.config.biz.server + '/photo/' + ugirls.id,
-      breadcrumb: [{ url: '/photo', name: '美图' }],
+      breadcrumb: [{ url: '/photo', name: '美女写真' }],
       ld_json,
       ugirls,
       preUgirls,
@@ -96,10 +96,10 @@ class PhotoController extends Controller {
 
     const locals = {
       name: 'photolist',
-      title: '美女写真集推荐',
-      keywords: '美图,美女写真,写真集,尤果网,爱玩品',
-      description: '尤果网美女写真集免费看，点击有惊喜。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出。',
-      breadcrumb: curTag === 0 ? [] : [{ name: '美图', url: '/photo' }],
+      title: '美女写真大全|宅男福利',
+      keywords: '美图,美女写真,美女图片,写真集,尤果网,爱玩品',
+      description: '尤果网美女写真集免费看，美女图片，宅男福利。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出。',
+      breadcrumb: curTag === 0 ? [] : [{ name: '美女写真', url: '/photo' }],
       curTag,
       tagsList,
       ugirlsList,

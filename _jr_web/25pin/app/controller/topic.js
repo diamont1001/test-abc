@@ -45,7 +45,7 @@ class TopicController extends Controller {
       keywords: topic.keywords,
       description: topic.description || topic.content.description,
       canonical,
-      breadcrumb: [/* { url: '/topic', name: '专题' }*/],
+      breadcrumb: [{ url: '/app', name: 'APP' }],
       ld_json, // 熊掌号主页展示
       topic,
       preTopic,
