@@ -97,7 +97,7 @@ module.exports = app => {
 
       if (card.words && card.words.length > 0) {
         for (let i = 0; i < card.words.length; i++) {
-          !!card.words[i].title && (content += `### ${i + 1}. ${card.words[i].title}\n\n`);
+          !!card.words[i].title && (content += `## ${i + 1}. ${card.words[i].title}\n\n`);
           !!card.words[i].content && (content += `${card.words[i].content}\n\n`);
           !!card.words[i].image && (content += `![](${card.words[i].image})\n\n`);
         }
