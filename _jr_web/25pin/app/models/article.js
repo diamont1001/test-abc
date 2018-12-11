@@ -22,7 +22,6 @@ class MArticle {
     this.tags = (objMysql.tags || '').trim(); // 文章标签
     this.video = (objMysql.video || '').trim(); // 视频链接
     this.author = (objMysql.author || '').trim(); // 作者
-    this.app = (objMysql.app || '').trim(); // 关联应用（packageName）
     this.createTime = objMysql.create_time || 0; // 创建时间
     this.publishTime = objMysql.publish_time; // 发布时间
     this.updateTime = objMysql.update_time || 0; // 最后更新时间
@@ -39,6 +38,16 @@ class MArticle {
       });
     } catch (e) {
       this.images = [];
+    }
+
+    try {
+      this.app = objMysql.app.split(',').filter(item => {
+        return (item && item.trim());
+      }).map(item => {
+        return item;
+      });
+    } catch (e) {
+      this.app = [];
     }
   }
 

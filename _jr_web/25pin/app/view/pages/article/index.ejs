@@ -20,10 +20,12 @@
   <%- article.contentHtml %>
 </section>
 
-<% if (article.relativeApp) { %>
+<% if (article.relativeApp && article.relativeApp.length > 0) { %>
 <section class="relative_app">
   <%- include('../../modules/title/index.ejs', {title: '相关APP', type: 1}) %>
-  <%- include('../../modules/list-item-app/index.ejs', {app: article.relativeApp}) %>
+  <% article.relativeApp.forEach(function(app) { %>
+    <%- include('../../modules/list-item-app/index.ejs', {app: app}) %>
+  <% }) %>
 </section>
 <% } %>
 
