@@ -13,6 +13,14 @@ module.exports = function() {
       ctx.deviceType = 'PC';
     }
 
+    if (lowerUserAgent.indexOf('android') > -1) {
+      ctx.osType = 'android';
+    } else if (lowerUserAgent.indexOf('iphone') > -1 || lowerUserAgent.indexOf('ipad') > -1 || lowerUserAgent.indexOf('ipod') > -1) {
+      ctx.osType = 'ios';
+    } else {
+      ctx.osType = 'others';
+    }
+
     await next();
   };
 };

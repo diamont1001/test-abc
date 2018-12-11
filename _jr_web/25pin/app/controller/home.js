@@ -8,7 +8,7 @@ class HomeController extends Controller {
   async index() {
     const [ /* newsList,*/ articleList, ugirlsList, softList, gameList ] = await Promise.all([
       // this.service.home.getNewsList(6),
-      this.service.article.getHotList(),
+      this.service.article.getHotList(0, 12),
       this.service.ugirls.getHotUgirlsList(0, 0, 9),
       this.service.app.getHotList(CResourceType.soft, 0, 8),
       this.service.app.getHotList(CResourceType.game, 0, 8),

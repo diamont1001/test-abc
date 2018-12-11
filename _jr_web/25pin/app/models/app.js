@@ -19,6 +19,7 @@ class MApp {
     this.verDesc = obj.verDesc; // 更新说明
     this.downloads = parseInt(obj.downloads) || 0; // 下载次数
     this.downloadUrl = obj.downloadUrl; // 下载地址
+    this.itunes = obj.itunes; // itunes 上应用的 ID
     this.video = obj.video; // 视频地址
     this.versionName = obj.versionName; // 版本名称
     this.minSdkVersion = obj.minSdkVersion;
@@ -66,6 +67,7 @@ class MApp {
       verDesc: this.verDesc,
       downloads: this.downloads,
       downloadUrl: this.downloadUrl,
+      // itunes: this.itunes,
       video: this.video,
       versionName: this.versionName,
       minSdkVersion: this.minSdkVersion,

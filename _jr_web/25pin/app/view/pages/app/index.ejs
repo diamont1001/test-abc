@@ -10,12 +10,16 @@
       <p>更新时间：<%= appDetail.updateTimeShow %></p>
     </div>
     <div class="control">
-      <div class="control-item">
-        <a class="btn-download" href="<%= appDetail.downloadUrl %>" rel="nofollow" onClick='_czc.push(["_trackEvent","appDetail","download","<%= appDetail.packageName %>"]);'>直接下载</a>
-      </div>
-      <div class="control-item">
-        <a class="btn-redirect" href="https://m.wandoujia.com/apps/<%= appDetail.packageName %>" onClick='_czc.push(["_trackEvent","appDetail","go_wdj","<%= appDetail.packageName %>"]);'>去豌豆荚下载</a>
-      </div>
+      <% if (typeof osType !== 'undefined' && osType === 'ios' && appDetail.itunes) { %>
+        <a class="btn-itunes" href="https://itunes.apple.com/cn/app/id<%= appDetail.itunes %>" rel="nofollow" onClick='_czc.push(["_trackEvent","appDetail","go_itunes","<%= appDetail.packageName %>"]);'><span class="text">马上下载</span></a>
+      <% } else { %>
+        <div class="control-item">
+          <a class="btn-download" href="<%= appDetail.downloadUrl %>" rel="nofollow" onClick='_czc.push(["_trackEvent","appDetail","download","<%= appDetail.packageName %>"]);'>直接下载</a>
+        </div>
+        <div class="control-item">
+          <a class="btn-redirect" href="https://m.wandoujia.com/apps/<%= appDetail.packageName %>" rel="nofollow" onClick='_czc.push(["_trackEvent","appDetail","go_wdj","<%= appDetail.packageName %>"]);'>去豌豆荚下载</a>
+        </div>
+      <% } %>
     </div>
   </div>
 

@@ -1,6 +1,10 @@
 <%- include('../../modules/header/index.ejs', {}) %>
 <%- include('../../modules/nav/index.ejs', {tab: 2}) %>
 
+<% if (typeof banner !== 'undefined' && banner) { %>
+<%- include('../../modules/banner/index.ejs', {banner: banner}) %>
+<% } %>
+
 <section class="article">
   <ul class="list">
     <% if (typeof articleList !== 'undefined' && articleList.length > 0) { %>

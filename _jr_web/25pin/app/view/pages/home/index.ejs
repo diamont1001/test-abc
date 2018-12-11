@@ -7,14 +7,14 @@
 
 <% if (typeof gameList !== 'undefined' && gameList.length > 0) { %>
 <section class="game">
-  <%- include('../../modules/title/index.ejs', {title: '游戏推荐'}) %>
+  <%- include('../../modules/title/index.ejs', {title: '热门游戏'}) %>
   <%- include('../../modules/app-rec-4/index.ejs', {list: gameList}) %>
 </section>
 <% } %>
 
 <% if (typeof softList !== 'undefined' && softList.length > 0) { %>
 <section class="soft">
-  <%- include('../../modules/title/index.ejs', {title: '软件推荐'}) %>
+  <%- include('../../modules/title/index.ejs', {title: '热门软件'}) %>
   <%- include('../../modules/app-rec-4/index.ejs', {list: softList}) %>
 </section>
 <% } %>
@@ -26,7 +26,7 @@
 
 <% if (typeof photoList !== 'undefined' && photoList.length > 0) { %>
 <section class="girls">
-  <%- include('../../modules/title/index.ejs', {title: '美女写真'}) %>
+  <%- include('../../modules/title/index.ejs', {title: '热门美女写真'}) %>
   <%- include('../../modules/nav-imgs-3/index.ejs', {list: photoList, lines: 3}) %>
   <%- include('../../modules/more/index.ejs', {text: '查看更多美女写真', url: '/photo'}) %>
 </section>

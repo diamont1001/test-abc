@@ -52,10 +52,10 @@ class AppController extends Controller {
 
       let title = appDetail.tkdTitle;
       if (!title) {
-        if (appDetail.resourceType === 1) {
-          title = `${appDetail.name}安卓版|${this.app.config.currentYear}最新版免费下载|游戏攻略`;
+        if (appDetail.itunes) {
+          title = `${appDetail.name}免费下载|${this.app.config.currentYear}最新版|支持安卓和苹果iOS系统`;
         } else {
-          title = `${appDetail.name}安卓版|${this.app.config.currentYear}最新版免费下载`;
+          title = `${appDetail.name}安卓版免费下载|${this.app.config.currentYear}最新版更新说明`;
         }
       }
       const canonical = this.app.config.biz.server + '/app/' + this.ctx.params.pname;
@@ -95,6 +95,7 @@ class AppController extends Controller {
           name: 'APP',
           url: '/app',
         }],
+        osType: this.ctx.osType,
         canonical,
         ld_json,
         appDetail,
@@ -127,7 +128,7 @@ class AppController extends Controller {
         description: `爱玩品资源站为你推荐${this.app.config.currentYear}最火手机游戏，官方软件APP排行榜下载大全，快来看看网友们最近都在玩些什么，发现更多流行游戏APP。爱玩品资源站，让优质资源脱颖而出。`,
         breadcrumb: [],
         canonical: this.app.config.biz.server + '/app',
-        banner: { image: 'http://www.zhaodanji.com/uploadfile/2018/0710/20180710021257999.png', url: '/topic/2', name: '翻译软件精选' },
+        banner: { image: 'http://pic.uzzf.com/up/2018-4/201804241033004656904.png', url: '/topic/2', name: '翻译软件精选' },
         softList,
         gameList,
         developerList,
