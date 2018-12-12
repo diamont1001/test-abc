@@ -34,6 +34,9 @@ module.exports = app => {
   // 在线小游戏
   router.get('/onlinegame/snake', controller.onlinegame.snake);
 
+  // 帮助页面（非 SEO）
+  router.get('/about/contact', controller.about.contact);
+
   // API
   router.get('/api/getArticleList', controller.article.moreajax); // 文章列表页「加载更多」
   router.get('/api/getPhontList', controller.photo.moreajax); // 图片列表页「加载更多」

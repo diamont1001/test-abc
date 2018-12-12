@@ -15,8 +15,8 @@ module.exports = {
     topic: './app/view/pages/topic/index.js',
     developer: './app/view/pages/developer/index.js',
     developerlist: './app/view/pages/developerlist/index.js',
-    english: './app/view/pages/english/index.js',
     snake: './app/view/pages/onlinegame/snake/index.js',
+    contact: './app/view/pages/about/contact/index.js',
   },
   output: {
     path: path.resolve(__dirname, './app/public/bundle/'),

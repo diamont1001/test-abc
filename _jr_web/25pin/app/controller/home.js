@@ -45,11 +45,13 @@ class HomeController extends Controller {
       'User-agent: Baiduspider\n' +
       'Allow: /mip/\n' +
       'Disallow: /api/\n' +
+      'Disallow: /about/\n' +
       '\n' +
       'User-agent: *\n' +
       'Allow: /\n' +
       'Disallow: /mip/\n' +
-      'Disallow: /api/\n';
+      'Disallow: /api/\n' + 
+      'Disallow: /about/\n';
   }
 }
 

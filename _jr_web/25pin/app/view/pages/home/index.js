@@ -15,3 +15,4 @@ require('../../modules/more');
 require('../../modules/links');
 require('../../modules/app-declaration');
 require('../../modules/copyright');
+require('../../modules/about');
