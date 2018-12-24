@@ -47,7 +47,7 @@ class PhotoController extends Controller {
       url: canonical,
       title,
       images: ugirls.images,
-      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTh:m:s', ugirls.createTime.getTime()),
+      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', ugirls.createTime.getTime()),
     };
 
     await this.ctx.layoutRender('pages/photo/index.ejs', {
@@ -121,7 +121,7 @@ class PhotoController extends Controller {
         url: locals.canonical,
         title: locals.title,
         images: [ ugirlsList[0].avatar ],
-        pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTh:m:s', ugirlsList[0].createTime.getTime()),
+        pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', ugirlsList[0].createTime.getTime()),
       };
     }
 

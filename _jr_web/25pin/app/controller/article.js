@@ -36,7 +36,7 @@ class ArticleController extends Controller {
       url: canonical,
       title: article.title,
       images: article.images,
-      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTh:m:s', article.publishTime.getTime()),
+      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', article.publishTime.getTime()),
     };
 
     await this.ctx.layoutRender('pages/article/index.ejs', {
@@ -51,7 +51,7 @@ class ArticleController extends Controller {
       preArticle,
       nextArticle,
       dateFormat(date) {
-        return this.ctx.helper.stampFormat2Date('Y-m-d h:m:s', date.getTime());
+        return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       },
     });
   }
@@ -69,7 +69,7 @@ class ArticleController extends Controller {
       banner: { image: 'https://ww2.sinaimg.cn/large/ea2942bfgy1fstqkdhyqdj20hs0bsgm9.jpg', url: '/article/41', name: '【福利】每天支付宝红包怎么领才最多？' },
       articleList,
       dateFormat(date) {
-        return this.ctx.helper.stampFormat2Date('Y-m-d h:m:s', date.getTime());
+        return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       },
     });
   }
@@ -83,7 +83,7 @@ class ArticleController extends Controller {
       await this.ctx.render('pages/articlelist/list.ejs', {
         articleList,
         dateFormat(date) {
-          return this.ctx.helper.stampFormat2Date('Y-m-d h:m:s', date.getTime());
+          return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
         },
       });
     } else {

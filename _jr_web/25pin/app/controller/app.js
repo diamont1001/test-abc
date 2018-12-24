@@ -63,7 +63,7 @@ class AppController extends Controller {
         url: canonical,
         title,
         images: appDetail.images,
-        pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTh:m:s', appDetail.updateTime),
+        pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', appDetail.updateTime),
       };
 
       // 只放一张图，因为页面上只展示2张，放3张的话会有问题

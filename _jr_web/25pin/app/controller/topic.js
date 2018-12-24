@@ -36,7 +36,7 @@ class TopicController extends Controller {
       url: canonical,
       title: topic.title,
       images: topic.content.images,
-      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTh:m:s', topic.updateTime.getTime()),
+      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', topic.updateTime.getTime()),
     };
 
     await this.ctx.layoutRender('pages/topic/index.ejs', {
@@ -65,7 +65,7 @@ class TopicController extends Controller {
   //     breadcrumb: [],
   //     articleList,
   //     dateFormat(date) {
-  //       return this.ctx.helper.stampFormat2Date('Y-m-d h:m:s', date.getTime());
+  //       return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
   //     },
   //   });
   // }
@@ -79,7 +79,7 @@ class TopicController extends Controller {
   //     await this.ctx.render('pages/articlelist/list.ejs', {
   //       articleList,
   //       dateFormat(date) {
-  //         return this.ctx.helper.stampFormat2Date('Y-m-d h:m:s', date.getTime());
+  //         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
   //       },
   //     });
   //   } else {
