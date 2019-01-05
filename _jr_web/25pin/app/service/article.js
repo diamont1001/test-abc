@@ -43,8 +43,8 @@ module.exports = app => {
     }
 
     // 获取在线文章列表
-    async getAvailableList(offset = 0, count = 10) {
-      return this.dbArticleUtils.getAvailableList(offset, count);
+    async getAvailableList(offset = 0, count = 10, tag) {
+      return this.dbArticleUtils.getAvailableList(offset, count, tag);
     }
 
     // 获取热门文章列表

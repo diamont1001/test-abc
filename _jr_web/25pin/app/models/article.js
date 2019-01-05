@@ -41,6 +41,16 @@ class MArticle {
     }
 
     try {
+      this.tags = objMysql.tags.split(',').filter(item => {
+        return (item && item.trim());
+      }).map(item => {
+        return item;
+      });
+    } catch (e) {
+      this.tags = [];
+    }
+
+    try {
       this.app = objMysql.app.split(',').filter(item => {
         return (item && item.trim());
       }).map(item => {

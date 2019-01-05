@@ -18,19 +18,19 @@ class DBArticleUtils {
    * {Promise} 查询可用的文章列表
    * @param {Number} offset 请求列表偏移量
    * @param {Number} count 请求数量
+   * @param {String} tag 标签
    * @return {[MArticle]} 返回文章列表
    */
-  async getAvailableList(offset = 0, count = 10) {
+  async getAvailableList(offset = 0, count = 10, tag) {
+    let sql = `SELECT * FROM ${MArticle.TABLE} WHERE status=1 AND verify_state=1`;
+
+    if (tag) {
+      sql += ` and FIND_IN_SET("${tag}", tags)`;
+    }
+    sql += ` ORDER BY publish_time DESC limit ${count} offset ${offset}`;
+
     try {
-      const result = await this.mysql.select(MArticle.TABLE, {
-        offset,
-        limit: count,
-        where: {
-          status: 1,
-          verify_state: 1,
-        },
-        orders: [[ 'publish_time', 'desc' ]],
-      });
+      const result = await this.mysql.query(sql);
 
       if (result && result.length > 0) {
         const arr = [];

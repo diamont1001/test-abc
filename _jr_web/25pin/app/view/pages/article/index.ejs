@@ -20,6 +20,16 @@
   <%- article.contentHtml %>
 </section>
 
+<% if (article.tags.length > 0) { %>
+  <section class="tags">
+    <ul>
+    <% article.tags.forEach(function(tag) { %>
+      <li><a href="/article/t_<%= encode(tag) %>">#<%= tag %></a></li>
+    <% }) %>
+    </ul>
+  </section>
+<% } %>
+
 <% if (article.relativeApp && article.relativeApp.length > 0) { %>
 <section class="relative_app">
   <%- include('../../modules/title/index.ejs', {title: '相关APP', type: 1}) %>

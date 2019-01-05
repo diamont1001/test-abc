@@ -27,7 +27,19 @@ class DeveloperController extends Controller {
     // 解密
     const developer = Xor.decode(devId);
 
+    if (!developer
+      || developer.indexOf('<') >= 0
+      || developer.indexOf('>') >= 0) {
+      this.ctx.status = 404; // 错误的路由，404
+      return;
+    }
+
     const appList = await this.service.app.getListByDeveloper(developer, 0, COUNT);
+
+    if (!appList || appList.length <= 0) {
+      this.ctx.status = 404;
+      return;
+    }
 
     const locals = {
       name: 'developer',
@@ -50,8 +62,6 @@ class DeveloperController extends Controller {
 
     // XSS 和 SQL 注入
     if (!devId
-      || devId.indexOf(' ') >= 0
-      || devId.indexOf(',') >= 0
       || devId.indexOf('<') >= 0
       || devId.indexOf('>') >= 0) {
       this.ctx.status = 404; // 错误的路由，404
@@ -71,6 +81,11 @@ class DeveloperController extends Controller {
 
   async list() {
     const developerList = await this.service.app.getAvailableDeveloperList(0, COUNT);
+
+    if (!developerList || developerList.length <= 0) {
+      this.ctx.status = 404;
+      return;
+    }
 
     const locals = {
       name: 'developerlist',

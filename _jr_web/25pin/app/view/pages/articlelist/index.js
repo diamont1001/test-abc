@@ -14,8 +14,11 @@ $(function() {
     }
 
     const offset = $('.article .list li').length;
+    const tag = $('#dataTag').attr('data-tag');
 
-    $.get('/api/getArticleList?offset=' + offset, function(result) {
+    const url = '/api/getArticleList?offset=' + offset + '&tag=' + encodeURIComponent(tag);
+
+    $.get(url, function(result) {
       if (result) {
         $('.article ul.list').append(result);
       } else {
