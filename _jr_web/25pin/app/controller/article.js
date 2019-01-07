@@ -44,7 +44,7 @@ class ArticleController extends Controller {
       name: 'article',
       title: article.title,
       keywords: article.keywords,
-      description: article.description,
+      description: article.summary,
       canonical,
       breadcrumb: [{ url: '/article', name: '资讯' }],
       ld_json, // 熊掌号主页展示
