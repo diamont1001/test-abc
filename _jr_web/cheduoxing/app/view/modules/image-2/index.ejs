@@ -1,0 +1,8 @@
+<% var href = "javascript:;" %>
+<% if (typeof url !== 'undefined') { %>
+  <% href = url %>
+<% } %>
+
+<a class="jr-m-image-2" href="<%= href %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
+  <img src="<%= image %>" <% if(typeof title !== 'undefined') { %>alt="<%= title %>"<% } %>/>
+</a>

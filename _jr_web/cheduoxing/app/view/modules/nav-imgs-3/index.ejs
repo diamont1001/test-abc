@@ -1,0 +1,18 @@
+<% if (typeof list !== 'undefined' && list.length > 0) { %>
+  <% var limit = 3 %>
+  <% if (typeof lines !== 'undefined' && lines > 0) { %>
+    <% limit = lines * 3 %>
+  <% } %>
+
+  <% if (list.length > limit) { %>
+    <% list.length = limit %>
+  <% } %>
+
+  <div class="jr-m-nav-imgs-3">
+    <% list.forEach(function(item) { %>
+      <a href="<%= item.url %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
+        <img src="<%= item.image %>" alt="<%= item.name %>"/>
+      </a>
+    <% }); %>
+  </div>
+<% } %>

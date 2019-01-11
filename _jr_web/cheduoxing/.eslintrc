@@ -1,0 +1,12 @@
+{
+  "extends": "eslint-config-egg",
+  rules: {
+    'no-useless-constructor': 0
+  },
+  globals: {
+    '$': true,
+    'window',
+    'document',
+    'event'
+  }
+}

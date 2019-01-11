@@ -1,0 +1,695 @@
+@charset "utf-8";
+/**!
+ * reset.less
+ * 每个页面都应该引入一份(注意是每个页面不是每个模块)
+ * 建议实际项目中定义 my-reset.less，里面 import 本项目的 reset.less
+ */
+html,
+body {
+  overflow-x: hidden;
+  font: 14px/1.5 Microsoft YaHei, Arial, sans-serif;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img,
+iframe {
+  border: 0 none;
+}
+img {
+  vertical-align: top;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: 400;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 400;
+}
+input,
+label,
+select,
+option,
+legend,
+button,
+fieldset,
+textarea {
+  font-size: 100%;
+}
+q:before,
+q:after {
+  content: '';
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;
+}
+body {
+  max-width: 677px;
+  margin: 0 auto;
+}
+footer {
+  border-top: 8px solid #f5f7f9;
+}
+a:hover {
+  text-decoration: none;
+}
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+section {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+header {
+  height: 60px;
+  line-height: 60px;
+  padding: 0 15px;
+  border-bottom: 1px solid #f5f7f9;
+  position: relative;
+}
+header #headerBrand {
+  color: #333;
+  font-size: 18px;
+  display: inline-block;
+}
+header #headerBrand img {
+  height: 38px;
+  vertical-align: middle;
+}
+header #headerBtnMenu {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAAARERESExMSEhISExMNTuKbAAAABHRSTlMA6k5S/HlhvwAAACxJREFUKM9jMHQBASEGOEMETDsywBkuDEAAJGGMwSuA4XRFqJ8QDMrByAoxAA6eLwF4ZoZ4AAAAAElFTkSuQmCC) no-repeat center;
+  background-size: 24px 24px;
+  display: none;
+}
+header #headerMenu {
+  display: none;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.jr-m-nav {
+  overflow: hidden;
+  border-bottom: 1px solid #f5f7f9;
+}
+.jr-m-nav li {
+  width: 25%;
+  height: 40px;
+  line-height: 38px;
+  font-size: 16px;
+  text-align: center;
+  float: left;
+}
+.jr-m-nav li a {
+  color: #333;
+  height: 100%;
+  position: relative;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+.jr-m-nav li.current a {
+  color: #3aa7f9;
+}
+.jr-m-nav li.current a:after {
+  content: '';
+  display: block;
+  background: #3aa7f9;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  position: relative;
+  top: -1px;
+  margin: 0 auto;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.jr-m-title {
+  padding: 4px 12px;
+  font-size: 16px;
+  color: #3aa7f9;
+  border-bottom: 1px dashed #f5f7f9;
+  border-top: 8px solid #f5f7f9;
+}
+.jr-m-title-1 {
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #3aa7f9;
+  text-align: center;
+}
+.jr-m-title-2 {
+  margin: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+}
+.jr-m-title-2:before {
+  content: '\2761';
+  display: inline-block;
+  margin-right: 4px;
+  color: #3aa7f9;
+}
+.jr-m-title-3 {
+  margin: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  padding: 0 8px;
+  border-left: none;
+}
+.jr-m-title-3:before {
+  content: '\2761';
+  display: inline-block;
+  margin-right: 4px;
+  color: #3aa7f9;
+}
+.jr-m-title-3:before {
+  content: '\2668';
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.jr-m-nav-imgs-3 {
+  padding: 10px;
+  border-bottom: 1px solid #f5f7f9;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+.jr-m-nav-imgs-3 a {
+  width: 33.3%;
+  display: inline-block;
+  float: left;
+  padding: 0 2px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  flex: 0 0 33.333%;
+}
+.jr-m-nav-imgs-3 a img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.list-item-text {
+  border-bottom: 1px solid #f5f7f9;
+}
+.list-item-text .list-item-text-a {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  overflow: hidden;
+  font-size: 16px;
+  color: #333;
+}
+.list-item-text .list-item-text-a .tips {
+  font-size: 12px;
+  color: #999;
+  padding-top: 4px;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.list-item-img-text {
+  border-bottom: 1px solid #f5f7f9;
+}
+.list-item-img-text .list-item-img-text-a {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-height: 68px;
+  overflow: hidden;
+  padding: 12px;
+}
+.list-item-img-text .list-item-img-text-a .info-left {
+  float: left;
+  position: relative;
+  line-height: 0;
+  width: 89.59px;
+  height: 67.19px;
+  margin-right: 16px;
+  overflow: hidden;
+}
+.list-item-img-text .list-item-img-text-a .info-left .image-item {
+  width: 100%;
+}
+.list-item-img-text .list-item-img-text-a .info-right {
+  overflow: hidden;
+  min-height: 45px;
+}
+.list-item-img-text .list-item-img-text-a .info-right h3 {
+  color: #333;
+  font-size: 16px;
+}
+.list-item-img-text .list-item-img-text-a .info-right p.content {
+  color: #696969;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.list-item-img-text .list-item-img-text-a .tips {
+  font-size: 12px;
+  color: #999;
+  padding-top: 4px;
+  float: right;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.btn-get-more {
+  text-align: center;
+}
+.btn-get-more a {
+  color: #3aa7f9;
+  display: block;
+  padding: 16px 0;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.links .list {
+  padding: 8px 12px;
+}
+.links .list a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 6px;
+  color: #696969;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.copyright {
+  background-color: #f5f7f9;
+  text-align: center;
+  font-size: 12px;
+  color: #696969;
+  padding: 15px 0;
+  margin: 8px 0;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.jr-m-about {
+  background-color: #f5f7f9;
+  text-align: center;
+  font-size: 12px;
+  color: #696969;
+  padding-bottom: 15px;
+  margin-top: -8px;
+}
+.jr-m-about a {
+  color: #696969;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.jr-m-statement {
+  border-top: 1px solid #f5f7f9;
+  padding: 12px;
+  font-size: 12px;
+  color: #999;
+}
+

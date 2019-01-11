@@ -1,0 +1,13 @@
+<div class="btn-get-more">
+  <% var name = '查看更多' %>
+  <% if (typeof text !== 'undefined') { %>
+    <% name = text %>
+  <% } %>
+
+  <% var link = 'javascript:;' %>
+  <% if (typeof url !== 'undefined') { %>
+    <% link = url %>
+  <% } %>
+
+  <a href="<%= link %>"><%= name %></a>
+</div>

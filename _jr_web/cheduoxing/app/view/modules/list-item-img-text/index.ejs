@@ -1,0 +1,18 @@
+<li class="list-item-img-text">
+  <a class="list-item-img-text-a" href="<%= url %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
+    <% if(typeof images !== 'undefined' && images.length > 0) { %>
+      <div class="info-left">
+        <img class="image-item" src="<%= images[0] %>"/>
+      </div>
+    <% } %>
+    <div class="info-right">
+      <h3><%= title %></h3>
+      <% if (typeof description !== 'undefined' && description) { %>
+        <p class="content"><%= description %></p>
+      <% } %>
+    </div>
+    <% if (typeof timeShow !== 'undefined') { %>
+      <div class="tips"><span><%= timeShow %></span></div>
+    <% } %>
+  </a>
+</li>
