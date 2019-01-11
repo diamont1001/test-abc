@@ -39,8 +39,8 @@ module.exports = app => { // eslint-disable-line no-unused-vars
 
     async task(ctx) {
       await ctx.service.ugirls.run(); // 更新尤果网资源
-      await ctx.service.app.runCheckApps(); // 检查线上应用
-      await ctx.service.app.runDetectNewApps(); // 窥探新应用
+      // await ctx.service.app.runCheckApps(); // 检查线上应用
+      // await ctx.service.app.runDetectNewApps(); // 窥探新应用
     },
   };
 };
