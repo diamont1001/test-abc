@@ -25,6 +25,10 @@ class HomeController extends Controller {
       });
     }
 
+    // 备案时用
+    await this.ctx.render('pages/beian/index.ejs');
+    return;
+
     await this.ctx.layoutRender('pages/home/index.ejs', {
       name: 'home',
       title: this.app.config.biz.title,

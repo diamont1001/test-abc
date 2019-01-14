@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <title>【爱玩品】菜猪小朋友的博客</title>
+    <style type="text/css">
+      body {
+        max-width: 677px;
+        margin: 0 auto;
+        font-size: 14px;
+      }
+      header {
+        height: 60px;
+        line-height: 60px;
+        padding: 0 15px;
+        border-bottom: 1px solid #f5f7f9;
+        position: relative;
+      }
+      h1 {
+        font-size: 18px;
+        color: #2bb2bc;
+      }
+      h2 {
+        font-size: 16px;
+        color: #2bb2bc;
+      }
+      h3 {
+        font-size: 15px;
+      }
+      section {
+        margin: 12px;
+        padding-bottom: 26px;
+        border-bottom: 1px solid #eee;
+        overflow: hidden;
+        height: 162px;
+        position: relative;
+      }
+      section.on {
+        height: auto;
+      }
+      section .btn:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: white;
+        content: '继续阅读 >>';
+        color: #999;
+        font-size: 13px;
+        width: 100%;
+        padding: 5px 0;
+      }
+      section.on .btn:after {
+        content: '收起 >>';
+      }
+      .tips {
+        color: #aaa;
+        font-size: 12px;
+      }
+      .code {
+        background: #f6f8fa;
+        padding: 8px;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>【爱玩品】菜猪小朋友的博客</h1>
+  </header>
+  <section>
+    <h2>npm包发布与管理</h2>
+    <p class="tips">作者：菜猪小朋友 日期：2018-08-28</p>
+    <p>
+      自己写的模块想要发布到 npm，其实很简单，一句 npm publish 就搞定了，但是后续的版本管理会比较讲究，这里系统的记录一下通过 npm 管理包的一系列问题，方便以后查阅。
+    </p>
+    <h3>新发布模块</h3>
+    <p>
+      写好一个模块，一切都就绪后，可以考虑发布到 npm 上了，可以通过以下步骤完成一个模块的新发布：
+    </p>
+    <div class="code">
+      1. 初始化包的描述文件（其实是生成  package.json，如果已有这个文件，可跳过该步骤）
+      <p>$ npm init --save</p>
+
+      # 2. 验证账号
+      <p>$ npm adduser</p>
+
+      3. 发布
+      <p>$ npm publish</p>
+    </div>
+    <p>
+      以上，即可完成一个新包的发布了。
+    </p>
+
+    <h3>管理包权限</h3>
+    <p>很多时候，一个模块往往不只是你一个人在管理的，这时需要给其他一起维护的同学开通发布的权限，如下：</p>
+    <div class="code">
+      # 查看模块 owner
+      <p>$ npm owner ls demo</p>
+
+      # 添加一个发布者
+      <p>$ npm owner add xxx@yyy.com demo</p>
+
+      # 删除一个发布者
+      <p>$ npm owner rm xxx@yyy.com demo</p>
+    </div>
+
+    <h3>更新版本</h3>
+    <p>当模块有更新的时候，需要发布一个新版本，当所有需要更新的文件都 commit 完了后，就可以更新到 npm 了。</p>
+    <h4>1. 发布一个新的稳定版本</h4>
+    <div class="code">
+      <p># 更新版本号（major | minor | patch | premajor | preminor | prepatch | prerelease）</p>
+      <p># 大版本并且不向下兼容时，使用 major</p>
+      <p># 有新功能且向下兼容时，使用 major</p>
+      <p># 修复一些问题、优化等，使用 patch</p>
+      <p># 下面比如更新一个 patch 小版本号</p>
+      <p>$ npm version patch</p>
+      <p>$ npm publish</p>
+    </div>
+    <h4>2. 预发布版本</h4>
+    <p>
+        很多时候一些新改动，并不能直接发布到稳定版本上（稳定版本的意思就是使用 npm install demo 即可下载的最新版本），这时可以发布一个 “预发布版本“，不会影响到稳定版本。
+      </p>
+    <div class="code">
+      # 发布一个 prelease 版本，tag=beta
+      <p>$ npm version prerelease</p>
+      <p>$ npm publish --tag beta</p>
+    </div>
+    <p>
+      比如原来的版本号是 1.0.1，那么以上发布后的版本是 1.0.1-0，用户可以通过 npm install demo@beta 或者 npm install demo@1.0.1-0 来安装。
+    </p>
+    <h4>3. 当 prerelease 版本稳定之后，可以把它设置为稳定版本</h4>
+    <div class="code">
+      # 首先可以查看当前所有的最新版本，包括 prerelease 与稳定版本
+      <p>$ npm dist-tag ls</p>
+
+      # 设置 1.0.1-1 版本为稳定版本
+      <p>$ npm dist-tag add demo@1.0.1-1 latest</p>
+
+      # 或者通过 tag 来设置
+      <p>$ npm dist-tag add demo@beta latest</p>
+    </div>
+    <p class="tips">
+      当发现 BUG，也可以通过 npm dist-tag 命令回退。
+    </p>
+    <p>
+      这时候，latest 稳定版本已经是 1.0.1-1 了，用户可以直接通过 npm install demo 即可安装该版本。
+    </p>
+
+    <h3>查看模块的版本信息</h3>
+    <p>
+      最后，可以通过 npm info 来查看模块的详细信息。
+    </p>
+    <div class="code">
+      $ npm info
+    </div>
+    <div class="btn"></div>
+  </section>
+
+  <section>
+    <h2>递归与迭代的区别</h2>
+    <p class="tips">作者：菜猪小朋友 日期：2018-10-01</p>
+    <h3>递归</h3>
+    <p>
+      A问B，B帮A去问C，C帮B去问D……然后D告诉C，C告诉B，最后由B告诉A
+    </p>
+    <h3>迭代</h3>
+    <p>
+      A问B，B叫A问C，A再去问C，C叫A去问D，然后A又去问D……最后，由D直接告诉A
+    </p>
+    <div class="btn"></div>
+  </section>
+
+  <section>
+    <h2>Mac里添加多个git ssh</h2>
+    <p class="tips">作者：菜猪小朋友 日期：2019-01-01</p>
+    <p>
+      最近团队里多了几台Macbook，公司也有多个Git仓库，在设置多个Git ssh的时候遇到了些问题，但最后都解决了，下面记录下。
+    </p>
+    <h3>1. 生成ssh</h3>
+    <div class="code">
+      A问B，B叫A问C，A再去问C，C叫A去问D，然后A又去问D……最后，由D直接告诉A
+    </div>
+    <p>以上命令后，会让你输入ssh key的保存文件名，输入如下</p>
+    <div class="code">
+      ~/.ssh/id_rsa_1
+    </div>
+    <p>然后会让你输入密码，这个是ssh文件的密码，简单点就行，输入就行。</p>
+    <p>此时，会在~/.ssh目录下看到你生成的两个文件：</p>
+    <div class="code">
+      <p>"id_rsa_1"：私钥</p>
+      <p>"id_rsa_1.pub"：公钥</p>
+    </div>
+    <h3>2. 去git站点添加对应的ssh</h3>
+    <p>
+      以Github为例：https://github.com/ -> Your profile -> edit profile -> SSH and GPG keys -> new SSH key
+    </p>
+    <div class="code">
+      cat ~/.ssh/id_rsa_1.pub
+    </div>
+    <p>
+      把以上输出的内容全部复制并粘贴到git仓库站点ssh管理页面key那栏，title随意自己，可以写“my macbook"。
+    </p>
+    <h3>3. 把私钥添加到git</h3>
+    <div class="code">
+      ssh-add -K ~/.ssh/id_rsa_1
+    </div>
+    <p>
+      以上已经完成一个ssh key的添加了。
+    </p>
+    <p>
+      再添加其他仓库的，重复以上（1）到（3）步骤即可，记得输入文件名的时候别重复了。
+    </p>
+    <h3>4. 最后修改配置文件</h3>
+    <p>在 ~/.ssh 目录下新建一个 config 文件</p>
+    <div class="code">
+      touch config
+    </div>
+    <p>添加内容：</p>
+    <div class="code">
+      <p>
+        #github<br/>
+        Host github<br/>
+        HostName github.com<br/>
+        User xxx@xxx.com<br/>
+        IdentityFile ~/.ssh/id_rsa_1
+      </p>
+      <p>
+        #github2<br/>
+        Host github2<br/>
+        HostName github2.com<br/>
+        User xxx2@xxx.com<br/>
+        IdentityFile ~/.ssh/id_rsa_2  
+      </p>
+      <p>
+        #github3<br/>
+        Host github3<br/>
+        HostName github3.com<br/>
+        User xxx3@xxx.com<br/>
+        IdentityFile ~/.ssh/id_rsa_3  
+      </p>
+      <p>
+        # ...
+      </p>
+    </div>
+    <div class="btn"></div>
+  </section>
+</body>
+<script type="text/javascript" src="/public/libs/zepto.min.js"></script>
+<script type="text/javascript">
+  $('.btn').click(function() {
+    $(this).closest('section').toggleClass('on');
+  })
+</script>
+</html>
