@@ -11,11 +11,15 @@ module.exports = app => {
   // router.get('/article', controller.article.list);
   router.get('/article/:id', controller.article.index);
 
+  // 汽车品牌
+  router.get('/brand', controller.brand.list);
+  router.get('/brand/:id', controller.brand.index);
+
   // 帮助页面（非 SEO）
   // router.get('/about/contact', controller.about.contact);
 
   // API
-  router.get('/api/getArticleList', controller.article.moreajax); // 文章列表页「加载更多」
+  // router.get('/api/getBrandList', controller.article.moreajax); // 文章列表页「加载更多」
 
   // 搜索引擎相关
   router.get('/sitemap.xml', controller.sitemap.index);

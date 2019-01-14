@@ -1,0 +1,10 @@
+<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/nav/index.ejs', {tab: 2}) %>
+
+<section class="brand">
+  <ul class="list">
+    <% if (typeof brandList !== 'undefined' && brandList.length > 0) { %>
+      <%- include('./list.ejs', {brandList: brandList}) %>
+    <% } %>
+  </ul>
+</section>

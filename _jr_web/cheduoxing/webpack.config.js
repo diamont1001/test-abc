@@ -8,6 +8,8 @@ module.exports = {
     home: './app/view/pages/home/index.js',
     article: './app/view/pages/article/index.js',
     articlelist: './app/view/pages/articlelist/index.js',
+    brand: './app/view/pages/brand/index.js',
+    brandlist: './app/view/pages/brandlist/index.js',
     contact: './app/view/pages/about/contact/index.js',
   },
   output: {

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/view/pages/article/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/view/pages/brand/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -155,26 +155,26 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 
 /***/ }),
 
-/***/ "./app/view/pages/article/index.js":
-/*!*****************************************!*\
-  !*** ./app/view/pages/article/index.js ***!
-  \*****************************************/
+/***/ "./app/view/pages/brand/index.js":
+/*!***************************************!*\
+  !*** ./app/view/pages/brand/index.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/article/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/breadcrumb */ \"./app/view/modules/breadcrumb/index.js\");\n\n__webpack_require__(/*! ../../modules/title */ \"./app/view/modules/title/index.js\");\n\n//# sourceURL=webpack:///./app/view/pages/article/index.js?");
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/brand/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/breadcrumb */ \"./app/view/modules/breadcrumb/index.js\");\n\n__webpack_require__(/*! ../../modules/title */ \"./app/view/modules/title/index.js\");\n\n//# sourceURL=webpack:///./app/view/pages/brand/index.js?");
 
 /***/ }),
 
-/***/ "./app/view/pages/article/index.less":
-/*!*******************************************!*\
-  !*** ./app/view/pages/article/index.less ***!
-  \*******************************************/
+/***/ "./app/view/pages/brand/index.less":
+/*!*****************************************!*\
+  !*** ./app/view/pages/brand/index.less ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/pages/article/index.less?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/pages/brand/index.less?");
 
 /***/ })
 

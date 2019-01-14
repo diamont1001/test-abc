@@ -5,8 +5,9 @@ const links = require('../constant/CLinks');
 
 class HomeController extends Controller {
   async index() {
-    const [ articleList ] = await Promise.all([
+    const [ articleList, brandList ] = await Promise.all([
       this.service.article.getHotList(0, 12),
+      this.service.brand.getAvailableList(0, 12),
     ]);
 
     await this.ctx.layoutRender('pages/home/index.ejs', {
@@ -16,6 +17,7 @@ class HomeController extends Controller {
       description: this.app.config.biz.description,
       canonical: this.app.config.biz.server,
       articleList,
+      brandList,
       links,
     });
   }

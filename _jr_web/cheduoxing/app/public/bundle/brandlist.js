@@ -81,33 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/view/pages/article/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/view/pages/brandlist/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./app/view/modules/breadcrumb/index.js":
-/*!**********************************************!*\
-  !*** ./app/view/modules/breadcrumb/index.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/breadcrumb/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/breadcrumb/index.js?");
-
-/***/ }),
-
-/***/ "./app/view/modules/breadcrumb/index.less":
-/*!************************************************!*\
-  !*** ./app/view/modules/breadcrumb/index.less ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/breadcrumb/index.less?");
-
-/***/ }),
 
 /***/ "./app/view/modules/header/index.js":
 /*!******************************************!*\
@@ -132,49 +109,72 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 
 /***/ }),
 
-/***/ "./app/view/modules/title/index.js":
-/*!*****************************************!*\
-  !*** ./app/view/modules/title/index.js ***!
-  \*****************************************/
+/***/ "./app/view/modules/list-item-icon-text/index.js":
+/*!*******************************************************!*\
+  !*** ./app/view/modules/list-item-icon-text/index.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/title/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/title/index.js?");
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/list-item-icon-text/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/list-item-icon-text/index.js?");
 
 /***/ }),
 
-/***/ "./app/view/modules/title/index.less":
-/*!*******************************************!*\
-  !*** ./app/view/modules/title/index.less ***!
-  \*******************************************/
+/***/ "./app/view/modules/list-item-icon-text/index.less":
+/*!*********************************************************!*\
+  !*** ./app/view/modules/list-item-icon-text/index.less ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/title/index.less?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/list-item-icon-text/index.less?");
 
 /***/ }),
 
-/***/ "./app/view/pages/article/index.js":
-/*!*****************************************!*\
-  !*** ./app/view/pages/article/index.js ***!
-  \*****************************************/
+/***/ "./app/view/modules/nav/index.js":
+/*!***************************************!*\
+  !*** ./app/view/modules/nav/index.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/article/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/breadcrumb */ \"./app/view/modules/breadcrumb/index.js\");\n\n__webpack_require__(/*! ../../modules/title */ \"./app/view/modules/title/index.js\");\n\n//# sourceURL=webpack:///./app/view/pages/article/index.js?");
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/nav/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/nav/index.js?");
 
 /***/ }),
 
-/***/ "./app/view/pages/article/index.less":
+/***/ "./app/view/modules/nav/index.less":
+/*!*****************************************!*\
+  !*** ./app/view/modules/nav/index.less ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/nav/index.less?");
+
+/***/ }),
+
+/***/ "./app/view/pages/brandlist/index.js":
 /*!*******************************************!*\
-  !*** ./app/view/pages/article/index.less ***!
+  !*** ./app/view/pages/brandlist/index.js ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/pages/article/index.less?");
+"use strict";
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/brandlist/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/nav */ \"./app/view/modules/nav/index.js\");\n\n__webpack_require__(/*! ../../modules/list-item-icon-text */ \"./app/view/modules/list-item-icon-text/index.js\");\n\n//# sourceURL=webpack:///./app/view/pages/brandlist/index.js?");
+
+/***/ }),
+
+/***/ "./app/view/pages/brandlist/index.less":
+/*!*********************************************!*\
+  !*** ./app/view/pages/brandlist/index.less ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/pages/brandlist/index.less?");
 
 /***/ })
 
