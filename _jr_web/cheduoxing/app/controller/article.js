@@ -22,7 +22,7 @@ class ArticleController extends Controller {
       this.service.article.getNextDetail(articleId),
     ]);
 
-    // this.app.logger.debug(article);
+    // this.app.logger.debug(article.tagList);
 
     if (!article || article.status !== 1) {
       this.ctx.status = 404;

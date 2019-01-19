@@ -29,8 +29,7 @@ module.exports = app => {
         for (let j = 0; j < articles[i].tags.length; j++) {
           const index = articles[i].tags[j];
           if (tagsMap[index]) {
-            articles[i].tagList.push(tagsMap[index])
-            break;
+            articles[i].tagList.push(tagsMap[index]);
           }
         }
       }
