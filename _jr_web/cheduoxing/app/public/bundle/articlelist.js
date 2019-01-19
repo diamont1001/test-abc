@@ -109,6 +109,29 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 
 /***/ }),
 
+/***/ "./app/view/modules/breadcrumb/index.js":
+/*!**********************************************!*\
+  !*** ./app/view/modules/breadcrumb/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/breadcrumb/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/breadcrumb/index.js?");
+
+/***/ }),
+
+/***/ "./app/view/modules/breadcrumb/index.less":
+/*!************************************************!*\
+  !*** ./app/view/modules/breadcrumb/index.less ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/breadcrumb/index.less?");
+
+/***/ }),
+
 /***/ "./app/view/modules/header/index.js":
 /*!******************************************!*\
   !*** ./app/view/modules/header/index.js ***!
@@ -178,29 +201,6 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 
 /***/ }),
 
-/***/ "./app/view/modules/nav/index.js":
-/*!***************************************!*\
-  !*** ./app/view/modules/nav/index.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/nav/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/nav/index.js?");
-
-/***/ }),
-
-/***/ "./app/view/modules/nav/index.less":
-/*!*****************************************!*\
-  !*** ./app/view/modules/nav/index.less ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/nav/index.less?");
-
-/***/ }),
-
 /***/ "./app/view/pages/articlelist/index.js":
 /*!*********************************************!*\
   !*** ./app/view/pages/articlelist/index.js ***!
@@ -209,7 +209,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/articlelist/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/nav */ \"./app/view/modules/nav/index.js\");\n\n__webpack_require__(/*! ../../modules/banner */ \"./app/view/modules/banner/index.js\");\n\n__webpack_require__(/*! ../../modules/list-item-img-text */ \"./app/view/modules/list-item-img-text/index.js\");\n\n__webpack_require__(/*! ../../modules/more */ \"./app/view/modules/more/index.js\");\n\n$(function () {\n  $('.article .btn-get-more a').click(function () {\n    if ($(this).attr('disabled')) {\n      return;\n    }\n\n    var offset = $('.article .list li').length;\n    var tag = $('#dataTag').attr('data-tag');\n    var url = '/api/getArticleList?offset=' + offset + '&tag=' + encodeURIComponent(tag);\n    $.get(url, function (result) {\n      if (result) {\n        $('.article ul.list').append(result);\n      } else {\n        $('.article .btn-get-more a').text('到底了 >_<').attr('disabled', true); // eslint-disable-line no-script-url\n      }\n    });\n  });\n});\n\n//# sourceURL=webpack:///./app/view/pages/articlelist/index.js?");
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/articlelist/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/breadcrumb */ \"./app/view/modules/breadcrumb/index.js\");\n\n__webpack_require__(/*! ../../modules/banner */ \"./app/view/modules/banner/index.js\");\n\n__webpack_require__(/*! ../../modules/list-item-img-text */ \"./app/view/modules/list-item-img-text/index.js\");\n\n__webpack_require__(/*! ../../modules/more */ \"./app/view/modules/more/index.js\");\n\n$(function () {\n  $('.article .btn-get-more a').click(function () {\n    if ($(this).attr('disabled')) {\n      return;\n    }\n\n    var offset = $('.article .list li').length;\n    var tag = $('#dataTag').attr('data-tag');\n    var url = '/api/getArticleList?offset=' + offset + '&tag=' + encodeURIComponent(tag);\n    $.get(url, function (result) {\n      if (result) {\n        $('.article ul.list').append(result);\n      } else {\n        $('.article .btn-get-more a').text('到底了 >_<').attr('disabled', true); // eslint-disable-line no-script-url\n      }\n    });\n  });\n});\n\n//# sourceURL=webpack:///./app/view/pages/articlelist/index.js?");
 
 /***/ }),
 

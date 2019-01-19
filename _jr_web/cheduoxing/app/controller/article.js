@@ -32,29 +32,19 @@ class ArticleController extends Controller {
     // 访问一次，记录一下数据库
     this.service.article.accessOnce(articleId);
 
-    const canonical = this.app.config.biz.server + '/article/' + article.id;
-    const ld_json = {
-      url: canonical,
-      title: article.title,
-      images: article.images,
-      pubDate: this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', article.publishTime.getTime()),
-    };
-
     await this.ctx.layoutRender('pages/article/index.ejs', {
       name: 'article',
       title: article.title,
       keywords: article.keywords,
       description: article.summary,
-      canonical,
-      breadcrumb: [{ url: '/article', name: '资讯' }],
-      ld_json, // 熊掌号主页展示
+      canonical: this.app.config.biz.server + '/article/' + article.id,
+      breadcrumb: [],
       article,
       preArticle,
       nextArticle,
       dateFormat(date) {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
-      },
-      encode: Xor.encode
+      }
     });
   }
 
@@ -113,7 +103,6 @@ class ArticleController extends Controller {
       description: '最新精彩文章推荐，快来看看网友们都在说些什么吧，点击有惊喜喔。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
       canonical,
       breadcrumb: [],
-      banner: { image: 'https://ww2.sinaimg.cn/large/ea2942bfgy1fstqkdhyqdj20hs0bsgm9.jpg', url: '/article/41', name: '【福利】每天支付宝红包怎么领才最多？' },
       articleList,
       tag,
       dateFormat(date) {
@@ -125,6 +114,7 @@ class ArticleController extends Controller {
   async moreajax() {
     const offset = parseInt(this.ctx.query.offset) || 0;
     const count = parseInt(this.ctx.query.count) || 20;
+    const type = parseInt(this.ctx.query.type) || 0; // 请求数据类型（0：最新，1：最火）
     const tag = this.ctx.query.tag;
 
     // XSS 和 SQL 注入
@@ -141,14 +131,18 @@ class ArticleController extends Controller {
       return;
     }
 
-    const articleList = await this.service.article.getAvailableList(offset, count, tag);
+    let articleList;
+
+    if (type === 1) {
+      articleList = await this.service.article.getHotList(offset, count);
+    } else {
+      articleList = await this.service.article.getNewList(offset, count);
+    }
 
     if (articleList && articleList.length > 0) {
       await this.ctx.render('pages/articlelist/list.ejs', {
         articleList,
-        dateFormat(date) {
-          return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
-        },
+        numberFormat: this.ctx.helper.numberFormat,
       });
     } else {
       this.ctx.status = 204; // 数据为空

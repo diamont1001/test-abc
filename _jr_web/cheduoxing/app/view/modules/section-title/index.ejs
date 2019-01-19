@@ -1,0 +1,11 @@
+<div class="jr-m-section-title">
+  <% if (typeof title !== 'undefined') { %>
+    <b><%= title %></b>
+  <% } %>
+  
+  <% if (typeof more !== 'undefined') { %>
+    <a href="<%= more.url %>"<% if (more.nofollow) { %> rel="nofollow"<% } %>>
+      <%= more.text %>
+    </a>
+  <% } %>
+</div>

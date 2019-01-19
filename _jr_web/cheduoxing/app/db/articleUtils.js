@@ -7,6 +7,7 @@
 'use strict';
 
 const MArticle = require('../models/article');
+const MArticleTag = require('../models/articleTag');
 
 class DBArticleUtils {
   constructor(app) {
@@ -62,6 +63,32 @@ class DBArticleUtils {
           verify_state: 1,
         },
         orders: [[ 'count', 'desc' ]],
+      });
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          const article = new MArticle(result[i]);
+          arr.push(article);
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
+  }
+
+  async getNewList(offset = 0, count = 10) {
+    try {
+      const result = await this.mysql.select(MArticle.TABLE, {
+        offset,
+        limit: count,
+        where: {
+          status: 1,
+          verify_state: 1,
+        },
+        orders: [[ 'publish_time', 'desc' ]],
       });
 
       if (result && result.length > 0) {
@@ -161,6 +188,31 @@ class DBArticleUtils {
       this.logger.warn(e);
       return Promise.resolve(e.message);
     }
+  }
+
+
+  /****************** tag ******************/
+  async getTagList() {
+    try {
+      const result = await this.mysql.select(MArticleTag.TABLE, {
+        where: {
+          status: 1,
+        },
+        orders: [[ 'weight', 'desc' ], [ 'id', 'asc' ]],
+      });
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          const item = new MArticleTag(result[i]);
+          arr.push(item);
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
   }
 }
 

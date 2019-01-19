@@ -21,10 +21,16 @@ class DBBrandUtils {
    * @return {[MBrand]} 返回文章列表
    */
   async getAvailableList(offset = 0, count = 10) {
-    const sql = `SELECT id, name, logo, initials, count FROM ${MBrand.TABLE} WHERE status=1 ORDER BY initials asc limit ${count} offset ${offset}`;
-
     try {
-      const result = await this.mysql.query(sql);
+      const result = await this.mysql.select(MBrand.TABLE, {
+        offset,
+        limit: count,
+        columns: [ 'id', 'name', 'logo', 'initials', 'count' ],
+        where: {
+          status: 1,
+        },
+        orders: [[ 'initials', 'asc' ], [ 'id', 'asc' ]],
+      });
 
       if (result && result.length > 0) {
         const arr = [];
@@ -81,6 +87,31 @@ class DBBrandUtils {
     }
 
     return Promise.resolve();
+  }
+
+  async getDetails(ids) {
+    try {
+      const result = await this.mysql.select(MBrand.TABLE, {
+        columns: [ 'id', 'name', 'logo', 'initials', 'count' ],
+        where: {
+          status: 1,
+          id: ids,
+        },
+        orders: [[ 'count', 'desc' ]],
+      });
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          const brand = new MBrand(result[i]);
+          arr.push(brand);
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
   }
 
   async isExist(id) {

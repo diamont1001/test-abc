@@ -20,11 +20,11 @@
   <%- article.contentHtml %>
 </section>
 
-<% if (article.tags.length > 0) { %>
+<% if (article.tagList && article.tagList.length > 0) { %>
   <section class="tags">
     <ul>
-    <% article.tags.forEach(function(tag) { %>
-      <li><a href="/article/t_<%= encode(tag) %>">#<%= tag %></a></li>
+    <% article.tagList.forEach(function(tag) { %>
+      <li><a>#<%= tag.name %></a></li>
     <% }) %>
     </ul>
   </section>

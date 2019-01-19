@@ -1,24 +1,31 @@
 <%- include('../../modules/header/index.ejs', {}) %>
-<%- include('../../modules/nav/index.ejs', {tab: 0}) %>
 
 <% if (typeof banner !== 'undefined' && banner) { %>
 <%- include('../../modules/banner/index.ejs', {banner: banner}) %>
 <% } %>
 
+<% if (typeof brandList !== 'undefined' && brandList && brandList.length > 0) { %>
+<section class="brand">
+<%- include('../../modules/section-title/index.ejs', {title: '汽车品牌介绍', more: {url: '/brand', text: '查看全部'}}) %>
+<% brandList.forEach(function(brand) { %>
+  <%- include('../../modules/nav-item-icon/index.ejs', {size: 5, url: '/brand/' + brand.id, icon: brand.logo, text: brand.name}) %>
+<% }); %>
+</section>
+<% } %>
+
 <% if (typeof articleList !== 'undefined' && articleList && articleList.length > 0) { %>
 <section class="article">
-  <%- include('../../modules/title/index.ejs', {title: '精彩资讯'}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '最新动态'}) %>
   <ul class="list">
     <% articleList.forEach(function(article) { %>
-      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}) %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {props: { url: '/article/' + article.id, images: article.images, title: article.title, count: numberFormat(article.countShow), tag: article.tagList[0]}}) %>
     <% }); %>
-    <%- include('../../modules/more/index.ejs', {text: '查看更多资讯', url: '/article'}) %>
   </ul>
+  <%- include('../../modules/more/index.ejs', {text: '查看更多'}) %>
 </section>
 <% } %>
 
 <footer>
   <%- include('../../modules/links/index.ejs', {links: links}) %>
   <%- include('../../modules/copyright/index.ejs', {}) %>
-  <%- include('../../modules/about/index.ejs', {}) %>
 </footer>

@@ -1,8 +1,73 @@
 @import '../../base/reset.less';
 @import '../../base/mixin.less';
 
+.title {
+  overflow: hidden;
+  position: relative;
+  margin: 20px 12px;
+  padding-bottom: 48px;
+  border-bottom: 1px dashed @colorBorder;
+  text-align: center;
+
+  .logo {
+    img {
+      width: 60px;
+      height: 60px;
+      margin: 0;
+    }
+  }
+  .name {
+    color: @colorTitle;
+    font-size: @sizeTitle;
+    display: block;
+    margin-top: 4px;
+    .dot();
+  }
+  .tag {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    text-align: right;
+
+    .tag-item {
+      color: @colorTips;
+      font-size: @sizeTips;
+      background: @colorBorder;
+      padding: 4px 8px;
+      margin-left: 2px;
+    }
+  }
+}
+
 .brand_content {
   margin: 12px;
+
+  .impression {
+    background: @colorTipsBG;
+    margin: 12px 0;
+    padding: 12px 16px;
+    text-align: center;
+
+    .impression-header {
+      font-size: @sizeTips;
+      color: @colorTips;
+    }
+
+    .impression-title {
+      color: @colorMain;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .impression-comment {
+      color: @colorContent;
+      font-size: @sizeContent;
+      text-align: left;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+  }
 
   h1 {
     // .title();
@@ -39,16 +104,6 @@
 
   p {
     margin: 15px 0;
-  }
-}
-
-.territory {
-  margin: 18px 0;
-
-  a {
-    color: @colorTips;
-    background: @colorBorder;
-    padding: 5px 12px;
   }
 }
 

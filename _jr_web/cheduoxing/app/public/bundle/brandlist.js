@@ -86,6 +86,29 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./app/view/modules/breadcrumb/index.js":
+/*!**********************************************!*\
+  !*** ./app/view/modules/breadcrumb/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/breadcrumb/index.less\");\n\n//# sourceURL=webpack:///./app/view/modules/breadcrumb/index.js?");
+
+/***/ }),
+
+/***/ "./app/view/modules/breadcrumb/index.less":
+/*!************************************************!*\
+  !*** ./app/view/modules/breadcrumb/index.less ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/view/modules/breadcrumb/index.less?");
+
+/***/ }),
+
 /***/ "./app/view/modules/header/index.js":
 /*!******************************************!*\
   !*** ./app/view/modules/header/index.js ***!
@@ -163,7 +186,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/brandlist/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/nav */ \"./app/view/modules/nav/index.js\");\n\n__webpack_require__(/*! ../../modules/list-item-icon-text */ \"./app/view/modules/list-item-icon-text/index.js\");\n\n//# sourceURL=webpack:///./app/view/pages/brandlist/index.js?");
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/pages/brandlist/index.less\");\n\n__webpack_require__(/*! ../../modules/header */ \"./app/view/modules/header/index.js\");\n\n__webpack_require__(/*! ../../modules/nav */ \"./app/view/modules/nav/index.js\");\n\n__webpack_require__(/*! ../../modules/breadcrumb */ \"./app/view/modules/breadcrumb/index.js\");\n\n__webpack_require__(/*! ../../modules/list-item-icon-text */ \"./app/view/modules/list-item-icon-text/index.js\");\n\n//# sourceURL=webpack:///./app/view/pages/brandlist/index.js?");
 
 /***/ }),
 

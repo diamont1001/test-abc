@@ -27,6 +27,7 @@ class MArticle {
     this.status = parseInt(objMysql.status) || 0; // 状态（0：草稿，1：已发布，2：已下线，3：回收站，4：已删除）
     this.verifyState = parseInt(objMysql.verify_state) || 0; // 审核状态（0：待审核，1：审核通过，2：审核不通过）
     this.count = parseInt(objMysql.count) || 0; // 访问次数
+    this.countShow = this.count * 131 + this.id; // 访问次数（用于显示）
 
     try {
       this.images = objMysql.images.split(',').filter(item => {
@@ -39,24 +40,16 @@ class MArticle {
     }
 
     try {
-      this.tags = objMysql.tags.split(',').filter(item => {
-        return (item && item.trim());
-      }).map(item => {
-        return item;
+      this.tags = objMysql.tags.split(',').map(item => {
+        return parseInt(item) || 0;
+      }).filter(item => {
+        return (item);
       });
     } catch (e) {
       this.tags = [];
     }
 
-    try {
-      this.app = objMysql.app.split(',').filter(item => {
-        return (item && item.trim());
-      }).map(item => {
-        return item;
-      });
-    } catch (e) {
-      this.app = [];
-    }
+    this.tagList = [];
   }
 
   // 静态方法：表名
@@ -86,11 +79,10 @@ class MArticle {
       keywords: this.keywords,
       summary: this.summary,
       content: this.content,
-      tags: this.tags.length > 0 ? this.tags.map(item => { return encodeURIComponent(item); }).join(',') : '',
+      tags: this.tags.length > 0 ? this.tags.map(item => { return item; }).join(',') : '',
       images: this.images.length > 0 ? this.images.map(item => { return encodeURIComponent(item); }).join(',') : '',
       video: this.video,
       author: this.author,
-      app: this.app,
       // create_time: this.createTime,
       // publish_time: this.publishTime,
       // update_time: this.updateTime,

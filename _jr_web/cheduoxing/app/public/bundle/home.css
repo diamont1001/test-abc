@@ -140,6 +140,7 @@ section {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  border-top: 8px solid #f5f7f9;
 }
 
 @charset "utf-8";
@@ -173,7 +174,7 @@ section {
 header {
   height: 60px;
   line-height: 60px;
-  padding: 0 15px;
+  padding: 0 12px;
   border-bottom: 1px solid #f5f7f9;
   position: relative;
 }
@@ -183,7 +184,7 @@ header #headerBrand {
   display: inline-block;
 }
 header #headerBrand img {
-  height: 38px;
+  height: 46px;
   vertical-align: middle;
 }
 header #headerBtnMenu {
@@ -365,72 +366,20 @@ header #headerMenu {
 /* 旋转 */
 /* animation 动画 */
 /* 绝对定位 */
-.jr-m-nav-imgs-3 {
-  padding: 10px;
-  border-bottom: 1px solid #f5f7f9;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-}
-.jr-m-nav-imgs-3 a {
-  width: 33.3%;
-  display: inline-block;
-  float: left;
-  padding: 0 2px;
-  margin-top: 8px;
-  box-sizing: border-box;
-  flex: 0 0 33.333%;
-}
-.jr-m-nav-imgs-3 a img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-@charset "utf-8";
-/**
- * mixin.less
- * 常用的 LESS 类库
- * Created by Chenjr on 2018/8/2.
- */
-/* 文字排版 */
-/* 定位 */
-.clearfix:after {
-  content: '';
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-/* 长度高度 */
-/* 边距 */
-/* 单行显示点点点 */
-/* 多行显示点点点 */
-/* 去掉点击后出现的蓝色背景 */
-/***** absolute *****/
-/* 水平居中 */
-/* 垂直居中 */
-/* 垂直居中 fix定位写法*/
-/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
-/* 旋转 */
-/* animation 动画 */
-/* 绝对定位 */
-.list-item-text {
-  border-bottom: 1px solid #f5f7f9;
-}
-.list-item-text .list-item-text-a {
+.jr-m-section-title {
   position: relative;
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
+  height: 22px;
   padding: 12px;
-  overflow: hidden;
-  font-size: 16px;
-  color: #333;
 }
-.list-item-text .list-item-text-a .tips {
+.jr-m-section-title b {
+  color: #696969;
   font-size: 12px;
+}
+.jr-m-section-title a {
   color: #999;
-  padding-top: 4px;
+  font-size: 12px;
+  float: right;
+  padding: 2px 4px;
 }
 
 @charset "utf-8";
@@ -461,10 +410,75 @@ header #headerMenu {
 /* 旋转 */
 /* animation 动画 */
 /* 绝对定位 */
-.list-item-img-text {
+.jr-m-nav-item-icon {
+  position: relative;
+  display: inline-block;
+  width: 20%;
+  float: left;
+  padding: 8px 4px;
+  box-sizing: border-box;
+}
+.jr-m-nav-item-icon[data-size=1] {
+  width: 100%;
+}
+.jr-m-nav-item-icon[data-size=2] {
+  width: 50%;
+}
+.jr-m-nav-item-icon[data-size=3] {
+  width: 33.33%;
+}
+.jr-m-nav-item-icon[data-size="4"] {
+  width: 25%;
+}
+.jr-m-nav-item-icon .icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  display: block;
+}
+.jr-m-nav-item-icon .name {
+  text-align: center;
+  margin-top: 8px;
+  max-width: 100%;
+  font-size: 12px;
+  color: #696969;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@charset "utf-8";
+/**
+ * mixin.less
+ * 常用的 LESS 类库
+ * Created by Chenjr on 2018/8/2.
+ */
+/* 文字排版 */
+/* 定位 */
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* 长度高度 */
+/* 边距 */
+/* 单行显示点点点 */
+/* 多行显示点点点 */
+/* 去掉点击后出现的蓝色背景 */
+/***** absolute *****/
+/* 水平居中 */
+/* 垂直居中 */
+/* 垂直居中 fix定位写法*/
+/* 圆角 ps：这里加上top-left等的规则是为了解决Android2.x某些机型下border-radius不生效的问题 */
+/* 旋转 */
+/* animation 动画 */
+/* 绝对定位 */
+.jr-m-list-item-img-text {
   border-bottom: 1px solid #f5f7f9;
 }
-.list-item-img-text .list-item-img-text-a {
+.jr-m-list-item-img-text .list-item-img-text-a {
   position: relative;
   box-sizing: border-box;
   display: block;
@@ -473,36 +487,51 @@ header #headerMenu {
   overflow: hidden;
   padding: 12px;
 }
-.list-item-img-text .list-item-img-text-a .info-left {
-  float: left;
+.jr-m-list-item-img-text .list-item-img-text-a .info-image {
+  float: right;
   position: relative;
   line-height: 0;
-  width: 89.59px;
-  height: 67.19px;
-  margin-right: 16px;
+  width: 112px;
+  height: 84px;
+  margin-left: 16px;
   overflow: hidden;
 }
-.list-item-img-text .list-item-img-text-a .info-left .image-item {
+.jr-m-list-item-img-text .list-item-img-text-a .info-image .image-item {
   width: 100%;
 }
-.list-item-img-text .list-item-img-text-a .info-right {
+.jr-m-list-item-img-text .list-item-img-text-a .info-detail {
   overflow: hidden;
-  min-height: 45px;
+  height: 48px;
 }
-.list-item-img-text .list-item-img-text-a .info-right h3 {
+.jr-m-list-item-img-text .list-item-img-text-a .info-detail .info-title {
+  font-weight: normal;
   color: #333;
   font-size: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
 }
-.list-item-img-text .list-item-img-text-a .info-right p.content {
+.jr-m-list-item-img-text .list-item-img-text-a .info-detail p.content {
   color: #696969;
   font-size: 13px;
   margin-top: 8px;
 }
-.list-item-img-text .list-item-img-text-a .tips {
+.jr-m-list-item-img-text .list-item-img-text-a .tips {
   font-size: 12px;
   color: #999;
-  padding-top: 4px;
-  float: right;
+  padding-top: 18px;
+}
+.jr-m-list-item-img-text .list-item-img-text-a .tips .tips-item {
+  margin-right: 8px;
+}
+.jr-m-list-item-img-text .list-item-img-text-a .tips .count {
+  padding-left: 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAXCAQAAABU6iyYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAXEYAAFxGARSUQ0EAAAAHdElNRQfjAQkCNgJ4+oGBAAAB4UlEQVQ4y73TS0gUYBTF8d/4qGzRZCY9jEpwFUYRloJQIQSRBCK0CiSoyFWLgqyEBJMeRAVm1LYXlZugjVG5SCtCMBqwh6UJFlHQkDk9zHSmheMw01hL7+58nP+3uOdcpmMCfz8UplkG/o2kmLNkixoVSwcDacAy5UoskWPcFy91euZnMhZIsRfbodQn3V4bkq3AaiuFXdZmdBIKJIC59qjy2FU9fsuUY8QYFtpqu7eO6ZuAAoWT/x8VdVIXctWoMNsPD1wSxmL7lGp0DzJzYZMzHjpoAPnOKXLJLf0qVerwXcR9Yw6J6JlAqjU4r8UvcEC+XUI+6HXHZiu0IybkvcMierLUqNXkdnwBeTZo8DWuIlqcssAn0IYjxjLUezQBDEBQlsGkHN5hXkK1adeYoV65bYlVfxOVn7T4+QKGE6rMRs2ZuS98dNi4kBh+WKXEXdF4B+qEtcY7UOa06y5m5vLGG/st9dQv9KqxzkcBReoUqxcGWxx3zQWxyVxWaMIJXVhurzUgpFk/gmpVO+uGlPSDalXpdMVzUXmChn3GHBV2G9WkO55+SsdW2qnEoCde+SLLIqutk+GmVpGkjv3V5CLrrVVgpphv+nR4bCityVPcyywzxIz4/Z97mRJMs0/f/AGNNpfUBQ1MJQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0wMS0wOVQwMjo1NDowMiswODowMJRAEzwAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMDEtMDlUMDI6NTQ6MDIrMDg6MDDlHauAAAAAQ3RFWHRzb2Z0d2FyZQAvdXNyL2xvY2FsL2ltYWdlbWFnaWNrL3NoYXJlL2RvYy9JbWFnZU1hZ2ljay03Ly9pbmRleC5odG1svbV5CgAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMjkzNRz/mgAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAzMTIY8X9uAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADE1NDY5NzM2NDLVbYLKAAAAEnRFWHRUaHVtYjo6U2l6ZQAxMjgyOUKhEcaRAAAAYnRFWHRUaHVtYjo6VVJJAGZpbGU6Ly8vaG9tZS93d3dyb290L25ld3NpdGUvd3d3LmVhc3lpY29uLm5ldC9jZG4taW1nLmVhc3lpY29uLmNuL2ZpbGVzLzExMy8xMTMwNjk5LnBuZ1Fd3WsAAAAASUVORK5CYII=) no-repeat left center;
+  background-size: 15px 13.8px;
 }
 
 @charset "utf-8";
@@ -616,6 +645,9 @@ header #headerMenu {
   color: #696969;
   padding: 15px 0;
   margin: 8px 0;
+}
+.copyright a {
+  color: #696969;
 }
 
 @charset "utf-8";

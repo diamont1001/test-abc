@@ -1,0 +1,11 @@
+<% var _size = 5 %>
+<% if (typeof size !== 'undefined' && size) { %>
+  <% _size = size %>
+<% } %>
+
+<div class="jr-m-nav-item-icon" data-size="<%= _size %>">
+  <a href="<%= url %>">
+    <img class="icon" src="<%= icon %>"/>
+    <div class="name"><%= text %></div>
+  </a>
+</div>

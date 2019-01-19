@@ -18,6 +18,8 @@ class MBrand {
     this.video = (objMysql.video || '').trim(); // 视频链接
     this.territory = (objMysql.territory || '').trim(); // 品牌所属国家
     this.initials = (objMysql.initials || '').trim(); // 首字母
+    this.impression = (objMysql.impression || '').trim(); // 网友印象
+    this.comment = (objMysql.comment || '').trim(); // 网友评论
     this.summary = (objMysql.summary || '').trim(); // 品牌摘要
     this.content = (objMysql.content || '').trim(); // 品牌内容
     this.summaryHtml = converter.makeHtml(this.summary);
@@ -40,6 +42,8 @@ class MBrand {
       video: this.video,
       territory: this.territory,
       initials: this.initials,
+      impression: this.impression,
+      comment: this.comment,
       summary: this.summary,
       content: this.content,
       website: this.website,

@@ -1,18 +1,23 @@
-<li class="list-item-img-text">
-  <a class="list-item-img-text-a" href="<%= url %>"<% if (typeof nofollow !== 'undefined') { %> rel="nofollow"<% } %>>
-    <% if(typeof images !== 'undefined' && images.length > 0) { %>
-      <div class="info-left">
-        <img class="image-item" src="<%= images[0] %>"/>
+<li class="jr-m-list-item-img-text">
+  <a class="list-item-img-text-a" href="<%= props.url %>"<% if (props.nofollow) { %> rel="nofollow"<% } %>>
+    <% if(props.images && props.images.length > 0) { %>
+      <div class="info-image">
+        <img class="image-item" src="<%= props.images[0] %>"/>
       </div>
     <% } %>
-    <div class="info-right">
-      <h3><%= title %></h3>
-      <% if (typeof description !== 'undefined' && description) { %>
-        <p class="content"><%= description %></p>
+    <div class="info-detail">
+      <span class="info-title"><%= props.title %></span>
+      <% if (props.description) { %>
+        <p class="content"><%= props.description %></p>
       <% } %>
     </div>
-    <% if (typeof timeShow !== 'undefined') { %>
-      <div class="tips"><span><%= timeShow %></span></div>
-    <% } %>
+    <div class="tips">
+      <% if (props.count) { %>
+        <span class="tips-item count"><%= props.count %></span>
+      <% } %>
+      <% if (props.tag && props.tag.name) { %>
+        <span class="tips-item tag"><%= props.tag.name %></span>
+      <% } %>
+    </div>
   </a>
 </li>

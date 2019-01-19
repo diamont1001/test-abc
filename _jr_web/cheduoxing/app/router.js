@@ -19,7 +19,7 @@ module.exports = app => {
   // router.get('/about/contact', controller.about.contact);
 
   // API
-  // router.get('/api/getBrandList', controller.article.moreajax); // 文章列表页「加载更多」
+  router.get('/api/getArticleList', controller.article.moreajax);
 
   // 搜索引擎相关
   router.get('/sitemap.xml', controller.sitemap.index);

@@ -6,8 +6,8 @@ const links = require('../constant/CLinks');
 class HomeController extends Controller {
   async index() {
     const [ articleList, brandList ] = await Promise.all([
-      this.service.article.getHotList(0, 12),
-      this.service.brand.getAvailableList(0, 12),
+      this.service.article.getNewList(0, 20),
+      this.service.brand.getDetails([251, 176, 36, 406, 1, 41, 46, 71, 256, 56]),
     ]);
 
     await this.ctx.layoutRender('pages/home/index.ejs', {
@@ -19,6 +19,7 @@ class HomeController extends Controller {
       articleList,
       brandList,
       links,
+      numberFormat: this.ctx.helper.numberFormat,
     });
   }
 }

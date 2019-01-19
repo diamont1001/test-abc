@@ -22,6 +22,10 @@ module.exports = app => {
       return this.dbBrandUtils.getDetail(id);
     }
 
+    async getDetails(ids = []) {
+      return this.dbBrandUtils.getDetails(ids);
+    }
+
     // 获取上一个
     async getPreDetail(id = 0) {
       return this.dbBrandUtils.getPreDetail(id);

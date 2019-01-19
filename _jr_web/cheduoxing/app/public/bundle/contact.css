@@ -192,7 +192,7 @@ footer {
 header {
   height: 60px;
   line-height: 60px;
-  padding: 0 15px;
+  padding: 0 12px;
   border-bottom: 1px solid #f5f7f9;
   position: relative;
 }
@@ -202,7 +202,7 @@ header #headerBrand {
   display: inline-block;
 }
 header #headerBrand img {
-  height: 38px;
+  height: 46px;
   vertical-align: middle;
 }
 header #headerBtnMenu {
@@ -328,5 +328,8 @@ header #headerMenu {
   color: #696969;
   padding: 15px 0;
   margin: 8px 0;
+}
+.copyright a {
+  color: #696969;
 }
 

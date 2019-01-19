@@ -1,12 +1,27 @@
 <%- include('../../modules/header/index.ejs', {}) %>
 <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
-<section class="brand_content">
-  <h1><%- brand.name %>品牌简介</h1>
+<section class="title">
+  <div class="logo">
+    <img src="<%- brand.logo %>" alt="<%- brand.name %>" Logo/>
+  </div>
+  <b class="name"><%- brand.name %></b>
+  <div class="tag">
+    <% if (brand.territory) { %>
+      <a class="tag-item"><%= brand.territory %></a>
+    <% } %>
+    <% if (brand.website) { %>
+      <a class="tag-item" href="<%= brand.website %>" rel="nofollow" target="_blank">官网</a>
+    <% } %>
+  </div>
+</section>
 
-  <% if (brand.territory) { %>
-    <div class="territory">
-      <a>#<%= brand.territory %></a>
+<section class="brand_content">
+  <% if (brand.impression || brand.comment) { %>
+    <div class="impression">
+      <div class="impression-header">- 网友印象 -</div>
+      <% if (brand.impression) { %><div class="impression-title">「<%= brand.impression %>」</div><% } %>
+      <% if (brand.comment) { %><div class="impression-comment"><%= brand.comment %></div><% } %>
     </div>
   <% } %>
 
@@ -26,12 +41,6 @@
 
   <% if (brand.contentHtml) { %>
     <%- brand.contentHtml %>
-  <% } %>
-
-  <% if (brand.website) { %>
-    <div class="website">
-      <a href="<%= brand.website %>" rel="nofollow" target="_blank">进入品牌官网 >></a>
-    </div>
   <% } %>
 </section>
 

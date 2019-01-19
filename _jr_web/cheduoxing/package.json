@@ -27,7 +27,7 @@
     "egg-mock": "^3.14.0",
     "eslint": "^4.11.0",
     "eslint-config-egg": "^6.0.0",
-    "jr-reset": "^1.0.0",
+    "jr-reset": "^1.0.1",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.1",
