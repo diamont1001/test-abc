@@ -134,7 +134,7 @@ a:hover {
 /* 旋转 */
 /* animation 动画 */
 /* 绝对定位 */
-.title {
+.brand-header {
   overflow: hidden;
   position: relative;
   margin: 20px 12px;
@@ -142,12 +142,12 @@ a:hover {
   border-bottom: 1px dashed #f5f7f9;
   text-align: center;
 }
-.title .logo img {
+.brand-header .logo img {
   width: 60px;
   height: 60px;
   margin: 0;
 }
-.title .name {
+.brand-header .name {
   color: #333;
   font-size: 16px;
   display: block;
@@ -156,94 +156,61 @@ a:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.title .tag {
+.brand-header .tag {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 12px;
   text-align: right;
 }
-.title .tag .tag-item {
+.brand-header .tag .tag-item {
   color: #999;
   font-size: 12px;
   background: #f5f7f9;
   padding: 4px 8px;
   margin-left: 2px;
 }
-.brand_content {
+.brand-content {
   margin: 12px;
 }
-.brand_content .impression {
+.brand-content .impression {
   background: aliceblue;
   margin: 12px 0;
   padding: 12px 16px;
   text-align: center;
 }
-.brand_content .impression .impression-header {
+.brand-content .impression .impression-header {
   font-size: 12px;
   color: #999;
 }
-.brand_content .impression .impression-title {
+.brand-content .impression .impression-title {
   color: #3aa7f9;
   margin-top: 8px;
   margin-bottom: 4px;
 }
-.brand_content .impression .impression-comment {
+.brand-content .impression .impression-comment {
   color: #696969;
   font-size: 13px;
   text-align: left;
   margin-top: 8px;
   margin-bottom: 4px;
 }
-.brand_content h1 {
+.brand-content h1 {
   font-weight: bold;
   font-size: 16px;
 }
-.brand_content h2 {
+.brand-content h2 {
   padding: 4px 12px;
   font-size: 16px;
   color: #3aa7f9;
-  border-top: 8px solid #f5f7f9;
-  overflow: hidden;
-  position: relative;
-  margin: 20px 12px;
-  padding-bottom: 48px;
   border-bottom: 1px dashed #f5f7f9;
-  text-align: center;
+  border-top: 8px solid #f5f7f9;
   font-weight: bold;
   margin: 20px 0 16px;
   border-top: none;
   padding: 4px 0;
 }
-.brand_content h2 .logo img {
-  width: 60px;
-  height: 60px;
-  margin: 0;
-}
-.brand_content h2 .name {
-  color: #333;
-  font-size: 16px;
-  display: block;
-  margin-top: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.brand_content h2 .tag {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 12px;
-  text-align: right;
-}
-.brand_content h2 .tag .tag-item {
-  color: #999;
-  font-size: 12px;
-  background: #f5f7f9;
-  padding: 4px 8px;
-  margin-left: 2px;
-}
-.brand_content h3 {
+.brand-content h3 {
   margin: 4px;
   font-size: 16px;
   color: #333;
@@ -251,13 +218,13 @@ a:hover {
   font-weight: bold;
   margin: 20px 0 16px;
 }
-.brand_content h3:before {
+.brand-content h3:before {
   content: '\2761';
   display: inline-block;
   margin-right: 4px;
   color: #3aa7f9;
 }
-.brand_content h4 {
+.brand-content h4 {
   margin: 4px;
   font-size: 16px;
   color: #333;
@@ -267,20 +234,20 @@ a:hover {
   font-weight: bold;
   padding: 0;
 }
-.brand_content h4:before {
+.brand-content h4:before {
   content: '\2761';
   display: inline-block;
   margin-right: 4px;
   color: #3aa7f9;
 }
-.brand_content h4:before {
+.brand-content h4:before {
   content: '\2668';
 }
-.brand_content img {
+.brand-content img {
   width: 100%;
   margin: 12px 0;
 }
-.brand_content p {
+.brand-content p {
   margin: 15px 0;
 }
 .brand_recommend {

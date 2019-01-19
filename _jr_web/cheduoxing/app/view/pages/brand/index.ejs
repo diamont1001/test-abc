@@ -1,7 +1,7 @@
 <%- include('../../modules/header/index.ejs', {}) %>
 <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
-<section class="title">
+<section class="brand-header">
   <div class="logo">
     <img src="<%- brand.logo %>" alt="<%- brand.name %>" Logo/>
   </div>
@@ -16,7 +16,7 @@
   </div>
 </section>
 
-<section class="brand_content">
+<section class="brand-content">
   <% if (brand.impression || brand.comment) { %>
     <div class="impression">
       <div class="impression-header">- 网友印象 -</div>
