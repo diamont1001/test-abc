@@ -5,7 +5,8 @@
 'use strict';
 
 module.exports = [
-  // { name: '优酷网', url: 'https://www.youku.com/' },
-  // { name: '豌豆荚', url: 'https://m.wandoujia.com/' },
-  // { name: 'PP助手', url: 'https://wap.25pp.com/' },
+  { name: '爱玩品资源站', url: 'http://www.25pin.com' },
+  { name: 'APP下载', url: 'http://www.25pin.com/app' },
+  { name: '冷知识', url: 'http://www.25pin.com/article' },
+  { name: '美女写真', url: 'http://www.25pin.com/photo' },
 ];

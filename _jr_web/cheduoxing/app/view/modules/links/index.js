@@ -2,4 +2,4 @@
 
 require('./index.less');
 
-require('../title');
+require('../section-title');

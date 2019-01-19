@@ -608,6 +608,7 @@ header #headerMenu {
   white-space: nowrap;
   margin: 0 6px;
   color: #696969;
+  font-size: 13px;
 }
 
 @charset "utf-8";

@@ -6,6 +6,9 @@
     <%- article.title %>
   </h1>
   <p class="tips">
+    <% if (article.countShow) { %>
+      <span class="count"><%= numberFormat(article.countShow) %></span>
+    <% } %>
     <span>最新发布：<%- dateFormat(article.publishTime) %></span>
   </p>
   <% if (article.video) { %>

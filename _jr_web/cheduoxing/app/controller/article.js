@@ -42,6 +42,7 @@ class ArticleController extends Controller {
       article,
       preArticle,
       nextArticle,
+      numberFormat: this.ctx.helper.numberFormat,
       dateFormat(date) {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       }

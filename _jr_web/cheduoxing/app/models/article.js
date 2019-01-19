@@ -27,7 +27,7 @@ class MArticle {
     this.status = parseInt(objMysql.status) || 0; // 状态（0：草稿，1：已发布，2：已下线，3：回收站，4：已删除）
     this.verifyState = parseInt(objMysql.verify_state) || 0; // 审核状态（0：待审核，1：审核通过，2：审核不通过）
     this.count = parseInt(objMysql.count) || 0; // 访问次数
-    this.countShow = this.count * 131 + this.id; // 访问次数（用于显示）
+    this.countShow = this.count * 131 + (this.id % 100); // 访问次数（用于显示）
 
     try {
       this.images = objMysql.images.split(',').filter(item => {

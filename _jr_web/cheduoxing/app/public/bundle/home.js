@@ -163,7 +163,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./app/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/links/index.less\");\n\n__webpack_require__(/*! ../title */ \"./app/view/modules/title/index.js\");\n\n//# sourceURL=webpack:///./app/view/modules/links/index.js?");
+eval("\n\n__webpack_require__(/*! ./index.less */ \"./app/view/modules/links/index.less\");\n\n__webpack_require__(/*! ../section-title */ \"./app/view/modules/section-title/index.js\");\n\n//# sourceURL=webpack:///./app/view/modules/links/index.js?");
 
 /***/ }),
 
