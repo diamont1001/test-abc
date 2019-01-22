@@ -5,7 +5,6 @@
 'use strict';
 
 module.exports = [
-  // { name: '优酷网', url: 'https://www.youku.com/' },
-  // { name: '豌豆荚', url: 'https://m.wandoujia.com/' },
-  // { name: 'PP助手', url: 'https://wap.25pp.com/' },
+  { name: '手机助手', url: 'https://m.wandoujia.com' },
+  { name: '用车养车', url: 'http://www.cheduoxing.com' },
 ];
