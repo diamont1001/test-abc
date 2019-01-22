@@ -17,6 +17,10 @@ module.exports = app => {
       this.dbBrandUtils = new DBBrandUtils(app);
     }
 
+    async getSitemap() {
+      return this.dbBrandUtils.getSitemap();
+    }
+
     // 获取详情
     async getDetail(id = 0) {
       return this.dbBrandUtils.getDetail(id);

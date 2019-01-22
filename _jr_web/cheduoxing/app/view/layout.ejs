@@ -15,6 +15,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="white" />
     <meta name="baidu-site-verification" content="bcxptpZDFq" />
+    <meta name="google-site-verification" content="db80lv3xkArk1Z-yDxFr7SZknfjoXvWIjQTCkx-wnmk" />
+    <meta name="shenma-site-verification" content="1bc11181e26da4917408ab0182f25f29_1548124919"/>
     <% if (typeof canonical !== 'undefined') { %>
         <link rel="canonical" href="<%= canonical %>">
     <% } %>
@@ -40,6 +42,23 @@
   gtag('config', 'UA-81627907-4');
 </script>-->
 
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- cnzz -->
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275982504'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1275982504%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 
 <!-- firewall -->

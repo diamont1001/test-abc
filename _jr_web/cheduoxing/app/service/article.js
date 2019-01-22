@@ -15,6 +15,10 @@ module.exports = app => {
       this.dbArticleUtils = new DBArticleUtils(app);
     }
 
+    async getSitemap() {
+      return this.dbArticleUtils.getSitemap();
+    }
+
     // 获取到文章信息后，要调用一下该方法来获取标签数据才行
     async fetchArticlesTags(articles) {
       const tags = await this.getTagList();
@@ -81,33 +85,6 @@ module.exports = app => {
       await this.fetchArticlesTags(list);
 
       return Promise.resolve(list);
-    }
-
-    // 获取所有在线文章列表
-    async getAllAvailableList() {
-      let list = [];
-      let result = null;
-      let offset = 0;
-      do {
-        try {
-          result = await this.service.article.getAvailableList(offset, 100);
-          if (result && result.length > 0) {
-            list = list.concat(result);
-            offset = list.length;
-          }
-        } catch (e) {
-          this.app.logger.warn(e);
-        }
-      } while (result && result.length > 0);
-
-      const arr = [];
-      for (let i = 0; i < list.length; i++) {
-        if (list[i] && list[i].id) {
-          arr.push(this.app.config.biz.server + '/article/' + list[i].id);
-        }
-      }
-
-      return Promise.resolve(arr);
     }
 
     async accessOnce(id) {

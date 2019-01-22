@@ -15,6 +15,25 @@ class DBArticleUtils {
     this.logger = app.logger;
   }
 
+  async getSitemap() {
+    let sql = `SELECT id FROM ${MArticle.TABLE} WHERE status=1 AND verify_state=1`;
+
+    try {
+      const result = await this.mysql.query(sql);
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          arr.push('/article/' + result[i].id);
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
+  }
+
   /**
    * {Promise} 查询可用的文章列表
    * @param {Number} offset 请求列表偏移量
@@ -58,11 +77,12 @@ class DBArticleUtils {
       const result = await this.mysql.select(MArticle.TABLE, {
         offset,
         limit: count,
+        columns: [ 'id', 'title', 'images', 'count' ],
         where: {
           status: 1,
           verify_state: 1,
         },
-        orders: [[ 'count', 'desc' ]],
+        orders: [[ 'count', 'desc' ], [ 'id', 'desc' ]],
       });
 
       if (result && result.length > 0) {
@@ -84,6 +104,7 @@ class DBArticleUtils {
       const result = await this.mysql.select(MArticle.TABLE, {
         offset,
         limit: count,
+        columns: [ 'id', 'title', 'images', 'count' ],
         where: {
           status: 1,
           verify_state: 1,

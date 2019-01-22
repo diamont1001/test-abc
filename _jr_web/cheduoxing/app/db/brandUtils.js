@@ -14,6 +14,25 @@ class DBBrandUtils {
     this.logger = app.logger;
   }
 
+  async getSitemap() {
+    let sql = `SELECT id FROM ${MBrand.TABLE} WHERE status=1 AND (impression != '' OR comment != '' OR summary != '' OR content != '')`;
+
+    try {
+      const result = await this.mysql.query(sql);
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          arr.push('/brand/' + result[i].id);
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
+  }
+
   /**
    * {Promise} 查询可用的列表
    * @param {Number} offset 请求列表偏移量
@@ -53,10 +72,16 @@ class DBBrandUtils {
    * @return {[MBrand]} 返回文章列表
    */
   async getHotList(offset = 0, count = 10) {
-    const sql = `SELECT id, name, logo, initials, count FROM ${MBrand.TABLE} WHERE status=1 ORDER BY count DESC limit ${count} offset ${offset}`;
-
     try {
-      const result = await this.mysql.query(sql);
+      const result = await this.mysql.select(MBrand.TABLE, {
+        offset,
+        limit: count,
+        columns: [ 'id', 'name', 'logo', 'initials', 'count' ],
+        where: {
+          status: 1,
+        },
+        orders: [[ 'count', 'desc' ], [ 'id', 'desc' ]],
+      });
 
       if (result && result.length > 0) {
         const arr = [];

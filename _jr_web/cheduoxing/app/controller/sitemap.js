@@ -8,7 +8,7 @@ class SitemapController extends Controller {
   async index() {
     let urls = [
       this.app.config.biz.server, // 首页
-      // this.app.config.biz.server + '/article', // 文章列表页
+      this.app.config.biz.server + '/brand', // 品牌列表页
     ];
 
     // 第2000条URL生成一个 urlx.txt，用于推送
@@ -20,6 +20,16 @@ class SitemapController extends Controller {
     // this.ctx.body = 'hello';
     // return;
 
+    const [ articleList, brandList ] = await Promise.all([
+      this.service.article.getSitemap(),
+      this.service.brand.getSitemap(),
+    ]);
+
+    // 文章详情页
+    urls = urls.concat(articleList);
+
+    // 品牌详情页
+    urls = urls.concat(brandList);
 
     const sitemap = sm.createSitemap({
       hostname: this.app.config.biz.server,
