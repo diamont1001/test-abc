@@ -77,7 +77,7 @@ class DBArticleUtils {
       const result = await this.mysql.select(MArticle.TABLE, {
         offset,
         limit: count,
-        columns: [ 'id', 'title', 'images', 'count' ],
+        columns: [ 'id', 'title', 'images', 'count', 'tags' ],
         where: {
           status: 1,
           verify_state: 1,
@@ -104,7 +104,7 @@ class DBArticleUtils {
       const result = await this.mysql.select(MArticle.TABLE, {
         offset,
         limit: count,
-        columns: [ 'id', 'title', 'images', 'count' ],
+        columns: [ 'id', 'title', 'images', 'count', 'tags' ],
         where: {
           status: 1,
           verify_state: 1,
