@@ -2,7 +2,7 @@
 
 <% brandList.forEach(function(brand) { %>
   <% if (brand.initials && brand.initials !== curTag) { %>
-    <li class="tag" id="tag_<%= brand.initials %>"><%= brand.initials %></li>
+    <li class="tag" id="nav-abc-<%= brand.initials %>"><%= brand.initials %></li>
     <% curTag = brand.initials %>
   <% } %>
   <%- include('../../modules/list-item-icon-text/index.ejs', {url: '/brand/' + brand.id, icon: brand.logo, text: brand.name}) %>

@@ -61,6 +61,7 @@ class BrandController extends Controller {
       description: '',
       canonical: this.app.config.biz.server + '/brand',
       brandList,
+      abcList: this.ctx.deviceType === 'Mobile' && ['A','B','C','D','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','W','X','Y','Z'],
     });
   }
 }

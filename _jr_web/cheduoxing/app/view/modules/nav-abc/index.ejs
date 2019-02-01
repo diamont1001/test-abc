@@ -1,0 +1,7 @@
+<% if (data && data.abcList && data.abcList.length > 0) { %>
+  <ul class="jr-m-nav-abc">
+    <% data.abcList.forEach(function(abc) { %>
+      <li class="nav-abc-item" data-id="<%= abc %>"><%= abc %></li>
+    <% }) %>
+  </ul>
+<% } %>
