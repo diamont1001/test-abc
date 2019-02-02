@@ -125,7 +125,7 @@ class AppController extends Controller {
         name: 'applist',
         title: `${this.app.config.currentYear}游戏大全免费下载|官方软件APP下载大全`,
         keywords: '游戏,手机游戏,app,排行榜',
-        description: `爱玩品资源站为你推荐${this.app.config.currentYear}最火手机游戏，官方软件APP排行榜下载大全，快来看看网友们最近都在玩些什么，发现更多流行游戏APP。爱玩品资源站，让优质资源脱颖而出。`,
+        description: `爱玩品手机资源站为你推荐${this.app.config.currentYear}最火手机游戏，官方软件APP排行榜下载大全，快来看看网友们最近都在玩些什么，发现更多流行游戏APP。爱玩品手机资源站，让优质资源脱颖而出。`,
         breadcrumb: [],
         canonical: this.app.config.biz.server + '/app',
         banner: { image: 'http://pic.uzzf.com/up/2018-4/201804241033004656904.png', url: '/topic/2', name: '翻译软件精选' },

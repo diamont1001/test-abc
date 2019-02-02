@@ -110,7 +110,7 @@ class ArticleController extends Controller {
       name: 'articlelist',
       title,
       keywords: '文章,资讯,教程,生活小常识,有趣冷知识,爱玩品',
-      description: '最新精彩文章推荐，快来看看网友们都在说些什么吧，点击有惊喜喔。爱玩品资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
+      description: '最新精彩文章推荐，快来看看网友们都在说些什么吧，点击有惊喜喔。爱玩品手机资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
       canonical,
       breadcrumb: [],
       banner: { image: 'https://ww2.sinaimg.cn/large/ea2942bfgy1fstqkdhyqdj20hs0bsgm9.jpg', url: '/article/41', name: '【福利】每天支付宝红包怎么领才最多？' },
