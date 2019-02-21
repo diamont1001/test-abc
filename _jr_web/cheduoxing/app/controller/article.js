@@ -37,6 +37,7 @@ class ArticleController extends Controller {
       title: article.title,
       keywords: article.keywords,
       description: article.summary,
+      miphtml: this.app.config.biz.server + '/mip/article/' + article.id,
       canonical: this.app.config.biz.server + '/article/' + article.id,
       breadcrumb: [],
       article,
@@ -46,6 +47,52 @@ class ArticleController extends Controller {
       dateFormat(date) {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       }
+    });
+  }
+
+  async indexMip() {
+    const articleId = parseInt(this.ctx.params.id) || 0;
+
+    if (!articleId || articleId + '' !== this.ctx.params.id) { // 防止这种情况：'/article/2p' 或者 '/article/ 2'
+      this.ctx.status = 404;
+      return;
+    }
+
+    const [ article, preArticle, nextArticle ] = await Promise.all([
+      this.service.article.getDetail(articleId),
+      this.service.article.getPreDetail(articleId),
+      this.service.article.getNextDetail(articleId),
+    ]);
+
+    article.contentHtml = article.contentHtml.replace(/<img/g, '<mip-img layout="container" ');
+
+    // this.app.logger.debug(article.tagList);
+
+    if (!article || article.status !== 1) {
+      this.ctx.status = 404;
+      return;
+    }
+
+    // 访问一次，记录一下数据库
+    this.service.article.accessOnce(articleId);
+
+    await this.ctx.render('pages/article/index_mip.ejs', {
+      name: 'article_mip',
+      title: article.title,
+      keywords: article.keywords,
+      description: article.summary,
+      canonical: this.app.config.biz.server + '/article/' + article.id,
+      breadcrumb: [],
+      article,
+      preArticle,
+      nextArticle,
+      numberFormat: this.ctx.helper.numberFormat,
+      dateFormat(date) {
+        return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
+      }
+    }, {
+      layout: 'layout_mip.ejs',
+      rmWhitespace: true,
     });
   }
 

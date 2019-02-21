@@ -51,6 +51,16 @@ class SitemapController extends Controller {
       'Disallow: /api/\n' +
       'Disallow: /about/\n' +
       '\n' +
+      'User-agent: Yisouspider\n' +
+      'Allow: /mip/\n' +
+      'Disallow: /api/\n' +
+      'Disallow: /about/\n' +
+      '\n' +
+      'User-agent: MipYisouSpider\n' +
+      'Allow: /mip/\n' +
+      'Disallow: /api/\n' +
+      'Disallow: /about/\n' +
+      '\n' +
       'User-agent: *\n' +
       'Allow: /\n' +
       'Disallow: /mip/\n' +

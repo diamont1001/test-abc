@@ -10,6 +10,7 @@ module.exports = app => {
   // 文章页
   // router.get('/article', controller.article.list);
   router.get('/article/:id', controller.article.index);
+  router.get('/mip/article/:id', controller.article.indexMip);
 
   // 汽车品牌
   router.get('/brand', controller.brand.list);

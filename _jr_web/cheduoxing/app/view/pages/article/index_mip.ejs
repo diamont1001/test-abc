@@ -1,0 +1,210 @@
+<style mip-custom>
+  body {
+    max-width: 677px;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  header {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 12px;
+    border-bottom: 1px solid #f5f7f9;
+    position: relative;
+  }
+  #headerBrand {
+    color: #333;
+    font-size: 18px;
+    display: inline-block;
+  }
+  #headerBrand mip-img {
+    width: 118px;
+    height: 48px;
+    vertical-align: middle;
+  }
+
+  .jr-m-breadcrumb {
+    position: relative;
+    padding: 0 15px 1px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #e6e6e6;
+  }
+  .jr-m-breadcrumb li {
+    padding: 0 13px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .jr-m-breadcrumb li:nth-child(n+2) {
+    margin: 0 0 0 -4px;
+  }
+  .jr-m-breadcrumb li span {
+    display: block;
+    max-width: 100px;
+    padding: 5px 12px 5px 15px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #696969;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .jr-m-breadcrumb li a {
+    display: block;
+    max-width: 100px;
+    padding: 5px 12px 5px 15px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #696969;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .jr-m-breadcrumb li:first-child {
+    display: none;
+  }
+  .jr-m-breadcrumb li:nth-child(2) {
+    background: url(/public/images/arrow.png) top right no-repeat;
+    background-size: 14px;
+  }
+  .jr-m-breadcrumb li:nth-child(2) a {
+    padding-left: 19px;
+    background: #fff;
+  }
+  .jr-m-breadcrumb li:nth-child(3) {
+    background: url(/public/images/arrow.png) bottom right no-repeat;
+    background-size: 14px;
+  }
+  .jr-m-breadcrumb li:nth-child(3) a, .jr-m-breadcrumb li:nth-child(3) span {
+    background: #f2f2f2;
+  }
+
+  .article_content {
+    margin: 12px;
+  }
+
+  .article_content p {
+    margin: 20px 0;
+    line-height: 26px;
+  }
+
+  .article_content h1 {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .article_content h2 {
+    font-size: 16px;
+    color: #3aa7f9;
+    border-bottom: 1px dashed #f5f7f9;
+    font-weight: bold;
+    margin: 20px 0 16px;
+    border-top: none;
+    padding: 4px 0;
+  }
+
+  .article_content h3 {
+    font-size: 16px;
+    color: #333;
+    background-color: white;
+    font-weight: bold;
+    margin: 20px 0 16px;
+  }
+
+  .article_content h4 {
+    margin: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: white;
+    border-left: none;
+    font-weight: bold;
+    padding: 0;
+  }
+
+  .article_content mip-img {
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .article_content .tips {
+    color: #999;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .article_content .tips span {
+    margin-right: 8px;
+  }
+
+  .tags {
+    padding: 8px 15px;
+  }
+  .tags ul {
+    position: relative;
+    overflow: hidden;
+  }
+  .tags ul li {
+    display: inline-block;
+    float: left;
+    margin: 4px;
+  }
+  .tags ul li a {
+    color: #999;
+    background: #f5f7f9;
+    display: inline-block;
+    padding: 2px 4px;
+  }
+
+  .relative_app .jr-m-list-item-app {
+    border-bottom: none !important;
+  }
+
+  .article_recommend {
+    margin: 24px 8px;
+    padding: 16px 0 0;
+    border-top: 1px solid #f5f7f9;
+  }
+  .article_recommend .next {
+    margin-top: 4px;
+  }
+</style>
+
+<%- include('../../modules/header/index_mip.ejs', {}) %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+
+<section class="article_content">
+  <h1>
+    <%- article.title %>
+  </h1>
+  <p class="tips">
+    <span>最新发布：<%- dateFormat(article.publishTime) %></span>
+  </p>
+  <% if (article.video) { %>
+    <div class="video-player">
+      <% if (article.video.indexOf('player.youku.com/embed/') > 0) { %>
+        <mip-iframe width="100%" src="<%= article.video %>" frameborder=0 'allowfullscreen'></mip-iframe>
+      <% } else { %>
+        <mip-video webkit-playsinline="true" playsinline="true" controls="controls" preload="metadata" poster src="<%= article.video %>" style="width: 100%; height: 100%; position: relative;"></mip-video>
+      <% } %>
+    </div>
+  <% } %>
+  <%- article.contentHtml %>
+</section>
+
+<% if (article.tagList && article.tagList.length > 0) { %>
+  <section class="tags">
+    <ul>
+    <% article.tagList.forEach(function(tag) { %>
+      <li><a>#<%= tag.name %></a></li>
+    <% }) %>
+    </ul>
+  </section>
+<% } %>
+
+<section class="article_recommend">
+  <% if (typeof preArticle !== 'undefined') { %>
+    <div class="pre">上一篇：<a href="/article/<%= preArticle.id %>"><%= preArticle.title %></a></div>
+  <% } %>
+
+  <% if (typeof nextArticle !== 'undefined') { %>
+    <div class="next">下一篇：<a href="/article/<%= nextArticle.id %>"><%= nextArticle.title %></a></div>
+  <% } %>
+</section>

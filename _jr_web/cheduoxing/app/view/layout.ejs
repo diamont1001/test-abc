@@ -18,6 +18,9 @@
     <meta name="google-site-verification" content="db80lv3xkArk1Z-yDxFr7SZknfjoXvWIjQTCkx-wnmk" />
     <meta name="shenma-site-verification" content="1bc11181e26da4917408ab0182f25f29_1548124919"/>
     <meta name="360-site-verification" content="817bb301999e16c6e40c5afda16d7d25" />
+    <% if (typeof miphtml !== 'undefined') { %>
+        <link rel="miphtml" href="<%= miphtml %>">
+    <% } %>
     <% if (typeof canonical !== 'undefined') { %>
         <link rel="canonical" href="<%= canonical %>">
     <% } %>
