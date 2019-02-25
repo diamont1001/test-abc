@@ -91,7 +91,6 @@ class ArticleController extends Controller {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       }
     }, {
-      layout: 'layout_mip.ejs',
       rmWhitespace: true,
     });
   }
