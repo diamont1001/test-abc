@@ -36,7 +36,7 @@ class BrandController extends Controller {
 
     await this.ctx.layoutRender('pages/brand/index.ejs', {
       name: 'brand',
-      title: `${brand.name}品牌简介`,
+      title: `${brand.name}品牌简介_品牌定位`,
       description: '',
       canonical: this.app.config.biz.server + '/brand/' + brand.id,
       breadcrumb: [{ url: '/brand', name: '汽车品牌' }],
