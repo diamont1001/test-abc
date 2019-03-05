@@ -1,5 +1,10 @@
 <%- include('../../modules/header/index.ejs', {}) %>
-<%- include('../../modules/nav/index.ejs', {tab: 2}) %>
+
+<% if (typeof listType === 'undefined' || listType.length <= 0) { %>
+  <%- include('../../modules/nav/index.ejs', {tab: 2}) %>
+<% } else { %>
+  <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+<% } %>
 
 <% if (typeof banner !== 'undefined' && banner) { %>
 <%- include('../../modules/banner/index.ejs', {banner: banner}) %>
@@ -14,4 +19,10 @@
   <%- include('../../modules/more/index.ejs', {url: 'javascript:;'}) %>
 </section>
 
+<% if (typeof tag !== 'undefined' && tag) { %>
 <div id="dataTag" data-tag="<%= tag %>" style="display: none;"></div>
+<% } %>
+
+<% if (typeof listType !== 'undefined' && listType) { %>
+<div id="dataListType" data-type="<%= listType %>" style="display: none;"></div>
+<% } %>

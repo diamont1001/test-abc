@@ -1,7 +1,7 @@
 <%- include('../../modules/header/index.ejs', {}) %>
 <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
-<section class="article_content">
+<div class="article_content">
   <h1>
     <%- article.title %>
   </h1>
@@ -18,28 +18,28 @@
     </div>
   <% } %>
   <%- article.contentHtml %>
-</section>
+</div>
 
 <% if (article.tags.length > 0) { %>
-  <section class="tags">
+  <div class="tags">
     <ul>
     <% article.tags.forEach(function(tag) { %>
       <li><a href="/article/t_<%= encode(tag) %>">#<%= tag %></a></li>
     <% }) %>
     </ul>
-  </section>
+  </div>
 <% } %>
 
 <% if (article.relativeApp && article.relativeApp.length > 0) { %>
-<section class="relative_app">
+<div class="relative_app">
   <%- include('../../modules/title/index.ejs', {title: '相关APP', type: 1}) %>
   <% article.relativeApp.forEach(function(app) { %>
     <%- include('../../modules/list-item-app/index.ejs', {app: app}) %>
   <% }) %>
-</section>
+</div>
 <% } %>
 
-<section class="article_recommend">
+<div class="article_recommend">
   <% if (typeof preArticle !== 'undefined') { %>
     <div class="pre">上一篇：<a href="<%= preArticle.id %>"><%= preArticle.title %></a></div>
   <% } %>
@@ -47,4 +47,4 @@
   <% if (typeof nextArticle !== 'undefined') { %>
     <div class="next">下一篇：<a href="<%= nextArticle.id %>"><%= nextArticle.title %></a></div>
   <% } %>
-</section>
+</div>

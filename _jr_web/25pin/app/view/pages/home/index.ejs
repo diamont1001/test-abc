@@ -7,49 +7,51 @@
 
 <% if (typeof gameList !== 'undefined' && gameList.length > 0) { %>
 <section class="game">
-  <%- include('../../modules/title/index.ejs', {title: '热门游戏'}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '热门游戏', more: { text: '查看全部', url: '/app'}}) %>
   <%- include('../../modules/app-rec-4/index.ejs', {list: gameList}) %>
 </section>
 <% } %>
 
+<section class="onlinegame">
+  <%- include('../../modules/section-title/index.ejs', {title: '在线小游戏'}) %>
+  <%- include('../../modules/list-item-text/index.ejs', {url: '/onlinegame/snake', title: '『贪吃蛇 Snake』，Nokia 时代的经典手机小游戏，属于80后一代人的回忆，敢来挑战吗？'}) %>
+</section>
+
 <% if (typeof softList !== 'undefined' && softList.length > 0) { %>
 <section class="soft">
-  <%- include('../../modules/title/index.ejs', {title: '热门软件'}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '热门应用', more: { text: '查看全部', url: '/app'}}) %>
   <%- include('../../modules/app-rec-4/index.ejs', {list: softList}) %>
 </section>
 <% } %>
 
-<section class="onlinegame">
-  <%- include('../../modules/title/index.ejs', {title: '在线小游戏'}) %>
-  <%- include('../../modules/list-item-text/index.ejs', {url: '/onlinegame/snake', title: '『贪吃蛇 Snake』，Nokia 时代的经典手机小游戏，属于80后一代人的回忆，敢来挑战吗？'}) %>
+<section class="space-soft">
+<%- include('../../modules/banner/index.ejs', {banner: { image: 'https://www.ai1234.com/uploadimg/ico/2018/0515/1526386116412205.jpg', url: '/topic/6', name: '美颜特效相机APP排行榜' }}) %>
 </section>
-
-<% if (typeof photoList !== 'undefined' && photoList.length > 0) { %>
-<section class="girls">
-  <%- include('../../modules/title/index.ejs', {title: '热门美女写真'}) %>
-  <%- include('../../modules/nav-imgs-3/index.ejs', {list: photoList, lines: 3}) %>
-  <%- include('../../modules/more/index.ejs', {text: '查看更多美女写真', url: '/photo'}) %>
-</section>
-<% } %>
 
 <% if (typeof articleList !== 'undefined' && articleList && articleList.length > 0) { %>
 <section class="article">
-  <%- include('../../modules/title/index.ejs', {title: '精彩资讯'}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '最新文章', more: { text: '查看全部', url: '/article'}}) %>
   <ul class="list">
     <% articleList.forEach(function(article) { %>
-      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}) %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: '', timeShow: dateFormat(article.publishTime)}) %>
     <% }); %>
-    <%- include('../../modules/more/index.ejs', {text: '查看更多资讯', url: '/article'}) %>
   </ul>
 </section>
 <% } %>
 
-<% if (typeof newsList !== 'undefined' && newsList && newsList.length > 0) { %>
-<section class="news">
-  <%- include('../../modules/title/index.ejs', {title: '足球快报'}) %>
-  <ul class="news-list">
-    <% newsList.forEach(function(item) { %>
-      <%- include('../../modules/list-item-img-text/index.ejs', {url: item.url, image: item.image, title: item.title, description: item.description, nofollow: true}) %>
+<% if (typeof photoList !== 'undefined' && photoList.length > 0) { %>
+<section class="girls">
+  <%- include('../../modules/section-title/index.ejs', {title: '热门美女写真', more: { text: '查看全部', url: '/photo'}}) %>
+  <%- include('../../modules/nav-imgs-3/index.ejs', {list: photoList, lines: 3}) %>
+</section>
+<% } %>
+
+<% if (typeof articleHotList !== 'undefined' && articleHotList && articleHotList.length > 0) { %>
+<section class="article-rank">
+  <%- include('../../modules/section-title/index.ejs', {title: '热门文章', more: { text: '查看全部', url: '/article/rank'}}) %>
+  <ul class="list">
+    <% articleHotList.forEach(function(article) { %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}) %>
     <% }); %>
   </ul>
 </section>

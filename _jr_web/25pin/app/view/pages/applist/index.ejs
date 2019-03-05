@@ -5,9 +5,13 @@
 <%- include('../../modules/banner/index.ejs', {banner: banner}) %>
 <% } %>
 
+<section class="onlinegame">
+  <%- include('../../modules/list-item-text/index.ejs', {url: '/onlinegame/snake', title: '『贪吃蛇 Snake』，Nokia 时代的经典手机小游戏，属于80后一代人的回忆，敢来挑战吗？'}) %>
+</section>
+
 <% if (typeof gameList !== 'undefined' && gameList.length > 0) { %>
 <section class="app game" resourceType="1">
-  <%- include('../../modules/title/index.ejs', {title: '游戏排行榜'}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '游戏排行榜'}) %>
   <ul class="list">
     <%- include('./list.ejs', {list: gameList}) %>
   </ul>
@@ -17,7 +21,7 @@
 
 <% if (typeof softList !== 'undefined' && softList.length > 0) { %>
 <section class="app soft" resourceType="0">
-  <%- include('../../modules/title/index.ejs', {title: '软件排行榜'}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '软件排行榜'}) %>
   <ul class="list">
     <%- include('./list.ejs', {list: softList}) %>
   </ul>
@@ -26,12 +30,11 @@
 <% } %>
 
 <% if (typeof developerList !== 'undefined' && developerList.length > 0) { %>
-  <section class="developerList" resourceType="0">
-  <%- include('../../modules/title/index.ejs', {title: '开发者推荐'}) %>
+<section class="developerList" resourceType="0">
+  <%- include('../../modules/section-title/index.ejs', {title: '热门开发者', more: { url: '/developer', text: '查看全部'}}) %>
   <ul class="list">
     <%- include('../developerlist/list.ejs', {list: developerList, encode: encode}) %>
   </ul>
-  <%- include('../../modules/more/index.ejs', {url: '/developer', text: '查看全部开发者'}) %>
 </section>
 <% } %>
 

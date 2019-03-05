@@ -3,7 +3,7 @@
 require('./index.less');
 require('../../modules/header');
 require('../../modules/nav');
-require('../../modules/title');
+require('../../modules/section-title');
 require('../../modules/banner');
 require('../../modules/list-item-app');
 require('../../modules/list-item-text');

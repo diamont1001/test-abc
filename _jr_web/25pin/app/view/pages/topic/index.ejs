@@ -1,7 +1,7 @@
 <%- include('../../modules/header/index.ejs', {}) %>
 <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
-<section class="topic_content">
+<div class="topic_content">
   <% if (topic.content.title) { %>
     <h1><%= topic.content.title %></h1>
   <% } %>
@@ -49,9 +49,9 @@
       </div>
     <% }); %>
   <% } %>
-</section>
+</div>
 
-<section class="topic_recommend">
+<div class="topic_recommend">
   <% if (typeof preTopic !== 'undefined') { %>
     <div class="pre">上一篇：<a href="<%= preTopic.id %>"><%= preTopic.title %></a></div>
   <% } %>
@@ -59,4 +59,4 @@
   <% if (typeof nextTopic !== 'undefined') { %>
     <div class="next">下一篇：<a href="<%= nextTopic.id %>"><%= nextTopic.title %></a></div>
   <% } %>
-</section>
+</div>

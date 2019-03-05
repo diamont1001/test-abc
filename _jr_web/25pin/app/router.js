@@ -9,6 +9,7 @@ module.exports = app => {
 
   // 文章页
   router.get('/article', controller.article.list);
+  router.get('/article/rank', controller.article.rank);
   router.get('/article/t_:tag', controller.article.list);
   router.get('/article/:id', controller.article.index);
 
