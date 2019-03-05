@@ -9,6 +9,7 @@ class SitemapController extends Controller {
     let urls = [
       this.app.config.biz.server, // 首页
       this.app.config.biz.server + '/article', // 文章列表页
+      this.app.config.biz.server + '/article/rank', // 文章排行榜列表页
       this.app.config.biz.server + '/photo', // 图片列表页
       this.app.config.biz.server + '/app', // 应用列表页
       this.app.config.biz.server + '/developer', // 开发者列表页
