@@ -35,7 +35,7 @@ class HomeController extends Controller {
       keywords: this.app.config.biz.keywords,
       description: this.app.config.biz.description,
       canonical: this.app.config.biz.server,
-      banner: { image: 'http://www.6down.net/uploadfile/2018/0605/20180605050352840.jpg', url: '/topic/3', name: '抖音热游榜' },
+      // banner: { image: 'http://www.6down.net/uploadfile/2018/0605/20180605050352840.jpg', url: '/topic/3', name: '抖音热游榜' },
       gameList,
       softList,
       photoList, // 美女图片

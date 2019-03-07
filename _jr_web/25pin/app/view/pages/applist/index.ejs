@@ -19,6 +19,10 @@
 </section>
 <% } %>
 
+<section class="space-soft">
+<%- include('../../modules/banner/index.ejs', {banner: { image: 'http://pic.uzzf.com/up/2018-4/201804241033004656904.png', url: '/topic/2', name: '翻译软件精选' }}) %>
+</section>
+
 <% if (typeof softList !== 'undefined' && softList.length > 0) { %>
 <section class="app soft" resourceType="0">
   <%- include('../../modules/section-title/index.ejs', {title: '软件排行榜'}) %>
