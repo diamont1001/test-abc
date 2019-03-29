@@ -6,12 +6,12 @@ const CResourceType = require('../constant/CResourceType');
 
 class HomeController extends Controller {
   async index() {
-    const [ articleList, articleHotList, ugirlsList, softList, gameList ] = await Promise.all([
+    const [ articleList, articleHotList, ugirlsList/*, softList, gameList*/ ] = await Promise.all([
       this.service.article.getAvailableList(0, 6),
       this.service.article.getHotList(0, 12),
       this.service.ugirls.getHotUgirlsList(0, 0, 9),
-      this.service.app.getHotList(CResourceType.soft, 0, 8),
-      this.service.app.getHotList(CResourceType.game, 0, 8),
+      // this.service.app.getHotList(CResourceType.soft, 0, 8),
+      // this.service.app.getHotList(CResourceType.game, 0, 8),
     ]);
 
     // this.app.logger.debug(topicList);
@@ -36,8 +36,8 @@ class HomeController extends Controller {
       description: this.app.config.biz.description,
       canonical: this.app.config.biz.server,
       // banner: { image: 'http://www.6down.net/uploadfile/2018/0605/20180605050352840.jpg', url: '/topic/3', name: '抖音热游榜' },
-      gameList,
-      softList,
+      // gameList,
+      // softList,
       photoList, // 美女图片
       articleList, // 文章列表
       articleHotList, // 热门文章列表

@@ -11,19 +11,18 @@ class SitemapController extends Controller {
       this.app.config.biz.server + '/article', // 文章列表页
       this.app.config.biz.server + '/article/rank', // 文章排行榜列表页
       this.app.config.biz.server + '/photo', // 图片列表页
-      this.app.config.biz.server + '/app', // 应用列表页
-      this.app.config.biz.server + '/developer', // 开发者列表页
-      // this.app.config.biz.server + '/english', // 英语频道
+      // this.app.config.biz.server + '/app', // 应用列表页
+      // this.app.config.biz.server + '/developer', // 开发者列表页
       this.app.config.biz.server + '/onlinegame/snake', // 在线小游戏 - 贪吃蛇
     ];
 
-    const [ articleList, tagsList, photoIds, appList, developerList, topicList ] = await Promise.all([
+    const [ articleList, tagsList, photoIds/*, appList, developerList, topicList*/ ] = await Promise.all([
       this.service.article.getAllAvailableList(),
       this.service.ugirls.getTagsList(),
       this.service.ugirls.getAllUgirlsIds(),
-      this.service.app.getAllAvailablePnames(),
-      this.service.app.getAvailableDeveloperList(0, 100000),
-      this.service.topic.getAllAvailableIds(),
+      // this.service.app.getAllAvailablePnames(),
+      // this.service.app.getAvailableDeveloperList(0, 100000),
+      // this.service.topic.getAllAvailableIds(),
     ]);
 
     // 文章页
@@ -39,20 +38,20 @@ class SitemapController extends Controller {
       urls.push(this.app.config.biz.server + '/photo/' + photoIds[i]);
     }
 
-    // 应用详情页
-    for (let i = 0; i < appList.length; i++) {
-      urls.push(this.app.config.biz.server + '/app/' + appList[i]);
-    }
+    // // 应用详情页
+    // for (let i = 0; i < appList.length; i++) {
+    //   urls.push(this.app.config.biz.server + '/app/' + appList[i]);
+    // }
 
-    // 开发者详情页
-    for (let i = 0; i < developerList.length; i++) {
-      urls.push(this.app.config.biz.server + '/developer/' + Xor.encode(developerList[i]));
-    }
+    // // 开发者详情页
+    // for (let i = 0; i < developerList.length; i++) {
+    //   urls.push(this.app.config.biz.server + '/developer/' + Xor.encode(developerList[i]));
+    // }
 
-    // 专题详情页
-    for (let i = 0; i < topicList.length; i++) {
-      urls.push(this.app.config.biz.server + '/topic/' + topicList[i]);
-    }
+    // // 专题详情页
+    // for (let i = 0; i < topicList.length; i++) {
+    //   urls.push(this.app.config.biz.server + '/topic/' + topicList[i]);
+    // }
 
 
     // 第2000条URL生成一个 urlx.txt，用于推送

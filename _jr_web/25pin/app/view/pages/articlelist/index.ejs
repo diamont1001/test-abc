@@ -1,10 +1,5 @@
 <%- include('../../modules/header/index.ejs', {}) %>
-
-<% if (typeof listType === 'undefined' || listType.length <= 0) { %>
-  <%- include('../../modules/nav/index.ejs', {tab: 2}) %>
-<% } else { %>
-  <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
-<% } %>
+<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
 <% if (typeof banner !== 'undefined' && banner) { %>
 <%- include('../../modules/banner/index.ejs', {banner: banner}) %>

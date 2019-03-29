@@ -1,5 +1,4 @@
 <%- include('../../modules/header/index.ejs', {}) %>
-<%- include('../../modules/nav/index.ejs', {tab: 0}) %>
 
 <% if (typeof banner !== 'undefined' && banner) { %>
 <%- include('../../modules/banner/index.ejs', {banner: banner}) %>
@@ -23,10 +22,6 @@
   <%- include('../../modules/app-rec-4/index.ejs', {list: softList}) %>
 </section>
 <% } %>
-
-<section class="space-soft">
-<%- include('../../modules/banner/index.ejs', {banner: { image: 'https://www.ai1234.com/uploadimg/ico/2018/0515/1526386116412205.jpg', url: '/topic/6', name: '美颜特效相机APP排行榜' }}) %>
-</section>
 
 <% if (typeof articleList !== 'undefined' && articleList && articleList.length > 0) { %>
 <section class="article">
