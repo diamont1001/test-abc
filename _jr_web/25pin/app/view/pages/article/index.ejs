@@ -30,15 +30,6 @@
   </div>
 <% } %>
 
-<% if (article.relativeApp && article.relativeApp.length > 0) { %>
-<div class="relative_app">
-  <%- include('../../modules/title/index.ejs', {title: '相关APP', type: 1}) %>
-  <% article.relativeApp.forEach(function(app) { %>
-    <%- include('../../modules/list-item-app/index.ejs', {app: app}) %>
-  <% }) %>
-</div>
-<% } %>
-
 <div class="article_recommend">
   <% if (typeof preArticle !== 'undefined') { %>
     <div class="pre">上一篇：<a href="<%= preArticle.id %>"><%= preArticle.title %></a></div>

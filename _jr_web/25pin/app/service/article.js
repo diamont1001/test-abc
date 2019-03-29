@@ -19,17 +19,7 @@ module.exports = app => {
 
     // 获取文章详情
     async getDetail(id = 0) {
-      const article = await this.dbArticleUtils.getDetail(id);
-
-      if (article && article.app) {
-        const requestMq = [];
-        for (let i = 0; i < article.app.length; i++) {
-          requestMq.push(this.dbAppUtils.getDetail(article.app[i]));
-        }
-        article.relativeApp = await Promise.all(requestMq);
-      }
-
-      return Promise.resolve(article);
+      return this.dbArticleUtils.getDetail(id);
     }
 
     // 获取上一篇文章

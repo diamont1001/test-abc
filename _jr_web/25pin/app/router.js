@@ -19,19 +19,16 @@ module.exports = app => {
   router.get('/photo/:id', controller.photo.index);
 
   // 应用
-  router.get('/app', controller.app.list);
-  router.get('/app/:pname', controller.app.index);
+  router.redirect('/app', '/', 302);
+  router.redirect('/app/:pname', '/', 302);
 
   // 应用专题
   // router.get('/topic', controller.topic.list);
-  router.get('/topic/:id', controller.topic.index);
+  router.redirect('/topic/:id', '/', 302);
 
   // 开发者
-  router.get('/developer', controller.developer.list);
-  router.get('/developer/:id', controller.developer.index);
-
-  // 英语频道
-  // router.get('/english', controller.english.index);
+  router.redirect('/developer', '/', 302);
+  router.redirect('/developer/:id', '/', 302);
 
   // 在线小游戏
   router.get('/onlinegame/snake', controller.onlinegame.snake);
@@ -42,8 +39,8 @@ module.exports = app => {
   // API
   router.get('/api/getArticleList', controller.article.moreajax); // 文章列表页「加载更多」
   router.get('/api/getPhontList', controller.photo.moreajax); // 图片列表页「加载更多」
-  router.get('/api/getAppHotList', controller.app.moreajax); // 应用列表页「加载更多」
-  router.get('/api/getAppListByDeveloper', controller.developer.moreappajax); // 开发者详情页「加载更多」
+  // router.get('/api/getAppHotList', controller.app.moreajax); // 应用列表页「加载更多」
+  // router.get('/api/getAppListByDeveloper', controller.developer.moreappajax); // 开发者详情页「加载更多」
   router.get('/api/getDeveloperList', controller.developer.moreajax); // 开发者列表页「加载更多」
 
   // 搜索引擎相关
