@@ -41,14 +41,16 @@ class MArticle {
     }
 
     try {
-      this.tags = objMysql.tags.split(',').filter(item => {
-        return (item && item.trim());
-      }).map(item => {
-        return item;
+      this.tags = objMysql.tags.split(',').map(item => {
+        return parseInt(item) || 0;
+      }).filter(item => {
+        return (item);
       });
     } catch (e) {
       this.tags = [];
     }
+
+    this.tagList = [];
 
     try {
       this.app = objMysql.app.split(',').filter(item => {
@@ -89,7 +91,7 @@ class MArticle {
       summary: this.summary,
       content: this.content,
       type: this.type,
-      tags: this.tags,
+      tags: this.tags.length > 0 ? this.tags.map(item => { return item; }).join(',') : '',
       images: this.images.length > 0 ? this.images.map(item => { return encodeURIComponent(item); }).join(',') : '',
       video: this.video,
       author: this.author,

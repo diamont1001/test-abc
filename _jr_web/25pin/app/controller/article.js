@@ -59,39 +59,14 @@ class ArticleController extends Controller {
   }
 
   async list() {
-    const curTag = this.ctx.params.tag;
+    const curTag = parseInt(this.ctx.params.tag) || 0;
 
-    // XSS 和 SQL 注入
-    if (curTag && (curTag.indexOf(' ') >= 0
-      || curTag.indexOf(' ') >= 0
-      || curTag.indexOf(',') >= 0
-      || curTag.indexOf('(') >= 0
-      || curTag.indexOf(')') >= 0
-      || curTag.indexOf('"') >= 0
-      || curTag.indexOf('\'') >= 0
-      || curTag.indexOf('<') >= 0
-      || curTag.indexOf('>') >= 0)) {
-      this.ctx.status = 404; // 错误的路由，404
+    if (this.ctx.params.tag && curTag + '' !== this.ctx.params.tag) {
+      this.ctx.status = 404;
       return;
     }
 
-    // 解密
-    const tag = curTag ? Xor.decode(curTag) : null;
-
-    if (tag && (tag.indexOf(' ') >= 0
-      || tag.indexOf(' ') >= 0
-      || tag.indexOf(',') >= 0
-      || tag.indexOf('(') >= 0
-      || tag.indexOf(')') >= 0
-      || tag.indexOf('"') >= 0
-      || tag.indexOf('\'') >= 0
-      || tag.indexOf('<') >= 0
-      || tag.indexOf('>') >= 0)) {
-      this.ctx.status = 404; // 错误的路由，404
-      return;
-    }
-
-    const articleList = await this.service.article.getAvailableList(0, 20, tag);
+    const articleList = await this.service.article.getAvailableList(0, 20, curTag);
 
     if (!articleList || articleList.length <= 0) {
       this.ctx.status = 404;
@@ -101,9 +76,9 @@ class ArticleController extends Controller {
     let canonical = this.app.config.biz.server + '/article';
     let title = '超级有趣冷知识|生活小常识|最新精彩文章';
 
-    if (tag) {
-      canonical += '/t_' + Xor.encode(tag)
-      title = `「${tag}」相关资讯|最新文章推荐`;
+    if (curTag) {
+      canonical += '/t_' + curTag
+      title = `相关资讯|最新文章推荐`;
     }
 
     await this.ctx.layoutRender('pages/articlelist/index.ejs', {
@@ -115,7 +90,7 @@ class ArticleController extends Controller {
       breadcrumb: [],
       banner: { image: 'http://img.8989118.com/attached/image/20180428/343233081-1524886038817081988.jpg', url: '/article/rank', name: '热门冷知识，精彩文章排行榜' },
       articleList,
-      tag,
+      tag: curTag,
       dateFormat(date) {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       },
@@ -152,19 +127,10 @@ class ArticleController extends Controller {
     const offset = parseInt(this.ctx.query.offset) || 0;
     const count = parseInt(this.ctx.query.count) || 20;
     const listtype = parseInt(this.ctx.query.listtype) || 0;
-    const tag = this.ctx.query.tag;
+    const tag = parseInt(this.ctx.query.tag) || 0;
 
-    // XSS 和 SQL 注入
-    if (tag && (tag.indexOf(' ') >= 0
-      || tag.indexOf(' ') >= 0
-      || tag.indexOf(',') >= 0
-      || tag.indexOf('(') >= 0
-      || tag.indexOf(')') >= 0
-      || tag.indexOf('"') >= 0
-      || tag.indexOf('\'') >= 0
-      || tag.indexOf('<') >= 0
-      || tag.indexOf('>') >= 0)) {
-      this.ctx.status = 404; // 错误的路由，404
+    if (this.ctx.params.tag && tag + '' !== this.ctx.params.tag) {
+      this.ctx.status = 404;
       return;
     }
 
