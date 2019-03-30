@@ -119,6 +119,10 @@ module.exports = app => {
     async getTagList() {
       return this.dbArticleUtils.getTagList();
     }
+
+    async getTag(id) {
+      return this.dbArticleUtils.getTag(id);
+    }
   }
 
   return ArticleSerivce;

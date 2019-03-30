@@ -97,8 +97,6 @@ class PhotoController extends Controller {
     const locals = {
       name: 'photolist',
       title: '美女写真大全|宅男福利',
-      keywords: '美图,美女写真,美女图片,写真集,尤果网,爱玩品',
-      description: '尤果网美女写真集免费看，美女图片，宅男福利。爱玩品手机资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出。',
       breadcrumb: curTag === 0 ? [] : [{ name: '美女写真', url: '/photo' }],
       curTag,
       tagsList,

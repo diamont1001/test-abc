@@ -7,11 +7,11 @@
   <div class="jr-m-tags">
     <div class="tag-list">
       <div class="tag-item<% if (currentTag === 0) { %> current<% } %>">
-        <a href="/photo">全部</a>
+        <a href="<%= path %>">全部</a>
       </div>
       <% list.forEach(function(item) { %>
         <div class="tag-item<% if (currentTag === item.id) { %> current<% } %>">
-          <a href="/photo/t_<%= item.id %>" data-tag="<%= item.id %>"><%= item.name %></a>
+          <a href="<%= path %>/t_<%= item.id %>" data-tag="<%= item.id %>"><%= item.name %></a>
         </div>
       <% }); %>
     </div>

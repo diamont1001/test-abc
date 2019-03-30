@@ -41,7 +41,7 @@ module.exports = app => {
   router.get('/api/getPhontList', controller.photo.moreajax); // 图片列表页「加载更多」
   // router.get('/api/getAppHotList', controller.app.moreajax); // 应用列表页「加载更多」
   // router.get('/api/getAppListByDeveloper', controller.developer.moreappajax); // 开发者详情页「加载更多」
-  router.get('/api/getDeveloperList', controller.developer.moreajax); // 开发者列表页「加载更多」
+  // router.get('/api/getDeveloperList', controller.developer.moreajax); // 开发者列表页「加载更多」
 
   // 搜索引擎相关
   router.get('/robots.txt', controller.home.robots);

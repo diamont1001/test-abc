@@ -11,8 +11,13 @@
         <p class="content"><%= description %></p>
       <% } %>
     </div>
-    <% if (typeof timeShow !== 'undefined') { %>
-      <div class="tips"><span><%= timeShow %></span></div>
-    <% } %>
+    <div class="tips">
+      <% if (typeof tag !== 'undefined' && tag.name) { %>
+        <span class="tips-item"><%= tag.name %></span>
+      <% } %>
+      <% if (typeof timeShow !== 'undefined') { %>
+        <span class="tips-item"><%= timeShow %></span>
+      <% } %>
+    </div>
   </a>
 </li>

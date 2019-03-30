@@ -215,6 +215,18 @@ class DBArticleUtils {
     }
     return Promise.resolve([]);
   }
+
+  async getTag(id) {
+    const result = await this.mysql.get(MArticleTag.TABLE, {
+      id,
+    });
+
+    if (result) {
+      return Promise.resolve(new MArticleTag(result));
+    }
+
+    return Promise.resolve();
+  }
 }
 
 module.exports = DBArticleUtils;

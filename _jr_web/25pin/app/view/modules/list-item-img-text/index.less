@@ -30,6 +30,7 @@
       min-height: 45px;
 
       h3 {
+        // min-height: 48px;
         color: @colorTitle;
         font-size: @sizeTitle;
       }
@@ -44,7 +45,16 @@
       font-size: @sizeTips;
       color: @colorTips;
       padding-top: 4px;
+      text-align: right;
       float: right;
+
+      .tips-item {
+        margin-right: 8px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 }

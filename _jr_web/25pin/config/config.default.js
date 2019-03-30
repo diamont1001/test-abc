@@ -56,7 +56,7 @@ module.exports = appInfo => {
   };
 
   config.biz = {
-    title: '瓶子老师学习网_有趣冷知识_生活小常识',
+    title: '有趣冷知识_生活小常识_瓶子老师学习网',
     keywords: '冷知识,生活小常识,文化,历史,地理,英语,科学,母婴,瓶子老师,学习网,25pin',
     description: '瓶子老师学习网（www.25pin.com），爱生活爱学习，跟着瓶子老师一起学习有趣的冷知识、生活小常识、文化、历史、地理、英语、科学,母婴等热门小知识。',
     server: 'http://www.25pin.com',
@@ -76,7 +76,7 @@ module.exports = appInfo => {
   };
 
   // layout 版本号，每次发版前需要把它修改一下
-  config.layoutVersion = '2019032901';
+  config.layoutVersion = '2019033001';
   config.currentYear = new Date().getYear() + 1900;
 
   return config;

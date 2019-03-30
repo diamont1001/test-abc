@@ -1,0 +1,12 @@
+<% if (typeof list !== 'undefined' && list.length > 0) { %>
+  <ul class="jr-m-nav-img-text-n">
+    <% list.forEach(function(item) { %>
+      <li class="list-item">
+        <a href="<%= item.url %>"<% if (item.nofollow) { %> rel="nofollow"<% } %>>
+          <img class="icon" src="<%= item.image %>"/>
+          <div class="name"><%= item.name %></div>
+        </a>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>

@@ -2,7 +2,7 @@
 
 <section class="tags">
   <% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
-    <%- include('../../modules/tags/index.ejs', {list: tagsList, curTag: curTag}) %>
+    <%- include('../../modules/tags/index.ejs', {path: '/photo', list: tagsList, curTag: curTag}) %>
   <% } %>
 </section>
 

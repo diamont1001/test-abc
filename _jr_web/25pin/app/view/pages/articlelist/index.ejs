@@ -1,9 +1,10 @@
 <%- include('../../modules/header/index.ejs', {}) %>
-<%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
 
-<% if (typeof banner !== 'undefined' && banner) { %>
-<%- include('../../modules/banner/index.ejs', {banner: banner}) %>
-<% } %>
+<section class="tags">
+  <% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
+    <%- include('../../modules/tags/index.ejs', {path: '/article', list: tagsList, curTag: curTagId}) %>
+  <% } %>
+</section>
 
 <section class="article">
   <ul class="list">
@@ -11,11 +12,13 @@
       <%- include('./list.ejs', {articleList: articleList, dateFormat: dateFormat}) %>
     <% } %>
   </ul>
-  <%- include('../../modules/more/index.ejs', {url: 'javascript:;'}) %>
+  <% if (typeof articleList !== 'undefined' && articleList.length > 0) { %>
+    <%- include('../../modules/more/index.ejs', {url: 'javascript:;'}) %>
+  <% } %>
 </section>
 
-<% if (typeof tag !== 'undefined' && tag) { %>
-<div id="dataTag" data-tag="<%= tag %>" style="display: none;"></div>
+<% if (typeof curTagId !== 'undefined' && curTagId) { %>
+  <div id="dataTag" data-tag="<%= curTagId %>" style="display: none;"></div>
 <% } %>
 
 <% if (typeof listType !== 'undefined' && listType) { %>

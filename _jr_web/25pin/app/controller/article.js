@@ -46,7 +46,7 @@ class ArticleController extends Controller {
       keywords: article.keywords,
       description: article.summary,
       canonical,
-      breadcrumb: [{ url: '/article', name: '资讯' }],
+      breadcrumb: [{ url: '/article', name: '最新列表' }],
       ld_json, // 熊掌号主页展示
       article,
       preArticle,
@@ -59,38 +59,45 @@ class ArticleController extends Controller {
   }
 
   async list() {
-    const curTag = parseInt(this.ctx.params.tag) || 0;
+    const curTagId = parseInt(this.ctx.params.tag) || 0;
 
-    if (this.ctx.params.tag && curTag + '' !== this.ctx.params.tag) {
+    if (this.ctx.params.tag && curTagId + '' !== this.ctx.params.tag) {
       this.ctx.status = 404;
       return;
     }
 
-    const articleList = await this.service.article.getAvailableList(0, 20, curTag);
+    const [ tag, tagsList, articleList ] = await Promise.all([
+      this.ctx.service.article.getTag(curTagId),
+      this.ctx.service.article.getTagList(),
+      this.service.article.getAvailableList(0, 20, curTagId),
+    ]);
 
-    if (!articleList || articleList.length <= 0) {
+    if (!articleList) {
       this.ctx.status = 404;
       return;
     }
 
     let canonical = this.app.config.biz.server + '/article';
-    let title = '超级有趣冷知识|生活小常识|最新精彩文章';
+    let title = '最新有趣冷知识、生活小常识_瓶子老师学习网';
 
-    if (curTag) {
-      canonical += '/t_' + curTag
-      title = `相关资讯|最新文章推荐`;
+    if (curTagId) {
+      canonical += '/t_' + curTagId;
+    }
+
+    if (tag && tag.title) {
+      title = tag.title;
+    } else if (tag && tag.name) {
+      title = tag.name + '_' + title;
     }
 
     await this.ctx.layoutRender('pages/articlelist/index.ejs', {
       name: 'articlelist',
       title,
-      keywords: '文章,资讯,教程,生活小常识,有趣冷知识,爱玩品',
-      description: '最新精彩文章推荐，快来看看网友们都在说些什么吧，点击有惊喜喔。爱玩品手机资源站，为你推荐丰富好玩的资源，让优质资源脱颖而出',
+      // description: '爱生活爱学习，跟着瓶子老师一起学习有趣的冷知识、生活小常识、文化、历史、地理、英语、科学,母婴等热门小知识。',
       canonical,
-      breadcrumb: [],
-      banner: { image: 'http://img.8989118.com/attached/image/20180428/343233081-1524886038817081988.jpg', url: '/article/rank', name: '热门冷知识，精彩文章排行榜' },
       articleList,
-      tag: curTag,
+      curTagId,
+      tagsList,
       dateFormat(date) {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       },
@@ -106,15 +113,13 @@ class ArticleController extends Controller {
     }
 
     let canonical = this.app.config.biz.server + '/article';
-    let title = '热门冷知识|生活小常识|精彩文章排行榜';
+    let title = '有趣冷知识、生活小常识_热门排行榜';
 
     await this.ctx.layoutRender('pages/articlelist/index.ejs', {
       name: 'articlelist',
       title,
-      keywords: '文章,资讯,教程,生活小常识,有趣冷知识,爱玩品',
-      description: '热门精彩文章、冷知识排行榜推荐，爱玩品手机资源站，为你推荐热门丰富好玩的资源，让优质资源脱颖而出。',
       canonical,
-      breadcrumb: [{ url: '/article', name: '资讯' }],
+      breadcrumb: [{ url: '/article', name: '最新列表' }],
       listType: 1, // 1: rank
       articleList,
       dateFormat(date) {
@@ -127,9 +132,9 @@ class ArticleController extends Controller {
     const offset = parseInt(this.ctx.query.offset) || 0;
     const count = parseInt(this.ctx.query.count) || 20;
     const listtype = parseInt(this.ctx.query.listtype) || 0;
-    const tag = parseInt(this.ctx.query.tag) || 0;
+    const tagId = parseInt(this.ctx.query.tag) || 0;
 
-    if (this.ctx.params.tag && tag + '' !== this.ctx.params.tag) {
+    if (this.ctx.params.tag && tagId + '' !== this.ctx.params.tag) {
       this.ctx.status = 404;
       return;
     }
@@ -139,7 +144,7 @@ class ArticleController extends Controller {
     if (listtype === 1) {
       articleList = await this.service.article.getHotList(offset, count);
     } else {
-      articleList = await this.service.article.getAvailableList(offset, count, tag);
+      articleList = await this.service.article.getAvailableList(offset, count, tagId);
     }
 
     if (articleList && articleList.length > 0) {
