@@ -15,8 +15,8 @@ class SitemapController extends Controller {
     ];
 
     const [ articleTagList, articleList, photoTagsList, photoIds ] = await Promise.all([
+      this.service.article.getTagList(),
       this.service.article.getAllAvailableList(),
-      this.service.article.getTagsList(),
       this.service.ugirls.getTagsList(),
       this.service.ugirls.getAllUgirlsIds(),
     ]);
