@@ -12,6 +12,9 @@
       <% } %>
     </div>
     <div class="tips">
+      <% if (props.count) { %>
+        <span class="tips-item count"><%= props.count %></span>
+      <% } %>
       <% if (props.tag && props.tag.name) { %>
         <span class="tips-item tag"><%= props.tag.name %></span>
       <% } %>

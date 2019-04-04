@@ -131,7 +131,7 @@ class ArticleController extends Controller {
   async moreajax() {
     const offset = parseInt(this.ctx.query.offset) || 0;
     const count = parseInt(this.ctx.query.count) || 20;
-    const listtype = parseInt(this.ctx.query.listtype) || 0;
+    const listType = parseInt(this.ctx.query.listtype) || 0;
     const tagId = parseInt(this.ctx.query.tag) || 0;
 
     if (this.ctx.params.tag && tagId + '' !== this.ctx.params.tag) {
@@ -141,7 +141,7 @@ class ArticleController extends Controller {
 
     let articleList;
 
-    if (listtype === 1) {
+    if (listType === 1) {
       articleList = await this.service.article.getHotList(offset, count);
     } else {
       articleList = await this.service.article.getAvailableList(offset, count, tagId);
@@ -150,6 +150,7 @@ class ArticleController extends Controller {
     if (articleList && articleList.length > 0) {
       await this.ctx.render('pages/articlelist/list.ejs', {
         articleList,
+        listType,
         dateFormat(date) {
           return this.ctx.helper.stampFormat2Date('Y-m-d', date.getTime());
         },

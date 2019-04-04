@@ -1,3 +1,9 @@
-<% articleList.forEach(function(article) { %>
-  <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: '', time: dateFormat(article.publishTime), tag: article.tagList[0]}}) %>
-<% }); %>
+<% if (typeof listType !== 'undefined' && listType === 1) { %>
+  <% articleList.forEach(function(article) { %>
+    <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: '', count: article.count, tag: article.tagList[0]}}) %>
+  <% }); %>
+<% } else { %>
+  <% articleList.forEach(function(article) { %>
+    <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: '', time: dateFormat(article.publishTime), tag: article.tagList[0]}}) %>
+  <% }); %>
+<% } %>

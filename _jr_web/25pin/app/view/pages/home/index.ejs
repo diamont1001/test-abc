@@ -60,7 +60,7 @@
   <%- include('../../modules/section-title/index.ejs', {title: '热门知识', more: { text: '查看全部', url: '/article/rank'}}) %>
   <ul class="list">
     <% articleHotList.forEach(function(article) { %>
-      <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}}) %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: '', count: article.count, tag: article.tagList[0]}}) %>
     <% }); %>
   </ul>
 </section>
