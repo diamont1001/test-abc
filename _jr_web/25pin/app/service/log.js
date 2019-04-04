@@ -19,13 +19,18 @@ module.exports = app => {
     async clean() {
       this.app.logger.info('log clean start.');
 
-      const logPath = Path.join(process.env.PWD, this.app.config.logger.dir);
+      let logPath = Path.join(process.env.PWD, this.app.config.logger.dir);
       const year = this.app.config.currentYear || (new Date().getYear() + 1900);
 
-      this.app.logger.info('cleaning... ', logPath);
+      if (logPath.lastIndexOf('/') + 1 !== logPath.length) {
+        logPath += '/';
+      }
 
       if (fs.existsSync(logPath)) {
+        this.app.logger.info('cleaning... ', logPath);
         del.sync(logPath + '*.log.' + year + '-*');
+      } else {
+        this.app.logger.warn('log path is not exist. ', logPath);
       }
 
       this.app.logger.info('log clean end.');
