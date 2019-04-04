@@ -26,7 +26,7 @@
 
 <% if (typeof articleList !== 'undefined' && articleList && articleList.length > 0) { %>
 <section class="article">
-<%- include('../../modules/section-title/index.ejs', {title: '最新发布', more: { text: '查看全部', url: '/article'}}) %>
+<%- include('../../modules/section-title/index.ejs', {title: '最新知识', more: { text: '查看全部', url: '/article'}}) %>
   <ul class="list">
     <% articleList.forEach(function(article) { %>
       <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: '', timeShow: dateFormat(article.publishTime), tag: article.tagList[0]}) %>
@@ -57,7 +57,7 @@
 
 <% if (typeof articleHotList !== 'undefined' && articleHotList && articleHotList.length > 0) { %>
 <section class="article-rank">
-  <%- include('../../modules/section-title/index.ejs', {title: '文章排行', more: { text: '查看全部', url: '/article/rank'}}) %>
+  <%- include('../../modules/section-title/index.ejs', {title: '热门知识', more: { text: '查看全部', url: '/article/rank'}}) %>
   <ul class="list">
     <% articleHotList.forEach(function(article) { %>
       <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}) %>

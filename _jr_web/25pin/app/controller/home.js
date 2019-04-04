@@ -6,30 +6,30 @@ const CResourceType = require('../constant/CResourceType');
 
 class HomeController extends Controller {
   async index() {
-    const [ articleList, articleHotList, ugirlsList, ugirlsHotList] = await Promise.all([
+    const [ articleList, articleHotList/*, ugirlsList, ugirlsHotList*/] = await Promise.all([
       this.service.article.getAvailableList(0, 15),
       this.service.article.getHotList(0, 12),
-      this.service.ugirls.getUgirlsList(0, 0, 6),
-      this.service.ugirls.getHotUgirlsList(0, 0, 6),
+      // this.service.ugirls.getUgirlsList(0, 0, 6),
+      // this.service.ugirls.getHotUgirlsList(0, 0, 6),
     ]);
 
-    const photoList = [];
-    for (let i = 0; i < ugirlsList.length; i++) {
-      photoList.push({
-        url: '/photo/' + ugirlsList[i].id,
-        image: ugirlsList[i].avatar,
-        name: '美女' + ugirlsList[i].name + '写真集',
-      });
-    }
+    // const photoList = [];
+    // for (let i = 0; i < ugirlsList.length; i++) {
+    //   photoList.push({
+    //     url: '/photo/' + ugirlsList[i].id,
+    //     image: ugirlsList[i].avatar,
+    //     name: '美女' + ugirlsList[i].name + '写真集',
+    //   });
+    // }
 
-    const photoHotList = [];
-    for (let i = 0; i < ugirlsHotList.length; i++) {
-      photoHotList.push({
-        url: '/photo/' + ugirlsHotList[i].id,
-        image: ugirlsHotList[i].avatar,
-        name: '美女' + ugirlsHotList[i].name + '写真集',
-      });
-    }
+    // const photoHotList = [];
+    // for (let i = 0; i < ugirlsHotList.length; i++) {
+    //   photoHotList.push({
+    //     url: '/photo/' + ugirlsHotList[i].id,
+    //     image: ugirlsHotList[i].avatar,
+    //     name: '美女' + ugirlsHotList[i].name + '写真集',
+    //   });
+    // }
 
     const pageNavs = [
       { url: '/article/rank', image: '/public/images/rank.png', name: '排行榜' },
@@ -52,8 +52,8 @@ class HomeController extends Controller {
       canonical: this.app.config.biz.server,
       // banner: { image: 'http://www.6down.net/uploadfile/2018/0605/20180605050352840.jpg', url: '/topic/3', name: '抖音热游榜' },
       pageNavs,
-      photoList, // 美女图片
-      photoHotList, // 热门美女图片
+      // photoList, // 美女图片
+      // photoHotList, // 热门美女图片
       articleList, // 文章列表
       articleHotList, // 热门文章列表
       links, // 友链
