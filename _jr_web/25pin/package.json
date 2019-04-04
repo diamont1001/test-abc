@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "del": "^4.1.0",
     "egg": "^2.2.1",
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.5.0",
