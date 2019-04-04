@@ -35,6 +35,7 @@ module.exports = app => { // eslint-disable-line no-unused-vars
       // cron: '0 0,15,30,45 * * * *', // 15分钟更新一次
       interval: 1000 * 60 * 30, // 30分钟更新一次
       immediate: true,
+      disable: true,
     },
 
     async task(ctx) {

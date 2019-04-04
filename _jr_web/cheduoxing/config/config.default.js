@@ -13,7 +13,6 @@ module.exports = appInfo => {
   ];
 
   config.logger = {
-    dir: './logs/cheduoxing',
     level: 'DEBUG',
     consoleLevel: 'DEBUG',
   };
