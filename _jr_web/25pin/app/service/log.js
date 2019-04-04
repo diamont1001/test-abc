@@ -27,7 +27,7 @@ module.exports = app => {
 
       if (fs.existsSync(logPath)) {
         this.app.logger.info('cleaning... ', logPath);
-        // del.sync(logPath + '*.log.' + year + '-*');
+        del.sync(logPath + '*.log.' + year + '-*');
       } else {
         this.app.logger.warn('log path is not exist. ', logPath);
       }
