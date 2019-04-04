@@ -13,7 +13,6 @@ module.exports = appInfo => {
   ];
 
   config.logger = {
-    dir: './logs/25pin-com',
     level: 'DEBUG',
     consoleLevel: 'DEBUG',
   };
