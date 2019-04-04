@@ -99,7 +99,7 @@ class ArticleController extends Controller {
       curTagId,
       tagsList,
       dateFormat(date) {
-        return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
+        return this.ctx.helper.stampFormat2Date('Y-m-d', date.getTime());
       },
     });
   }
@@ -123,7 +123,7 @@ class ArticleController extends Controller {
       listType: 1, // 1: rank
       articleList,
       dateFormat(date) {
-        return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
+        return this.ctx.helper.stampFormat2Date('Y-m-d', date.getTime());
       },
     });
   }
@@ -151,7 +151,7 @@ class ArticleController extends Controller {
       await this.ctx.render('pages/articlelist/list.ejs', {
         articleList,
         dateFormat(date) {
-          return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
+          return this.ctx.helper.stampFormat2Date('Y-m-d', date.getTime());
         },
       });
     } else {

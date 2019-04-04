@@ -29,7 +29,7 @@
 <%- include('../../modules/section-title/index.ejs', {title: '最新知识', more: { text: '查看全部', url: '/article'}}) %>
   <ul class="list">
     <% articleList.forEach(function(article) { %>
-      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: '', timeShow: dateFormat(article.publishTime), tag: article.tagList[0]}) %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: '', time: dateFormat(article.publishTime), tag: article.tagList[0]}}) %>
     <% }); %>
   </ul>
   <%- include('../../modules/more/index.ejs', {url: 'javascript:;'}) %>
@@ -60,7 +60,7 @@
   <%- include('../../modules/section-title/index.ejs', {title: '热门知识', more: { text: '查看全部', url: '/article/rank'}}) %>
   <ul class="list">
     <% articleHotList.forEach(function(article) { %>
-      <%- include('../../modules/list-item-img-text/index.ejs', {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}) %>
+      <%- include('../../modules/list-item-img-text/index.ejs', {props: {url: '/article/' + article.id, images: article.images, title: article.title, description: ''}}) %>
     <% }); %>
   </ul>
 </section>

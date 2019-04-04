@@ -24,7 +24,7 @@ $(function() {
       return;
     }
 
-    const offset = $('.article .list .list-item-img-text').length || 0;
+    const offset = $('.article .list .jr-m-list-item-img-text').length || 0;
 
     $.get('/api/getArticleList?offset=' + offset, function(result) {
       if (result) {

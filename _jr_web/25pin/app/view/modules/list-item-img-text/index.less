@@ -1,6 +1,6 @@
 @import '../../base/mixin.less';
 
-.list-item-img-text {
+.jr-m-list-item-img-text {
   border-bottom: 1px solid @colorBorder;
 
   .list-item-img-text-a {
@@ -12,27 +12,28 @@
     overflow: hidden;
     padding: 12px;
 
-    .info-left {
-      float: left;
+    .info-image {
+      float: right;
       position: relative;
       line-height: 0;
-      width: 89.59px;
-      height: 67.19px;
-      margin-right: 16px;
+      width: 112px;
+      height: 84px;
+      margin-left: 16px;
       overflow: hidden;
 
       .image-item {
         width: 100%;
       }
     }
-    .info-right {
+    .info-detail {
       overflow: hidden;
-      min-height: 45px;
+      height: 48px;
 
-      h3 {
-        // min-height: 48px;
+      .info-title {
+        font-weight: normal;
         color: @colorTitle;
         font-size: @sizeTitle;
+        .dots(2);
       }
 
       p.content {
@@ -44,16 +45,14 @@
     .tips {
       font-size: @sizeTips;
       color: @colorTips;
-      padding-top: 4px;
-      text-align: right;
-      float: right;
+      padding-top: 18px;
 
       .tips-item {
         margin-right: 8px;
+      }
 
-        &:last-child {
-          margin-right: 0;
-        }
+      .time {
+        padding-left: 0;
       }
     }
   }

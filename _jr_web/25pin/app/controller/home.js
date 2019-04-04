@@ -58,7 +58,7 @@ class HomeController extends Controller {
       articleHotList, // 热门文章列表
       links, // 友链
       dateFormat(date) {
-        return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
+        return this.ctx.helper.stampFormat2Date('Y-m-d', date.getTime());
       },
     });
   }
