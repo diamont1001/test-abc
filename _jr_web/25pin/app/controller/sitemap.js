@@ -61,6 +61,50 @@ class SitemapController extends Controller {
     this.ctx.body = sitemap.toString();
     this.ctx.status = 200;
   }
+
+  async searchBD() {
+    let str = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset>\n';
+
+    const articleList = await this.service.article.getAvailableList(0, 10000);
+
+    // 文章tags页
+    for (let i = 0; i < articleList.length; i++) {
+      let tag = '';
+
+      articleList[i].tagList.forEach(item => {
+        tag += `<tag>${item.name}</tag>`;
+      });
+
+      const subStr = '<url>\n' +
+        `<loc>${this.app.config.biz.server}/article/${articleList[i].id}</loc>\n` +
+        `<lastmod>${this.ctx.helper.stampFormat2Date('Y-m-d', articleList[i].updateTime.getTime())}</lastmod>\n` +
+        '<changefreq>always</changefreq>\n' +
+        '<priority>0.5</priority>\n' +
+        '<data>\n' +
+        '<display>\n' +
+        `<title>${articleList[i].title}</title>\n` +
+        `<content>${articleList[i].description}</content>\n` +
+        `${tag}\n` +
+        `<pubTime>${this.ctx.helper.stampFormat2Date('Y-m-dTH:i:s', articleList[i].updateTime.getTime())}</pubTime>\n` +
+        `<breadCrumb title="首页" url="${this.app.config.biz.server}"/>\n` +
+        `<breadCrumb title="知识" url="${this.app.config.biz.server}/article"/>\n` +
+        `<thumbnail loc="${articleList[i].images[0]}"/>\n` +
+        `<image loc="${articleList[i].images[0]}" title=""/>\n` +
+        '</display>\n' +
+        '</data>\n' +
+        '</url>\n';
+
+      str += subStr;
+    }
+
+    str += '</urlset>'
+
+    this.ctx.set({
+      'Content-Type': 'application/xml',
+    });
+    this.ctx.body = str;
+    this.ctx.status = 200;
+  }
 }
 
 module.exports = SitemapController;

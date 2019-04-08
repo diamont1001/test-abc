@@ -50,7 +50,7 @@ class HomeController extends Controller {
       keywords: this.app.config.biz.keywords,
       description: this.app.config.biz.description,
       canonical: this.app.config.biz.server,
-      // banner: { image: 'http://www.6down.net/uploadfile/2018/0605/20180605050352840.jpg', url: '/topic/3', name: '抖音热游榜' },
+      // banner: { image: 'http://e0.ifengimg.com/01/2018/1220/82D9EF0D9FE4301CE3F8E97209A71BFAEF9AF1E2_size34_w500_h300.jpeg', url: '/article/20026084', name: '42天月子餐食谱全攻略' },
       pageNavs,
       // photoList, // 美女图片
       // photoHotList, // 热门美女图片
@@ -73,7 +73,7 @@ class HomeController extends Controller {
       'User-agent: *\n' +
       'Allow: /\n' +
       'Disallow: /mip/\n' +
-      'Disallow: /api/\n' + 
+      'Disallow: /api/\n' +
       'Disallow: /about/\n';
   }
 }

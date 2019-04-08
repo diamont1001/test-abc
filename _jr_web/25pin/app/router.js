@@ -46,4 +46,5 @@ module.exports = app => {
   // 搜索引擎相关
   router.get('/robots.txt', controller.home.robots);
   router.get('/sitemap.xml', controller.sitemap.index);
+  router.get('/sitemap/baidusearch.xml', controller.sitemap.searchBD);
 };

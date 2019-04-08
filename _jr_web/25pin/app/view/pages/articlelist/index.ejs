@@ -1,10 +1,10 @@
 <%- include('../../modules/header/index.ejs', {}) %>
 
-<section class="tags">
-  <% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
+<% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
+  <section class="tags">
     <%- include('../../modules/tags/index.ejs', {path: '/article', list: tagsList, curTag: curTagId}) %>
-  <% } %>
-</section>
+  </section>
+<% } %>
 
 <section class="article">
   <ul class="list">

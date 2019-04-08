@@ -46,7 +46,7 @@ class ArticleController extends Controller {
       keywords: article.keywords,
       description: article.summary,
       canonical,
-      breadcrumb: [{ url: '/article', name: '最新列表' }],
+      breadcrumb: [{ url: '/article', name: '知识' }],
       ld_json, // 熊掌号主页展示
       article,
       preArticle,
@@ -119,7 +119,7 @@ class ArticleController extends Controller {
       name: 'articlelist',
       title,
       canonical,
-      breadcrumb: [{ url: '/article', name: '最新列表' }],
+      breadcrumb: [{ url: '/article', name: '知识' }],
       listType: 1, // 1: rank
       articleList,
       dateFormat(date) {
