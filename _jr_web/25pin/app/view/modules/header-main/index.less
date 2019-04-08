@@ -27,8 +27,13 @@ header {
 
     .header-input {
       background: @colorMainText;
+      -webkit-box-shadow: 0 0 20px 0 rgba(64,187,187,.5);
+      -moz-box-shadow: 0 0 20px 0 rgba(64,187,187,.5);
+      -ms-box-shadow: 0 0 20px 0 rgba(64,187,187,.5);
+      -o-box-shadow: 0 0 20px 0 rgba(64,187,187,.5);
       box-shadow: 0 0 20px 0 rgba(64,187,187,.5);
-      border-radius: 25px;
+      -webkit-appearance: none; // 解决在 iphone 上 box-shadow 不生效的问题
+      .border-radius(25px);
       font-size: @sizeContent+2;
       color: @colorTips;
       height: 50px;
@@ -38,7 +43,7 @@ header {
       text-align: center;
       margin-top: -25px;
       margin-bottom: 15px;
-      padding: 0 50px;
+      padding: 16px 50px;
       box-sizing: border-box;
       display: block;
       border: none;
