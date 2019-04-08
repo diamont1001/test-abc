@@ -1,7 +1,7 @@
 'use strict';
 
 require('./index.less');
-require('../../modules/header');
+require('../../modules/header-main');
 // require('../../modules/nav');
 // require('../../modules/iconsite');
 // require('../../modules/textsite');

@@ -1,4 +1,4 @@
-<%- include('../../modules/header/index.ejs', {}) %>
+<%- include('../../modules/header-main/index.ejs', {}) %>
 
 <% if (typeof banner !== 'undefined' && banner) { %>
 <%- include('../../modules/banner/index.ejs', {banner: banner}) %>
@@ -41,6 +41,10 @@
   <%- include('../../modules/list-item-text/index.ejs', {url: '/onlinegame/snake', title: '『贪吃蛇 Snake』，Nokia 时代的经典手机小游戏，属于80后一代人的回忆，敢来挑战吗？'}) %>
 </section>
 
+<section>
+<%- include('../../modules/banner/index.ejs', {banner: {image: 'http://e0.ifengimg.com/01/2018/1220/82D9EF0D9FE4301CE3F8E97209A71BFAEF9AF1E2_size34_w500_h300.jpeg', url: '/article/20026084', name: '42天月子餐食谱全攻略'}}) %>
+</section>
+
 <% if (typeof photoList !== 'undefined' && photoList.length > 0) { %>
 <section class="girls">
   <%- include('../../modules/section-title/index.ejs', {title: '美女写真最新', more: { text: '查看全部', url: '/photo'}}) %>
@@ -72,3 +76,5 @@
   <%- include('../../modules/copyright/index.ejs', {}) %>
   <%- include('../../modules/about/index.ejs', {}) %>
 </footer>
+
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=14821101039276571533' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>

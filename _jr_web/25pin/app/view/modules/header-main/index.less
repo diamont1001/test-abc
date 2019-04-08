@@ -1,0 +1,61 @@
+@import '../../base/mixin.less';
+
+header {
+  // height: 60px;
+  // line-height: 60px;
+  padding: 0;
+  position: relative;
+
+  .header-logo {
+    color: @colorTitle;
+    font-size: 18px;
+    height: 150px;
+    padding-top: 32px;
+    text-align: center;
+    background-image: linear-gradient(44deg,#4cceae,#4eb5d0);
+    border-bottom-right-radius: 33px 10px;
+    border-bottom-left-radius: 33px 10px;
+    box-sizing: border-box;
+
+    img {
+      height: 62px;
+    }
+  }
+
+  .wrap-input {
+    position: relative;
+
+    .header-input {
+      background: @colorMainText;
+      box-shadow: 0 0 20px 0 rgba(64,187,187,.5);
+      border-radius: 25px;
+      font-size: @sizeContent+2;
+      color: @colorTips;
+      height: 50px;
+      line-height: 50px!important;
+      margin: 0 auto;
+      width: 86%;
+      text-align: center;
+      margin-top: -25px;
+      margin-bottom: 15px;
+      padding: 0 50px;
+      box-sizing: border-box;
+      display: block;
+      border: none;
+      outline: none;
+    }
+
+    .btn-search {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      right: 25px;
+      background: url('./search.png') no-repeat center;
+      background-size: 20px 20px;
+      border: none;
+      outline: none;
+      display: block;
+    }
+  }
+}
