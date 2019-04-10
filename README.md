@@ -19,7 +19,13 @@ nginx -s reload
 ```bash
 su nemo
 cd ~/lib/elasticsearch-5.5.1
-./bin/elasticsearch
+
+# 后台启动服务
+./bin/elasticsearch -d
+
+# 停止服务
+ps  -aux | grep  ela
+kill -9 xxxx
 ```
 
 ### 25pin
