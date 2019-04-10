@@ -12,6 +12,16 @@ nginx -s reload
 
 开机会自动启动
 
+### elasticsearch
+
+`elasticsearch` 在 `nemo` 账号下运行，密码为 `111111`
+
+```bash
+su nemo
+cd ~/lib/elasticsearch-5.5.1
+./bin/elasticsearch
+```
+
 ### 25pin
 
 ```bash
