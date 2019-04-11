@@ -5,7 +5,6 @@
 'use strict';
 
 const DBArticleUtils = require('../db/articleUtils');
-const DBAppUtils = require('../db/appUtils');
 
 module.exports = app => {
 
@@ -14,7 +13,6 @@ module.exports = app => {
       super(ctx);
 
       this.dbArticleUtils = new DBArticleUtils(app);
-      this.dbAppUtils = new DBAppUtils(app);
     }
 
     // 获取到文章信息后，要调用一下该方法来获取标签数据才行
@@ -87,29 +85,22 @@ module.exports = app => {
 
     // 获取所有在线文章列表
     async getAllAvailableList() {
-      let list = [];
-      let result = null;
-      let offset = 0;
-      do {
-        try {
-          result = await this.service.article.getAvailableList(offset, 100);
-          if (result && result.length > 0) {
-            list = list.concat(result);
-            offset = list.length;
+      try {
+        const result = await this.dbArticleUtils.getAllAvailableList();
+        if (result && result.length > 0) {
+          const arr = [];
+          for (let i = 0; i < result.length; i++) {
+            if (result[i] && result[i].id) {
+              arr.push(this.app.config.biz.server + '/article/' + result[i].id);
+            }
           }
-        } catch (e) {
-          this.app.logger.warn(e);
+          return Promise.resolve(arr);
         }
-      } while (result && result.length > 0);
-
-      const arr = [];
-      for (let i = 0; i < list.length; i++) {
-        if (list[i] && list[i].id) {
-          arr.push(this.app.config.biz.server + '/article/' + list[i].id);
-        }
+      } catch (e) {
+        this.app.logger.warn(e);
       }
 
-      return Promise.resolve(arr);
+      return Promise.resolve([]);
     }
 
     async accessOnce(id) {

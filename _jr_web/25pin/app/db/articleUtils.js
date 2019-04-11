@@ -47,6 +47,34 @@ class DBArticleUtils {
     return Promise.resolve([]);
   }
 
+  // for sitemap & es
+  async getAllAvailableList() {
+    try {
+      const result = await this.mysql.select(MArticle.TABLE, {
+        columns: [ 'id', 'title', 'tags' ],
+        where: {
+          status: 1,
+          verify_state: 1,
+        },
+      });
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          arr.push({
+            id: result[i].id,
+            title: result[i].title,
+            tags: result[i].tags,
+          });
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
+  }
+
   /**
    * {Promise} 查询热门文章列表
    * @param {Number} offset 请求列表偏移量

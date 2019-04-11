@@ -14,8 +14,6 @@ nginx -s reload
 
 ### elasticsearch
 
-更多操作可以参考：【[全文搜索引擎 Elasticsearch 入门教程](http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)】
-
 `elasticsearch` 在 `nemo` 账号下运行，密码为 `111111`
 
 ```bash
@@ -53,6 +51,8 @@ curl -X PUT 'localhost:9200/xxx'
 ```bash
 $ curl -X DELETE 'localhost:9200/abc'
 ```
+
+更多操作可以参考：【[全文搜索引擎 Elasticsearch 入门教程](http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)】
 
 ## 项目部署
 
