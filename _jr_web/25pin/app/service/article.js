@@ -41,7 +41,9 @@ module.exports = app => {
     async getDetail(id = 0) {
       const detail = await this.dbArticleUtils.getDetail(id);
 
-      await this.fetchArticlesTags([detail]);
+      if (detail && detail.id) {
+        await this.fetchArticlesTags([detail]);
+      }
 
       return Promise.resolve(detail);
     }
