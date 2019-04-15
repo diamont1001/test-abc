@@ -23,3 +23,31 @@ p {
   margin: 20px 0;
   line-height: 26px;
 }
+
+code {
+  background-color: @colorBorder;
+  .border-radius(3px);
+  font-size: 88%;
+  margin: 0;
+  padding: 2px 4px;
+  color: @colorContent;
+}
+
+pre {
+  code {
+    background-color: @colorBorder+2;
+    .border-radius(3px);
+    font-size: 88%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+    display: block;
+    white-space: normal;
+  }
+}
+
+blockquote {
+  border-left: 2.5px solid @colorBorder;
+  color: @colorContent;
+  padding: 0 10px;
+}
