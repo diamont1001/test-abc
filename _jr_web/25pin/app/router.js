@@ -14,9 +14,12 @@ module.exports = app => {
   router.get('/article/:id', controller.article.index);
 
   // 美图页
-  router.get('/photo', controller.photo.list);
-  router.get('/photo/t_:tag', controller.photo.list);
-  router.get('/photo/:id', controller.photo.index);
+  // router.get('/photo', controller.photo.list);
+  // router.get('/photo/t_:tag', controller.photo.list);
+  // router.get('/photo/:id', controller.photo.index);
+  router.redirect('/photo', '/', 302);
+  router.redirect('/photo/t_:tag', '/', 302);
+  router.redirect('/photo/:id', '/', 302);
 
   // 应用
   router.redirect('/app', '/', 302);

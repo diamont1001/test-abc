@@ -10,7 +10,7 @@ class SitemapController extends Controller {
       this.app.config.biz.server, // 首页
       this.app.config.biz.server + '/article', // 文章列表页
       this.app.config.biz.server + '/article/rank', // 文章排行榜列表页
-      this.app.config.biz.server + '/photo', // 图片列表页
+      // this.app.config.biz.server + '/photo', // 图片列表页
       this.app.config.biz.server + '/onlinegame/snake', // 在线小游戏 - 贪吃蛇
     ];
 
@@ -29,15 +29,15 @@ class SitemapController extends Controller {
     // 文章页
     urls = urls.concat(articleList);
 
-    // 图片tags页
-    for (let i = 0; i < photoTagsList.length; i++) {
-      urls.push(this.app.config.biz.server + '/photo/t_' + photoTagsList[i].id);
-    }
+    // // 图片tags页
+    // for (let i = 0; i < photoTagsList.length; i++) {
+    //   urls.push(this.app.config.biz.server + '/photo/t_' + photoTagsList[i].id);
+    // }
 
-    // 图片详情页
-    for (let i = 0; i < photoIds.length; i++) {
-      urls.push(this.app.config.biz.server + '/photo/' + photoIds[i]);
-    }
+    // // 图片详情页
+    // for (let i = 0; i < photoIds.length; i++) {
+    //   urls.push(this.app.config.biz.server + '/photo/' + photoIds[i]);
+    // }
 
     // 第2000条URL生成一个 urlx.txt，用于推送
     // const fs = require('fs');
