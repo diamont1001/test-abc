@@ -55,12 +55,12 @@ module.exports = app => {
           && result.data && result.data.card && result.data.card.words && result.data.card.words.length > 0) {
           const article = new MArticle({
             id: 10000000 + parseInt(id),
-            title: '【冷知识】' + result.data.card.title,
-            keywords: '冷知识,' + result.data.card.type,
+            title: result.data.card.title,
+            // keywords: result.data.card.type,
             summary: result.data.card.summary,
             content: this.formatContent(result.data.card),
             type: 0,
-            tags: '冷知识',
+            tags: '',
             author: 'goosetalk',
             app: 'com.atonce.goosetalk',
             status: 0,
@@ -68,9 +68,9 @@ module.exports = app => {
             images: encodeURIComponent(result.data.card.image),
           });
 
-          if (result.data.card.title.length < 8) {
-            article.keywords += ',' + result.data.card.title;
-          }
+          // if (result.data.card.title.length < 8) {
+          //   article.keywords += ',' + result.data.card.title;
+          // }
 
           // this.logger.debug(article);
           await this.dbArticleUtils.addArticle(article);

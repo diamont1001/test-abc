@@ -68,10 +68,10 @@ module.exports = app => {
               const article = new MArticle({
                 id: NUM_START_ID + parseInt(id),
                 title,
-                keywords: '冷知识,孕育,怀孕,宝宝,准妈妈,准爸爸',
+                // keywords: '冷知识,孕育,怀孕,宝宝,准妈妈,准爸爸',
                 content: content,
                 type: 0,
-                tags: '孕育',
+                tags: '',
                 author: 'babytree',
                 app: 'com.babytree.apps.pregnancy',
                 status: 0,
