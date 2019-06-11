@@ -219,6 +219,30 @@ class DBArticleUtils {
     }
   }
 
+  // title检索文章
+  async searchByTitle(key='', offset=0, count=20) {
+    let sql = `SELECT id, title FROM ${MArticle.TABLE} WHERE status=1 AND verify_state=1 and title like ? ` +
+      `ORDER BY publish_time DESC limit ${count} offset ${offset}`;
+
+    try {
+      const result = await this.mysql.query(sql, '%' + key + '%');
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          const article = new MArticle(result[i]);
+          arr.push({
+            id: result[i].id,
+            title: result[i].title,
+          });
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
+  }
 
   /****************** tag ******************/
   async getTagList() {

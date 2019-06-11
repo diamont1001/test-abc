@@ -1,0 +1,76 @@
+@import '../../base/reset.less';
+@import '../../base/mixin.less';
+
+.search-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  background: @colorMain;
+  border: none;
+
+  .search-home {
+    display: block;
+    width: 40px;
+    font-size: @sizeTitle;
+    color: @colorMainText;
+    float: left;
+  }
+  .search-input-ok {
+    display: block;
+    width: 40px;
+    font-size: @sizeTitle;
+    color: @colorMainText;
+    float: right;
+    margin-top: -60px;
+  }
+
+  .search-wrap {
+    margin: 0 48px;
+
+    .search-input-key {
+      width: 100%;
+      height: 36px;
+      vertical-align: middle;
+      border: 1px solid @colorBorder;
+      .border-radius(18px);
+      background: @colorBorder + 5;
+      padding: 3px 15px;
+      box-sizing: border-box;
+      font-size: @sizeDesc;
+      color: @colorContent;
+    }
+  }
+}
+
+.list-wall {
+  padding: 60px 15px 0 15px;
+  margin-bottom: 38px;
+
+  .list-ul {
+    .list-li {
+      padding: 15px 0;
+      border-bottom: 1px solid @colorBorder;
+      color: @colorContent;
+
+      a {
+        display: block;
+        color: @colorContent;
+      }
+    }
+  }
+
+  .empty-placeholder {
+    color: @colorTips;
+    text-align: center;
+    margin: 18px;
+  }
+
+  .more {
+    display: block;
+    color: @colorContent;
+    text-align: center;
+    padding: 18px;
+  }
+}

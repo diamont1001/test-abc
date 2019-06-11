@@ -1,0 +1,46 @@
+<% var _layoutVersion = '' %>
+<% if (typeof layoutVersion !== 'undefined') { %>
+  <% _layoutVersion = layoutVersion %>
+<% } %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta name="applicable-device" content="pc,mobile" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+  <title>搜索_瓶子老师学习网</title>
+  <link rel="shortcut icon" href="/public/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/public/bundle/search.css?v=<%= _layoutVersion %>"/>
+</head>
+
+<body>
+  <header class="search-bar">
+    <a class="search-home" href="/">首页</a>
+    <div class="search-wrap">
+      <input class="search-input-key" placeholder="输入搜索关键词" value="<%= key %>"/>
+    </div>
+    <a class="search-input-ok" href="javascript:;">搜索</a>
+  </header>
+  <div class="list-wall">
+    <ul class="list-ul">
+      <% if (typeof list !== 'undefined' && list.length > 0) { %>
+        <%- include('./list.ejs', {list: list}) %>
+      <% } %>
+    </ul>
+    <% if (typeof list !== 'undefined' && list.length >= 20) { %>
+      <a class="more" href="javascript:;" data-key="<%= key %>">查看更多搜索结果</a>
+    <% } else { %>
+      <div class="empty-placeholder">-- 到底了 --</div>
+    <% } %>
+  </div>
+</body>
+
+<script type="text/javascript" src="/public/libs/zepto.min.js?v=<%= _layoutVersion %>"></script>
+<script type="text/javascript" src="/public/bundle/search.js?v=<%= _layoutVersion %>"></script>
+</html>

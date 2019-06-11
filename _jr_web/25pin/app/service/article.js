@@ -109,6 +109,10 @@ module.exports = app => {
       return this.dbArticleUtils.accessOnce(id);
     }
 
+    async searchByTitle(key='', offset=0, count=20) {
+      return this.dbArticleUtils.searchByTitle(key, offset, count);
+    }
+
     async getTagList() {
       return this.dbArticleUtils.getTagList();
     }

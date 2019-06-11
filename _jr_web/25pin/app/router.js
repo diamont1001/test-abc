@@ -39,12 +39,16 @@ module.exports = app => {
   // 帮助页面（非 SEO）
   router.get('/about/contact', controller.about.contact);
 
+  // 搜索页
+  router.get('/search', controller.search.index);
+
   // API
   router.get('/api/getArticleList', controller.article.moreajax); // 文章列表页「加载更多」
   router.get('/api/getPhontList', controller.photo.moreajax); // 图片列表页「加载更多」
   // router.get('/api/getAppHotList', controller.app.moreajax); // 应用列表页「加载更多」
   // router.get('/api/getAppListByDeveloper', controller.developer.moreappajax); // 开发者详情页「加载更多」
   // router.get('/api/getDeveloperList', controller.developer.moreajax); // 开发者列表页「加载更多」
+  router.get('/api/getSearch', controller.search.searchajax); // 搜索
 
   // 搜索引擎相关
   router.get('/robots.txt', controller.home.robots);

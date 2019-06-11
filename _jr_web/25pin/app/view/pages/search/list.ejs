@@ -1,0 +1,5 @@
+<% if (typeof list !== 'undefined' && list.length > 0) { %>
+  <% list.forEach(function(item) { %>
+    <li class="list-li"><a href="/article/<%= item.id %>"><%= item.title %></a></li>
+  <% }); %>
+<% } %>

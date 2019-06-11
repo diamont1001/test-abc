@@ -16,6 +16,7 @@ module.exports = {
     developer: './app/view/pages/developer/index.js',
     developerlist: './app/view/pages/developerlist/index.js',
     snake: './app/view/pages/onlinegame/snake/index.js',
+    search: './app/view/pages/search/index.js',
     contact: './app/view/pages/about/contact/index.js',
   },
   output: {
