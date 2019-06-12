@@ -34,9 +34,10 @@ class HomeController extends Controller {
     const pageNavs = [
       { url: '/article/rank', image: '/public/images/rank.png', name: '排行榜' },
       { url: '/article/t_1', image: '/public/images/tags/article_1.png', name: '冷知识' },
-      { url: '/article/t_2', image: '/public/images/tags/article_2.png', name: '生活小常识' },
+      // { url: '/article/t_2', image: '/public/images/tags/article_2.png', name: '生活小常识' },
       { url: '/article/t_12', image: '/public/images/tags/article_12.png', name: '母婴' },
       { url: '/article/t_7', image: '/public/images/tags/article_7.png', name: '英语' },
+      { url: '/article/t_9', image: '/public/images/tags/article_9.png', name: '游戏' },
       { url: '/article/t_3', image: '/public/images/tags/article_3.png', name: '文学' },
     ];
 

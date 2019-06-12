@@ -75,7 +75,7 @@ module.exports = appInfo => {
   };
 
   // layout 版本号，每次发版前需要把它修改一下
-  config.layoutVersion = '2019061101';
+  config.layoutVersion = '2019061201';
   config.currentYear = new Date().getYear() + 1900;
 
   return config;

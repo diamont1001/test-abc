@@ -1,4 +1,13 @@
+<% var breadcrumbTitle = title %>
+<% if (typeof listType !== 'undefined' && listType === 1) { %>
+  <% breadcrumbTitle = '排行榜' %>
+<% } %>
+
 <%- include('../../modules/header/index.ejs', {}) %>
+
+<% if (typeof breadcrumb !== 'undefined') { %>
+  <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: breadcrumbTitle}) %>
+<% } %>
 
 <% if (typeof tagsList !== 'undefined' && tagsList.length > 0) { %>
   <section class="tags">
