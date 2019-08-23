@@ -8,6 +8,8 @@ html, body {
 body {
   max-width: 677px;
   margin: 0 auto;
+  line-height: 1.7;
+  letter-spacing: .55px;
 }
 
 footer {
@@ -28,7 +30,7 @@ section {
 }
 
 code {
-  background-color: @colorBorder;
+  background-color: @colorBannerBG;
   .border-radius(3px);
   font-size: 88%;
   margin: 0;
@@ -38,10 +40,9 @@ code {
 
 pre {
   code {
-    background-color: @colorBorder+2;
+    background-color: @colorBannerBG;
     .border-radius(3px);
     font-size: 88%;
-    line-height: 1.45;
     overflow: auto;
     padding: 16px;
     display: block;
@@ -50,7 +51,7 @@ pre {
 }
 
 blockquote {
-  border-left: 2.5px solid @colorBorder;
+  border-left: 2.5px solid @colorBannerBG;
   color: @colorContent;
   padding: 0 10px;
 }
