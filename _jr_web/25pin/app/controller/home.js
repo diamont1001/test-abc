@@ -79,6 +79,10 @@ class HomeController extends Controller {
       'Disallow: /search/\n' +
       'Disallow: /about/\n';
   }
+
+  async privacy() {
+    await this.ctx.render('pages/privacy/index.ejs');
+  }
 }
 
 module.exports = HomeController;
