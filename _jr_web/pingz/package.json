@@ -1,0 +1,38 @@
+{
+  "name": "pingz",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "postinstall": "npx jetify",
+    "pod-install": "cd ios && pod install && cd ..",
+    "build-android": "npm run bundle-android && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw && npm run gradlew",
+    "bundle-android": "rm android/app/src/main/assets/index.android.jsbundle && React-native bundle --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.jsbundle --platform android --assets-dest ./android/app/src/main/res/ --dev false",
+    "bundle-ios": "React-native bundle --entry-file index.js  --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle",
+    "gradlew": "cd android && ./gradlew clean && ./gradlew assembleRelease",
+    "install-apk": "adb install ./android/app/build/outputs/apk/release/app-release.apk"
+  },
+  "dependencies": {
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-native-device-info": "^2.3.2",
+    "react-native-navbar": "^2.1.0",
+    "react-native-status-bar-height": "^2.4.0",
+    "react-native-webview": "^6.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.2.2",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
