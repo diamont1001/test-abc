@@ -8,6 +8,7 @@ module.exports = appInfo => {
 
   // add your config here
   config.middleware = [
+    'signature',
     'url',
     'userAgent',
   ];
@@ -31,6 +32,8 @@ module.exports = appInfo => {
     // strict: false,
   };
 
+
+
   // 跳转到 www.25pin.com 的域名
   config.domainList = {
     list: [
@@ -47,6 +50,7 @@ module.exports = appInfo => {
       // enable: false,
       value: 'ALLOW-FROM http://tongji.baidu.com',
     },
+    csrf: false,
   };
 
   config.spider = {
@@ -73,6 +77,8 @@ module.exports = appInfo => {
     app: true,
     agent: false,
   };
+
+  config.signSecret = 'pingz@25pin.com';
 
   // layout 版本号，每次发版前需要把它修改一下
   config.layoutVersion = '2019082301';

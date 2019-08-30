@@ -7,7 +7,9 @@ module.exports = function() {
 
     // console.log(userAgent);
 
-    if (lowerUserAgent.indexOf('mobile') > -1 || lowerUserAgent.indexOf('android') > -1) {
+    if (lowerUserAgent.indexOf('pingz/') > 0) {
+      ctx.deviceType = 'Client';
+    } else if (lowerUserAgent.indexOf('mobile') > -1 || lowerUserAgent.indexOf('android') > -1) {
       ctx.deviceType = 'Mobile';
     } else {
       ctx.deviceType = 'PC';

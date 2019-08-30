@@ -1,5 +1,7 @@
+<% if (!(typeof deviceType !== 'undefined' && deviceType === 'Client')) { %>
 <%- include('../../modules/header/index.ejs', {}) %>
 <%- include('../../modules/breadcrumb/index.ejs', {list: breadcrumb, title: title}) %>
+<% } %>
 
 <div class="article_content">
   <h1>
@@ -20,6 +22,7 @@
   <%- article.contentHtml %>
 </div>
 
+<% if (!(typeof deviceType !== 'undefined' && deviceType === 'Client')) { %>
 <% if (article.tagList && article.tagList.length > 0) { %>
   <div class="tags">
     <ul>
@@ -28,6 +31,7 @@
     <% }) %>
     </ul>
   </div>
+<% } %>
 <% } %>
 
 <div class="article_recommend">

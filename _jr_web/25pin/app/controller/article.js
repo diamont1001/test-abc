@@ -54,7 +54,8 @@ class ArticleController extends Controller {
       dateFormat(date) {
         return this.ctx.helper.stampFormat2Date('Y-m-d H:i:s', date.getTime());
       },
-      encode: Xor.encode
+      encode: Xor.encode,
+      deviceType: this.ctx.deviceType,
     });
   }
 

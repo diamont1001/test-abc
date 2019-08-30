@@ -4,12 +4,14 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "crypto": "^1.0.1",
     "del": "^4.1.0",
     "egg": "^2.2.1",
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.5.0",
     "egg-view-ejs": "^2.0.0",
     "jsdom": "^13.0.0",
+    "md5": "^2.2.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "showdown": "^1.8.6",
@@ -39,7 +41,7 @@
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
-    "node": ">=9.6.0"
+    "node": "10.7.0"
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-25pin-com",

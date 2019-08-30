@@ -50,6 +50,9 @@ module.exports = app => {
   // router.get('/api/getDeveloperList', controller.developer.moreajax); // 开发者列表页「加载更多」
   router.get('/api/getSearch', controller.search.searchajax); // 搜索
 
+  // client api
+  router.post('/client/article.list', controller.client.articleList); // 文章列表查询接口
+
   // 搜索引擎相关
   router.get('/robots.txt', controller.home.robots);
   router.get('/sitemap.xml', controller.sitemap.index);
