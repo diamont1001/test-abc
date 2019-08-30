@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "postinstall": "npx jetify",
     "pod-install": "cd ios && pod install && cd ..",
+    "pod-update": "cd ios && pod update && cd ..",
     "build-android": "npm run bundle-android && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw && npm run gradlew",
     "bundle-android": "rm android/app/src/main/assets/index.android.jsbundle && React-native bundle --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.jsbundle --platform android --assets-dest ./android/app/src/main/res/ --dev false",
     "bundle-ios": "React-native bundle --entry-file index.js  --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle",
@@ -15,12 +16,23 @@
     "install-apk": "adb install ./android/app/build/outputs/apk/release/app-release.apk"
   },
   "dependencies": {
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-device-info": "^2.3.2",
+    "react-native-elements": "^1.1.0",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-idfa": "^4.1.0",
+    "react-native-iphone-x-helper": "^1.2.1",
     "react-native-navbar": "^2.1.0",
+    "react-native-popup-menu": "^0.15.6",
+    "react-native-share": "^2.0.0",
     "react-native-status-bar-height": "^2.4.0",
-    "react-native-webview": "^6.9.0"
+    "react-native-vector-icons": "^6.6.0",
+    "react-native-webview": "^6.9.0",
+    "react-navigation": "^3.12.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

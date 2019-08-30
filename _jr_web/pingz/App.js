@@ -6,164 +6,56 @@
  * @flow
  */
 
-import React, {Fragment, Component} from 'react';
-import {
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  ProgressViewIOS,
-  ProgressBarAndroid,
-} from 'react-native';
+import React, {Fragment} from 'react';
+import {Platform, StyleSheet, ScrollView, SafeAreaView, View} from 'react-native';
+import {createStackNavigator, createSwitchNavigator, createDrawerNavigator, createBottomTabNavigator, createAppContainer} from "react-navigation";
+import {ThemeProvider, Header, Icon} from 'react-native-elements';
+import {MenuProvider} from 'react-native-popup-menu';
 
-import {
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import ArticleListScreen from './src/ArticleListScreen';
+import SettingStack from './src/SettingStack';
+import AboutStack from './src/AboutStack';
+import WebviewStack from './src/WebviewStack';
+// import QrCodeScannerStack from './src/QrCodeScannerStack';
 
-import {WebView} from 'react-native-webview';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
-import NavigationBar from 'react-native-navbar';
-import DeviceInfo from 'react-native-device-info';
+import {ElementsTheme, ThemeColor} from './src/theme';
 
-const mainColor = '#2BB2BC';
-const homePage = 'http://www.25pin.com/';
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentUrl: '',
-      canGoBack: false,
-      progress: 0,
-    };
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <StatusBar barStyle="dark-content" />
-        {/*<NavigationBar
-          title = {{
-            title: DeviceInfo.getApplicationName(),
-            tintColor: mainColor,
-          }}
-          containerStyle={{
-            paddingTop: 12,
-            borderBottomWidth: .5,
-            borderBottomColor: Colors.lighter,
-          }}
-          leftButton={(!this.state.canGoBack || this.state.currentUrl === homePage) ? null : {
-            title: '返回',
-            tintColor: '#b2b2b2',
-            handler: () => this.webview.goBack(),
-          }}
-        />*/}
-        <View style={{height: getStatusBarHeight(true), backgroundColor: 'transparent'}}></View>
-
-          <TouchableOpacity
-            style={{
-              display: (!this.state.canGoBack || this.state.currentUrl === homePage) ? 'none' : 'flex',
-              position: 'absolute',
-              right: 15,
-              top: getStatusBarHeight(true) + 15,
-              zIndex: 10,
-              backgroundColor: 'rgba(0, 0, 0, .2)',
-              borderRadius: 20,
-            }}
-            onPress={() => this.webview.goBack()}
-          >
-            <Text
-              style={{
-                color: '#333',
-                paddingLeft: 12,
-                paddingRight: 12,
-                paddingTop: 6,
-                paddingBottom: 6,
-              }}
-            >返回</Text>
-          </TouchableOpacity>
-        {this.state.progress > 0 && this.state.progress < 1 && Platform.OS === 'ios'
-          ? <ProgressViewIOS
-              progressTintColor={mainColor}
-              progress={this.state.progress}
-            />
-          : null
-        }
-        {this.state.progress > 0 && this.state.progress < 1 && Platform.OS === 'android'
-          ? <ProgressBarAndroid
-              styleAttr={'Horizontal'}
-              indeterminate={false}
-              color={mainColor}
-              progress={this.state.progress}
-            />
-          : null
-        }
-        <WebView
-          ref = {ref => (this.webview = ref)}
-          source = {{uri: homePage}}
-          useWebKit = {true}
-          startInLoadingState = {true}
-          originWhitelist={['http://www.25pin.com']}
-          onLoadProgress = {syntheticEvent => {
-            const {nativeEvent} = syntheticEvent;
-            this.setState({
-              canGoBack: nativeEvent.canGoBack,
-              progress: nativeEvent.progress,
-              currentUrl: nativeEvent.url,
-            });
-            // console.log(syntheticEvent.nativeEvent);
-          }}
-        />
-
-      </Fragment>
-    );
-  }
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.white,
+const MainStack = createStackNavigator({
+  Home: {
+    screen: ArticleListScreen,
+    path: 'home',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  Webview: {
+    screen: WebviewStack,
+    path: 'webview', // ?uri=encodeURIComponent(url)
   },
-  body: {
-    backgroundColor: Colors.white,
+  About: {
+    screen: AboutStack,
+    path: 'about',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  Settings: {
+    screen: SettingStack,
+    path: 'setting',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  // QrScanner: {
+  //   screen: QrCodeScannerStack,
+  //   path: 'qrscanner',
+  // },
+}, {
+  initialRouteName: 'Home',
+  headerMode: 'none',
 });
+
+const MyApp = createAppContainer(MainStack);
+
+const App = () => {
+  return (
+    <ThemeProvider theme={ElementsTheme}>
+      <MenuProvider>
+        <MyApp uriPrefix={'pingz://'} />
+      </MenuProvider>
+    </ThemeProvider>
+  )
+}
 
 export default App;
