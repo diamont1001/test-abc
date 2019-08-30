@@ -47,6 +47,38 @@ class DBArticleUtils {
     return Promise.resolve([]);
   }
 
+  /**
+   * {Promise} 查询可用的文章列表（快速查询-只查询列表有用的字段）
+   * @param {Number} offset 请求列表偏移量
+   * @param {Number} count 请求数量
+   * @param {String} tag 标签
+   * @return {[MArticle]} 返回文章列表
+   */
+  async getAvailableListQuickly(offset = 0, count = 10, tag) {
+    let sql = `SELECT id,title,tags,images,publish_time,update_time,status,verify_state FROM ${MArticle.TABLE} WHERE status=1 AND verify_state=1`;
+
+    if (tag) {
+      sql += ` and FIND_IN_SET("${tag}", tags)`;
+    }
+    sql += ` ORDER BY publish_time DESC limit ${count} offset ${offset}`;
+
+    try {
+      const result = await this.mysql.query(sql);
+
+      if (result && result.length > 0) {
+        const arr = [];
+        for (let i = 0; i < result.length; i++) {
+          const article = new MArticle(result[i]);
+          arr.push(article);
+        }
+        return Promise.resolve(arr);
+      }
+    } catch (error) {
+      this.logger.error(error);
+    }
+    return Promise.resolve([]);
+  }
+
   // for sitemap & es
   async getAllAvailableList() {
     try {

@@ -67,6 +67,15 @@ module.exports = app => {
       return Promise.resolve(list);
     }
 
+    // 获取在线文章列表
+    async getAvailableListQuickly(offset = 0, count = 10, tag) {
+      const list = await this.dbArticleUtils.getAvailableListQuickly(offset, count, tag);
+
+      await this.fetchArticlesTags(list);
+
+      return Promise.resolve(list);
+    }
+
     // 获取热门文章列表
     async getHotList(offset = 0, count = 10) {
       const list = await this.dbArticleUtils.getHotList(offset, count);
