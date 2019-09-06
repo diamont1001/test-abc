@@ -12,7 +12,7 @@ class ClientController extends Controller {
     const offset = parseInt(this.ctx.request.body.offset) || 0;
     const count = parseInt(this.ctx.request.body.count) || parseInt(this.ctx.request.body.limit) || 20;
     const listType = parseInt(this.ctx.request.body.listtype) || 0;
-    const tagId = parseInt(this.ctx.request.body.tag) || 0;
+    const tagId = parseInt(this.ctx.request.body.tag) || parseInt(this.ctx.request.body.tagId) || 0;
 
     let articleList;
 
@@ -22,11 +22,24 @@ class ClientController extends Controller {
       articleList = await this.service.article.getAvailableListQuickly(offset, count, tagId);
     }
 
-    if (articleList && articleList.length > 0) {
-      this.ctx.formatListOutput(articleList);
-    } else {
-      this.ctx.status = 204; // 数据为空
-    }
+    this.ctx.formatListOutput(articleList);
+  }
+
+  async articleSearch() {
+    const offset = parseInt(this.ctx.request.body.offset) || 0;
+    const key = this.ctx.request.body.key || '';
+
+    const list = await this.service.article.searchByTitle(key, offset, 20);
+
+    // this.app.logger.info('[client/articleSearch] key=(' + key + '), offset=(' + offset + ')');
+
+    this.ctx.formatListOutput(list);
+  }
+
+  async tagList() {
+    const list = await this.ctx.service.article.getTagList();
+
+    this.ctx.formatListOutput(list);
   }
 }
 
