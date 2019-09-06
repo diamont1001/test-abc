@@ -8,11 +8,14 @@ import {Platform, StyleSheet, StatusBar, ScrollView, View, SafeAreaView, Linking
 import {Text, Header, Icon} from 'react-native-elements';
 import {WebView} from 'react-native-webview';
 import Share from 'react-native-share';
+import Toast from 'react-native-root-toast';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import DeviceInfo from 'react-native-device-info';
 import HeaderLeftBack from './components/HeaderLeftBack';
 import HeaderIcon from './components/HeaderIcon';
 import HeaderCenterText from './components/HeaderCenterText';
+import HeaderMenus from './components/HeaderMenus';
+import ServerApi from './server/api';
 
 import {AppTheme, ThemeColor} from './theme';
 
@@ -53,6 +56,21 @@ export default class WebviewStack extends Component {
     this.props.navigation.goBack();
   }
 
+  // 收藏
+  onFav = () => {
+    ServerApi.favAdd({
+        url: this.state.url,
+        title: this.state.title,
+      })
+        .then((res) => {
+          Toast.show('收藏成功');
+        })
+        .catch((err) => {
+          // console.warn(err);
+        });
+  }
+
+  // 分享
   onShare = () => {
     Share.open({
         url: this.state.url,
@@ -84,10 +102,20 @@ export default class WebviewStack extends Component {
           rightComponent={
             this.noShare
               ? null
-              : <HeaderIcon
-                icon={{name: 'md-share', type: 'ionicon'}}
-                onPress={this.onShare}
-              />
+              : <HeaderMenus
+                  icon={{name: 'more-horiz'}}
+                  menus={[
+                    {
+                      title: '收藏',
+                      onPress: this.onFav,
+                      disabled: !(this.state.url && this.state.title),
+                    },
+                    {
+                      title: '分享',
+                      onPress: this.onShare,
+                    },
+                  ]}
+                />
           }
         />
         {this.state.progress > 0 && this.state.progress < 1 && Platform.OS === 'ios'
@@ -114,7 +142,7 @@ export default class WebviewStack extends Component {
           userAgent={DeviceInfo.getUserAgent() + ' pingz/' + DeviceInfo.getReadableVersion()}
           onLoadProgress = {syntheticEvent => {
             const {nativeEvent} = syntheticEvent;
-            console.log(nativeEvent);
+            // console.log(nativeEvent);
             this.setState({
               title: nativeEvent.title,
               canGoBack: nativeEvent.canGoBack,

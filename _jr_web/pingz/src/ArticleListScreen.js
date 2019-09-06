@@ -23,7 +23,7 @@ export default class ArticleListScreen extends Component {
     return (
       <View style={AppTheme.pageContainer}>
         <Header
-          // leftComponent={<HeaderIcon icon={{name: 'md-qr-scanner', type: 'ionicon'}} route={'QrScanner'}/>}
+          leftComponent={<HeaderIcon icon={{name: 'star'}} route={'FavList'}/>}
           centerComponent = {<HeaderCenterText text={'瓶子老师冷知识'}/>}
           rightComponent={
             <HeaderMenus

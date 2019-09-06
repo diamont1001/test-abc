@@ -52,7 +52,11 @@ class ScrollViewPull extends React.Component {
   render() {
     const {children, refreshing, endLoadingStatus, style} = this.props;
 
-    const endText = endLoadingStatus === -1 ? '啊欧，到底了╮(￣▽￣")╭' : '加载中...';
+    const endText = endLoadingStatus === -1
+      ? '啊欧，到底了╮(￣▽￣")╭'
+      : endLoadingStatus === 0
+      ? ''
+      : '拼命加载中...';
 
     return (
       <ScrollView
@@ -75,7 +79,7 @@ class ScrollViewPull extends React.Component {
                 height: 45,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: ThemeColor.bgBanner,
+                backgroundColor: endLoadingStatus === 0 ? 'transparent' : ThemeColor.bgBanner,
                 display: (endLoadingStatus === 0 || endLoadingStatus === 1 || endLoadingStatus === -1) ? 'flex' : 'none',
               }}
               >

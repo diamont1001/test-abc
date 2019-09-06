@@ -29,6 +29,7 @@ export const ThemeSize = {
   description: 13,
   tips: 12,
 
+  sectionBannerWidth: 8, // section 的间隔宽
   pagePadding: 15, // 页面的统一 padding
   lineHeight: 1.5, // 文字行距基数（RN里 lineHeight 要乘以字体实际大小）
 };

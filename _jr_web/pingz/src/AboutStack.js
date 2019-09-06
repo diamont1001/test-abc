@@ -32,6 +32,7 @@ export default class AboutStack extends Component {
             <Image
               source={require('./images/icon.png')}
               style={{width: 55, height: 55}}
+              placeholderStyle={{backgroundColor: 'transparent'}}
             />
             <View style={{height: 55, paddingLeft: 12, justifyContent: 'center'}}>
               <Text style={{color: ThemeColor.title, fontSize: 30}}>{DeviceInfo.getApplicationName()}</Text>
