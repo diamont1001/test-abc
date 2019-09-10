@@ -34,6 +34,24 @@ export default class ServerApi {
   }
 
   /**
+   * 文章详情
+   * @param  {Object} params {id}
+   * @return {Promise} -
+   */
+  static async articleDetail(params = {}) {
+    const {
+      id,
+    } = params;
+
+    return ServerProtocol.protocol({
+      api: '/client/article.detail',
+      data: {
+        id: id || 0,
+      },
+    });
+  }
+
+  /**
    * 文章搜索
    * @param  {Object} params {offset, key}
    * @return {Promise} -

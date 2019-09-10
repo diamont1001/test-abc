@@ -25,6 +25,23 @@ class ClientController extends Controller {
     this.ctx.formatListOutput(articleList);
   }
 
+  async articleDetail() {
+    const articleId = parseInt(this.ctx.request.body.id) || 0;
+    const article = await this.service.article.getDetail(articleId);
+
+    // this.app.logger.debug(article);
+
+    if (!article || article.status !== 1) {
+      this.ctx.status = 404;
+      return;
+    }
+
+    // 访问一次，记录一下数据库
+    this.service.article.accessOnce(articleId);
+
+    this.ctx.formatActionOutput(article);
+  }
+
   async articleSearch() {
     const offset = parseInt(this.ctx.request.body.offset) || 0;
     const key = this.ctx.request.body.key || '';

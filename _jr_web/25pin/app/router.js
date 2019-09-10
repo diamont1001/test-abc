@@ -52,6 +52,7 @@ module.exports = app => {
 
   // client api
   router.post('/client/article.list', controller.client.articleList); // 文章列表查询接口
+  router.post('/client/article.detail', controller.client.articleDetail); // 文章详情接口
   router.post('/client/article.search', controller.client.articleSearch); // 文章搜索接口
   router.post('/client/article.tag.list', controller.client.tagList); // 文章标签列表接口
 
