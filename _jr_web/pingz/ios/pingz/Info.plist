@@ -52,6 +52,8 @@
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>瓶子老师App需要您的同意,才能访问媒体资料库</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>瓶子老师App需要您的同意,才能访问蓝牙</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>瓶子老师App需要您的同意,才能访问蓝牙</string>
 	<key>NSCalendarsUsageDescription</key>
