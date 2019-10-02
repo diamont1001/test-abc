@@ -13,7 +13,8 @@ import {ThemeProvider, Header, Icon} from 'react-native-elements';
 import {MenuProvider} from 'react-native-popup-menu';
 
 import ArticleListScreen from './src/ArticleListScreen';
-import DiscoveryScreen from './src/DiscoveryScreen';
+import BaikeScreen from './src/BaikeScreen';
+import ArticleSearchStack from './src/ArticleSearchStack';
 import ArticleByTagStack from './src/ArticleByTagStack';
 import FavListStack from './src/FavListStack';
 import SettingStack from './src/SettingStack';
@@ -28,16 +29,16 @@ const MyTabNavigator = createBottomTabNavigator({
   Home: {
     screen: ArticleListScreen,
     navigationOptions: {
-      title: '首页',
+      title: '冷知识',
     },
     path: 'home',
   },
-  Discovery: {
-    screen: DiscoveryScreen,
+  Baike: {
+    screen: BaikeScreen,
     navigationOptions: {
-      title: '发现',
+      title: '百科',
     },
-    path: 'discovery',
+    path: 'baike',
   },
 }, {
   initialRouteName: 'Home',
@@ -60,12 +61,11 @@ const MyTabNavigator = createBottomTabNavigator({
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       const { routeName } = navigation.state;
       let iconName;
-      let iconType = 'material-community';
+      let iconType = 'simple-line-icon';
       if (routeName === 'Home') {
         iconName = 'home';
-      } else if (routeName === 'Discovery') {
-        iconName = 'search';
-        iconType = 'material';
+      } else if (routeName === 'Baike') {
+        iconName = 'book-open';
       }
 
       return <Icon name={iconName} type={iconType} color={tintColor} />;
@@ -89,6 +89,10 @@ const MainStack = createStackNavigator({
   Settings: {
     screen: SettingStack,
     path: 'setting',
+  },
+  ArticleSearch: {
+    screen: ArticleSearchStack,
+    path: 'articleSearch',
   },
   ArticleTag: {
     screen: ArticleByTagStack,

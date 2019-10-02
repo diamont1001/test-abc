@@ -58,6 +58,10 @@ class ClientController extends Controller {
 
     this.ctx.formatListOutput(list);
   }
+
+  async baikeCateList(cate) {
+    const list = await this.ctx.service.baike.getCateList(cate);
+  }
 }
 
 module.exports = ClientController;

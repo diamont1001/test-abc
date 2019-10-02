@@ -36,13 +36,13 @@ module.exports = app => { // eslint-disable-line no-unused-vars
       // cron: '0 0 4 * * *',
       cron: '0 0 0 31 * 0',
       immediate: true,
-      // disable: true,
+      disable: true,
     },
 
     async task(ctx) {
       // await ctx.service.goosetalk.run(22866, 23500);
       // await ctx.service.babytree.run(26736, 28000);
-      await ctx.service.pcbaby.run(11581, 80000);
+      await ctx.service.pcbaby.run(11581, 90000);
     },
   };
 };

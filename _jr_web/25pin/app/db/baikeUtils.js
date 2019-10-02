@@ -246,7 +246,7 @@ class DBBaikeUtils {
     if (cate) {
       sql += ` and cate=${cate}`;
     }
-    sql += ` order by weight desc, id asc limit ${count} offset ${offset}`;
+    sql += ` order by weight desc, id asc`;
 
     try {
       const result = await this.mysql.query(sql);
@@ -254,7 +254,7 @@ class DBBaikeUtils {
       if (result && result.length > 0) {
         const arr = [];
         for (let i = 0; i < result.length; i++) {
-          const item = new MBaike(result[i]);
+          const item = new MBaikeSubcate(result[i]);
           arr.push(item);
         }
         return Promise.resolve(arr);

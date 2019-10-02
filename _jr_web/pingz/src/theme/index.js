@@ -96,6 +96,8 @@ export const ElementsTheme = {
   Icon: {
     color: ThemeColor.icon,
     underlayColor: 'transparent',
+    type: 'simple-line-icon',
+    size: 20,
   },
   ListItem: {
     containerStyle: {

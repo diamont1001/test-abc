@@ -26,7 +26,7 @@ export class HeaderIcon extends Component {
       icon && icon.name
         ? (<Icon
             name={icon.name}
-            type={icon.type ? icon.type : 'material'}
+            type={icon.type ? icon.type : 'simple-line-icon'}
             iconStyle={{padding: 10, color: ThemeColor.bgText}}
             onPress={(auth || onPress || route)
               ? (() => {
