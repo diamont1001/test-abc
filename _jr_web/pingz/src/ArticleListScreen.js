@@ -23,25 +23,26 @@ export default class ArticleListScreen extends Component {
     return (
       <View style={AppTheme.pageContainer}>
         <Header
-          leftComponent={<HeaderIcon icon={{name: 'star'}} route={'FavList'}/>}
+          leftComponent={<HeaderIcon icon={{name: 'search1', type: 'antdesign'}} route={'ArticleSearch'}/>}
           centerComponent = {<HeaderCenterText text={'冷知识'}/>}
           rightComponent={
-            <View style={{flexDirection: 'row'}}>
-              <HeaderIcon icon={{name: 'search1', type: 'antdesign'}} route={'ArticleSearch'}/>
-              <HeaderMenus
-                icon={{name: 'menu'}}
-                menus={[
-                  {
-                    title: '设置',
-                    route: 'Settings',
-                  },
-                  {
-                    title: '关于',
-                    route: 'About',
-                  },
-                ]}
-              />
-            </View>
+            <HeaderMenus
+              icon={{name: 'options'}}
+              menus={[
+                {
+                  title: '文章收藏',
+                  route: 'FavList',
+                },
+                {
+                  title: '设置',
+                  route: 'Settings',
+                },
+                {
+                  title: '关于',
+                  route: 'About',
+                },
+              ]}
+            />
           }
         />
         <ArticleList />

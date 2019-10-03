@@ -151,4 +151,15 @@ export default class ServerApi {
     }
     return Promise.resolve();
   }
+
+
+  /**
+   * 百科一级分类列表查询
+   * @return {Promise} -
+   */
+  static async baikeCateList() {
+    return ServerProtocol.protocol({
+      api: '/client/baike.cate.list',
+    });
+  }
 }
