@@ -16,6 +16,7 @@ import ArticleListScreen from './src/ArticleListScreen';
 import BaikeScreen from './src/BaikeScreen';
 import ArticleSearchStack from './src/ArticleSearchStack';
 import ArticleByTagStack from './src/ArticleByTagStack';
+import BaikeListStack from './src/BaikeListStack';
 import FavListStack from './src/FavListStack';
 import SettingStack from './src/SettingStack';
 import AboutStack from './src/AboutStack';
@@ -102,6 +103,10 @@ const MainStack = createStackNavigator({
   FavList: {
     screen: FavListStack,
     path: 'articleTag',
+  },
+  BaikeList: {
+    screen: BaikeListStack,
+    path: 'baikeList',
   },
   // QrScanner: {
   //   screen: QrCodeScannerStack,

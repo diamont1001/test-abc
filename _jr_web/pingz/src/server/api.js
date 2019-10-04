@@ -162,4 +162,35 @@ export default class ServerApi {
       api: '/client/baike.cate.list',
     });
   }
+
+  /**
+   * 百科二级分类列表查询
+   * @return {Promise} -
+   */
+  static async baikeSubcateList(cate = 0) {
+    return ServerProtocol.protocol({
+      api: '/client/baike.subcate.list',
+      data: {
+        cate,
+      }
+    });
+  }
+
+  // 通过二级分类来筛选百科列表
+  static async getBaikeListBySubcate(params = {}) {
+    const {
+      offset,
+      limit,
+      subcate,
+    } = params;
+
+    return ServerProtocol.protocol({
+      api: '/client/baike.list',
+      data: {
+        offset: offset || 0,
+        limit: limit || 10,
+        subcate: subcate || 0,
+      },
+    });
+  }
 }

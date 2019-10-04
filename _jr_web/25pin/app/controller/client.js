@@ -70,6 +70,16 @@ class ClientController extends Controller {
 
     this.ctx.formatListOutput(list);
   }
+
+  async baikeListBySubcate() {
+    const offset = parseInt(this.ctx.request.body.offset) || 0;
+    const count = parseInt(this.ctx.request.body.count) || parseInt(this.ctx.request.body.limit) || 20;
+    const cate = parseInt(this.ctx.request.body.cate) || 0;
+    const subcate = parseInt(this.ctx.request.body.subcate) || 0;
+    const list = await this.ctx.service.baike.getList(offset, count, cate, subcate);
+
+    this.ctx.formatListOutput(list);
+  }
 }
 
 module.exports = ClientController;

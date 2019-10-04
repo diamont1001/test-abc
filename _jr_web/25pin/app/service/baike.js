@@ -42,8 +42,12 @@ module.exports = app => {
       return this.dbBaikeUtils.getCateList();
     }
 
-    async getSubCateList(cate) {
-      return this.dbBaikeUtils.getSubCateList(cate);
+    async getSubcateList(cate) {
+      return this.dbBaikeUtils.getSubcateList(cate);
+    }
+
+    async getList(offset = 0, count = 10, cate = 0, subcate = 0) {
+      return this.dbBaikeUtils.getList(offset, count, cate, subcate);
     }
   }
 

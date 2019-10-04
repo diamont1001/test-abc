@@ -57,6 +57,7 @@ module.exports = app => {
   router.post('/client/article.tag.list', controller.client.tagList); // 文章标签列表接口
   router.post('/client/baike.cate.list', controller.client.baikeCateList); // 百科一级分类列表接口
   router.post('/client/baike.subcate.list', controller.client.baikeSubcateList); // 百科二级分类列表接口
+  router.post('/client/baike.list', controller.client.baikeListBySubcate); // 百科列表接口
 
   // 搜索引擎相关
   router.get('/robots.txt', controller.home.robots);
