@@ -94,7 +94,7 @@ export default class WebviewStack extends Component {
             <View style={{flexDirection: 'row'}}>
               <HeaderLeftBack onGoBack={this.onBack} />
               {this.state.canGoBack
-                ? <Icon name={'close'} size={24} type={'antdesign'} iconStyle={{paddingRight: 5, color: ThemeColor.bgText}} onPress={this.onClose}/>
+                ? <Icon name={'close'} size={24} type={'material-community'} iconStyle={{paddingRight: 5, color: ThemeColor.bgText, lineHeight: 29}} onPress={this.onClose}/>
                 : null
               }
             </View>

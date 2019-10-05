@@ -5,7 +5,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Dimensions, View, TouchableOpacity} from 'react-native';
-import {Text, Image, Icon} from 'react-native-elements';
+import {Text, Image, Icon, ListItem} from 'react-native-elements';
 import {withNavigation} from 'react-navigation';
 
 import {AppTheme, ThemeColor, ThemeSize} from '../theme';
@@ -17,29 +17,21 @@ export class BaikeItem extends Component {
     super(props);
   }
 
-  goToDetail() {
-    this.props.navigation.push('Webview', {uri: `http://www.25pin.com/baike/${this.props.baike.id}`});
+  goToDetail = () => {
+    this.props.navigation.push('BaikeDetail', {id: this.props.baike.id});
   }
 
   render() {
     const {baike} = this.props;
 
     return (
-      <TouchableOpacity
-        style={{
-          marginLeft: ThemeSize.pagePadding,
-          marginRight: ThemeSize.pagePadding,
-          paddingBottom: 18,
-          paddingTop: 18,
-          borderTopColor: ThemeColor.border,
-          borderTopWidth: .2,
-          backgroundColor: ThemeColor.bg,
-        }}
-        activeOpacity={1}
-        onPress={() => this.goToDetail()}
-      >
-        <Text>{baike.title}</Text>
-      </TouchableOpacity>
+      <ListItem
+        chevron
+        title={baike.title}
+        titleStyle={{fontSize: ThemeSize.content + 1}}
+        onPress={this.goToDetail}
+        containerStyle={{borderBottomWidth: .5, borderBottomColor: ThemeColor.border}}
+      />
     )
   }
 }

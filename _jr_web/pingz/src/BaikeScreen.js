@@ -4,8 +4,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Dimensions, ScrollView, View, TouchableOpacity} from 'react-native';
-import {Text, Button, Header, Icon, Image, ListItem} from 'react-native-elements';
+import {Platform, StyleSheet, Dimensions, ScrollView, View, TouchableOpacity, FlatList} from 'react-native';
+import {Text, Button, Header, Icon, Image, ListItem, Divider} from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 import DeviceInfo from 'react-native-device-info';
 import ArticleList from './components/ArticleList';
 import HeaderIcon from './components/HeaderIcon';
@@ -28,45 +29,114 @@ export default class ArticleListScreen extends Component {
   }
 
   async componentDidMount() {
+    await this.getBaikeCateFromLocal();
+    await this.getBaikeSubcateFromLocal();
+
     await this.fetchBaikeCateList();
     await this.fetchBaikeSubcateList();
   }
 
-  // 百科一级分类数据
-  fetchBaikeCateList() {
-    ServerApi.baikeCateList()
-      .then((res) => {
-        if (res && res.data && res.data.content) {
-          this.setState({
-            cateList: res.data.content,
-            curCate: res.data.content.length > 0 ? res.data.content[0].id : 0,
-          });
+  // 查询本地保存的一级分类数据
+  async getBaikeCateFromLocal() {
+    AsyncStorage.getItem('_pingz_baike_cate_')
+      .then(res => {
+        try {
+          const cates = JSON.parse(res);
+          if (cates && cates.length > 0) {
+            this.setState({
+              cateList: cates,
+            });
+          }
+          return Promise.resolve();
+        } catch (e) {
+          console.warn(e);
+          return Promise.reject();
         }
       })
-      .catch((err) => {
-        // console.warn(err);
+      .catch(err => {
+        return Promise.reject();
       })
   }
 
-  fetchBaikeSubcateList() {
-    ServerApi.baikeSubcateList()
+  // 查询本地保存的二级分类数据
+  async getBaikeSubcateFromLocal() {
+    AsyncStorage.getItem('_pingz_baike_subcate_')
+      .then(res => {
+        try {
+          const subcateList = JSON.parse(res);
+          if (subcateList && subcateList.length > 0) {
+            this.setState({
+              subcateList,
+            });
+          }
+          return Promise.resolve();
+        } catch (e) {
+          console.warn(e);
+          return Promise.reject();
+        }
+      })
+      .catch(err => {
+        return Promise.reject();
+      })
+  }
+
+  // 百科一级分类数据
+  async fetchBaikeCateList() {
+    ServerApi.baikeCateList()
       .then((res) => {
         if (res && res.data && res.data.content) {
-          this.setState({
-            subcateList: res.data.content,
-          });
+          if (this.state.cateList.length <= 0) {
+            this.setState({
+              cateList: res.data.content,
+              curCate: res.data.content.length > 0 ? res.data.content[0].id : 0,
+            });
+          }
+          // 保存到本地
+          AsyncStorage.setItem('_pingz_baike_cate_', JSON.stringify(res.data.content));
         }
+        return Promise.resolve();
       })
       .catch((err) => {
         // console.warn(err);
+        return Promise.reject();
+      })
+  }
+
+  async fetchBaikeSubcateList() {
+    ServerApi.baikeSubcateList()
+      .then((res) => {
+        if (res && res.data && res.data.content) {
+          if (this.state.subcateList.length <= 0) {
+            this.setState({
+              subcateList: res.data.content,
+            });
+          }
+          // 保存到本地
+          AsyncStorage.setItem('_pingz_baike_subcate_', JSON.stringify(res.data.content));
+        }
+        return Promise.resolve();
+      })
+      .catch((err) => {
+        // console.warn(err);
+        return Promise.reject();
       })
   }
 
   render() {
+    const {cateList, subcateList} = this.state;
+    let curCate = this.state.curCate > 0
+      ? this.state.curCate
+      : this.state.cateList.length  > 0
+      ? this.state.cateList[0].id
+      : 0;
+    const subcates = subcateList.filter((item) => {
+      return item.cate === curCate;
+    })
+
     return (
       <View style={AppTheme.pageContainer}>
         <Header
-          leftComponent={<HeaderIcon icon={{name: 'search1', type: 'antdesign'}} route={'ArticleSearch'}/>}
+          leftComponent={<HeaderIcon icon={{name: 'search1', type: 'antdesign'}} route={'BaikeSearch'}/>}
           centerComponent = {<HeaderCenterText text={'百科'}/>}
           rightComponent={
             <HeaderMenus
@@ -74,7 +144,10 @@ export default class ArticleListScreen extends Component {
               menus={[
                 {
                   title: '百科收藏',
-                  route: 'FavList',
+                  // route: 'FavList',
+                  onPress: () => {
+                    this.props.navigation.push('FavList', {tab: 1});
+                  },
                 },
                 {
                   title: '设置',
@@ -99,24 +172,29 @@ export default class ArticleListScreen extends Component {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         >
-          {this.state.cateList && this.state.cateList.length > 0
-            ? this.state.cateList.map((cate, i) => (
+          {cateList && cateList.length > 0
+            ? cateList.map((cate, i) => (
                 <TouchableOpacity
                   key={`${cate.id}`}
                   activeOpacity={1}
                   style={{
                     borderBottomWidth: 2,
-                    borderBottomColor: cate.id === this.state.curCate ? ThemeColor.primary : ThemeColor.bgBanner,
+                    borderBottomColor: cate.id === curCate ? ThemeColor.primary : ThemeColor.bgBanner,
                   }}
                   onPress={() => {
                     this.setState({
                       curCate: cate.id,
+                    });
+                    // 滚回顶部
+                    this.subcateFlatList && this.subcateFlatList.scrollToIndex({
+                      index: 0, viewOffset: 0, viewPosition: 0,
+                      animated: false,
                     })
                   }}
                 >
                   <Text
                     style={{
-                      color: cate.id === this.state.curCate ? ThemeColor.primary : ThemeColor.title,
+                      color: cate.id === curCate ? ThemeColor.primary : ThemeColor.title,
                       fontSize: ThemeSize.title, paddingTop: 12, paddingBottom: 12, paddingLeft: 8, paddingRight: 8,
                     }}
                   >{cate.name}</Text>
@@ -125,29 +203,24 @@ export default class ArticleListScreen extends Component {
             : null
           }
         </ScrollView>
-        <ScrollView
-          style={{
-          }}
-        >
-          {this.state.subcateList && this.state.subcateList.length > 0
-            ? this.state.subcateList.filter((item) => {
-                return item.cate === this.state.curCate;
-              })
-              .map((subcate, i) => (
+        {subcates && subcates.length > 0
+          ? <FlatList
+              ref = {ref => (this.subcateFlatList = ref)}
+              data={subcates}
+              keyExtractor={(item, index) => `subcate-list-item-${index}`}
+              ItemSeparatorComponent={({highlighted}) => (<Divider />)}
+              renderItem={({item}) => (
                 <ListItem
-                  key={subcate.id}
                   chevron
-                  title={subcate.name}
-                  // titleStyle={{fontSize: ThemeSize.content + 1}}
-                  containerStyle={{borderBottomWidth: .5, borderBottomColor: ThemeColor.border}}
+                  title={item.name}
                   onPress={() => {
-                    this.props.navigation.push('BaikeList', {subcate: subcate.id, subcateName: subcate.name});
+                    this.props.navigation.push('BaikeList', {subcate: item.id, subcateName: item.name});
                   }}
                 />
-              ))
-            : null
-          }
-        </ScrollView>
+              )}
+            />
+          : <EmptyBlock />
+        }
       </View>
     )
   }

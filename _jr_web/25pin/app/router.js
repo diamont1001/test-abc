@@ -58,6 +58,8 @@ module.exports = app => {
   router.post('/client/baike.cate.list', controller.client.baikeCateList); // 百科一级分类列表接口
   router.post('/client/baike.subcate.list', controller.client.baikeSubcateList); // 百科二级分类列表接口
   router.post('/client/baike.list', controller.client.baikeListBySubcate); // 百科列表接口
+  router.post('/client/baike.detail', controller.client.baikeDetail); // 百科详情接口
+  router.post('/client/baike.search', controller.client.baikeSearch); // 百科搜索接口
 
   // 搜索引擎相关
   router.get('/robots.txt', controller.home.robots);

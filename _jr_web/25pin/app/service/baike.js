@@ -49,6 +49,10 @@ module.exports = app => {
     async getList(offset = 0, count = 10, cate = 0, subcate = 0) {
       return this.dbBaikeUtils.getList(offset, count, cate, subcate);
     }
+
+    async searchByTitle(key='', offset=0, count=20) {
+      return this.dbBaikeUtils.searchByTitle(key, offset, count);
+    }
   }
 
   return ArticleSerivce;

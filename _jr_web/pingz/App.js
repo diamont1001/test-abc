@@ -15,8 +15,10 @@ import {MenuProvider} from 'react-native-popup-menu';
 import ArticleListScreen from './src/ArticleListScreen';
 import BaikeScreen from './src/BaikeScreen';
 import ArticleSearchStack from './src/ArticleSearchStack';
+import BaikeSearchStack from './src/BaikeSearchStack';
 import ArticleByTagStack from './src/ArticleByTagStack';
 import BaikeListStack from './src/BaikeListStack';
+import BaikeDetailStack from './src/BaikeDetailStack';
 import FavListStack from './src/FavListStack';
 import SettingStack from './src/SettingStack';
 import AboutStack from './src/AboutStack';
@@ -107,6 +109,14 @@ const MainStack = createStackNavigator({
   BaikeList: {
     screen: BaikeListStack,
     path: 'baikeList',
+  },
+  BaikeDetail: {
+    screen: BaikeDetailStack,
+    path: 'baike',
+  },
+  BaikeSearch: {
+    screen: BaikeSearchStack,
+    path: 'baikeSearch',
   },
   // QrScanner: {
   //   screen: QrCodeScannerStack,

@@ -70,7 +70,7 @@ export default class BaikeList extends Component {
     ServerApi.getBaikeListBySubcate({
       offset: this.state.list.length,
       subcate: this.props.subcate,
-      limit: 10,
+      limit: 20,
     })
       .then((res) => {
         if (res && res.data && res.data.content && res.data.content.length > 0) {

@@ -193,4 +193,113 @@ export default class ServerApi {
       },
     });
   }
+
+  /**
+   * 百科详情
+   * @param  {Object} params {id}
+   * @return {Promise} -
+   */
+  static async baikeDetail(params = {}) {
+    const {
+      id,
+    } = params;
+
+    return ServerProtocol.protocol({
+      api: '/client/baike.detail',
+      data: {
+        id: id || 0,
+      },
+    });
+  }
+
+  /**
+   * 百科搜索
+   * @param  {Object} params {offset, key}
+   * @return {Promise} -
+   */
+  static async baikeSearch(params = {}) {
+    const {
+      offset,
+      key,
+    } = params;
+
+    return ServerProtocol.protocol({
+      api: '/client/baike.search',
+      data: {
+        offset: offset || 0,
+        key: key || '',
+      },
+    });
+  }
+
+  /**
+   * 添加收藏
+   * @param  {Object} params {id, title}
+   * @return {Promise} -
+   */
+  static async baikeFavAdd(params = {}) {
+    const id = params.id || params.uri;
+    const title = params.title || params.name;
+
+    try {
+      const favList = JSON.parse(await AsyncStorage.getItem('_pingz_baike_fav_'));
+
+      if (typeof favList === 'object' && favList.length > 0) {
+        favList.unshift({
+          id,
+          title,
+        });
+        await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify(favList));
+      } else {
+        await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify([{id, title}]));
+      }
+    } catch (e) {
+      // console.warn(e);
+      await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify([{id, title}]));
+    }
+    return Promise.resolve();
+  }
+
+  /**
+   * 取消收藏
+   * @param  {Object} params {id}
+   * @return {Promise} -
+   */
+  static async baikeFavDelete(params = {}) {
+    const id = params.id || params.uri;
+
+    if (!id) {
+      return Promise.resolve();
+    }
+
+    try {
+      const favList = JSON.parse(await AsyncStorage.getItem('_pingz_baike_fav_'));
+
+      if (typeof favList === 'object' && favList.length > 0) {
+        for (let i = 0; i < favList.length; i++) {
+          if (favList[i] && favList[i].id === id) {
+            favList.splice(i, 1);
+            break;
+          }
+        }
+      }
+      await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify(favList));
+    } catch (e) {
+      // console.warn(e);
+    }
+    return Promise.resolve();
+  }
+
+  /**
+   * 清空收藏
+   * @return {Promise} -
+   */
+  static async baikeFavClear() {
+    try {
+      await AsyncStorage.removeItem('_pingz_baike_fav_');
+    } catch (e) {
+      // console.warn(e);
+    }
+    return Promise.resolve();
+  }
 }

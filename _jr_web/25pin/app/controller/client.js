@@ -80,6 +80,32 @@ class ClientController extends Controller {
 
     this.ctx.formatListOutput(list);
   }
+
+  async baikeDetail() {
+    const baikeId = parseInt(this.ctx.request.body.id) || 0;
+    const baike = await this.service.baike.getDetail(baikeId);
+
+    // this.app.logger.debug(baike);
+
+    if (!baike || baike.status !== 1) {
+      this.ctx.status = 404;
+      return;
+    }
+
+    // 访问一次，记录一下数据库
+    this.service.baike.accessOnce(baikeId);
+
+    this.ctx.formatActionOutput(baike);
+  }
+
+  async baikeSearch() {
+    const offset = parseInt(this.ctx.request.body.offset) || 0;
+    const key = this.ctx.request.body.key || '';
+
+    const list = await this.service.baike.searchByTitle(key, offset, 20);
+
+    this.ctx.formatListOutput(list);
+  }
 }
 
 module.exports = ClientController;

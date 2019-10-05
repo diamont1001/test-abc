@@ -20,7 +20,9 @@ export class HeaderLeftBack extends Component {
     return (
       !title
         ? <Icon
-            name={'arrow-left'}
+            name={'chevron-left'}
+            size={28}
+            type={'material-community'}
             iconStyle={{paddingRight: 10, color: ThemeColor.bgText}}
             onPress={() => {
               if (onGoBack) {
@@ -34,7 +36,7 @@ export class HeaderLeftBack extends Component {
             type={'clear'}
             title={typeof title === 'string' ? title : '返回'}
             titleStyle={{color: ThemeColor.bgText}}
-            icon={{name: 'arrow-left', color: ThemeColor.bgText}}
+            icon={{name: 'chevron-left', color: ThemeColor.bgText}}
             buttonStyle={{
               paddingLeft: 0,
             }}
