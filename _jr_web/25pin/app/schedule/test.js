@@ -42,7 +42,7 @@ module.exports = app => { // eslint-disable-line no-unused-vars
     async task(ctx) {
       // await ctx.service.goosetalk.run(22866, 23500);
       // await ctx.service.babytree.run(26736, 28000);
-      await ctx.service.pcbaby.run(80000, 100000);
+      await ctx.service.pcbaby.run(1, 100000);
     },
   };
 };
