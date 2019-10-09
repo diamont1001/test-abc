@@ -14,6 +14,8 @@
 
 ```bash
 yarn install
+yarn pod-install
+yarn pod-update
 
 # ios 平台
 react-native run-ios
@@ -24,6 +26,8 @@ react-native run-android
 # android 平台最终测试（js全部打包进去）
 react-native run-android --variant=release
 ```
+
+`react-native run-ios` 只是运行应用的方式之一。你也可以在 Xcode 中直接运行应用。注意0.60版本之后的Xcode主项目文件是.xcworkspace，不是.xcodeproj。
 
 ### 安卓真机调试
 
