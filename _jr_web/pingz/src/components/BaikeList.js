@@ -94,11 +94,9 @@ export default class BaikeList extends Component {
   }
 
   render() {
-    const {} = this.props;
-
     return (
       <ScrollViewPull
-        style={{}}
+        style={{marginLeft: ThemeSize.pagePadding}}
         refreshing={this.state.refreshing} // 是否开始下拉刷新动画
         onRefresh={() => this.refreshList()} // 下拉刷新回调
         endLoadingStatus={this.state.endLoadingStatus}

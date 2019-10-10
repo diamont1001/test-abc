@@ -28,9 +28,9 @@ export class BaikeItem extends Component {
       <ListItem
         chevron
         title={baike.title}
-        titleStyle={{fontSize: ThemeSize.content + 1}}
+        titleStyle={{fontSize: ThemeSize.title}}
         onPress={this.goToDetail}
-        containerStyle={{borderBottomWidth: .5, borderBottomColor: ThemeColor.border}}
+        containerStyle={{borderBottomWidth: .5, borderBottomColor: ThemeColor.border, height: 58}}
       />
     )
   }

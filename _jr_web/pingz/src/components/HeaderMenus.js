@@ -18,7 +18,7 @@ export class HeaderMenus extends Component {
 
   render() {
     const {
-      icon, // {name, type}
+      icon, // {name, type, color}
       /**
        * menus {array} 菜单数组
        *   - menus.title {string} 菜单title

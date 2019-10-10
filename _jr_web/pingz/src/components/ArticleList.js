@@ -28,6 +28,7 @@ export default class ArticleList extends Component {
   static defaultProps = {
     listType: 0,
     tagId: 0,
+    containerStyle: null,
   };
 
   componentDidMount() {
@@ -101,7 +102,7 @@ export default class ArticleList extends Component {
 
     return (
       <ScrollViewPull
-        style={{}}
+        style={this.props.containerStyle}
         refreshing={this.state.refreshing} // 是否开始下拉刷新动画
         onRefresh={() => this.refreshList()} // 下拉刷新回调
         endLoadingStatus={this.state.endLoadingStatus}

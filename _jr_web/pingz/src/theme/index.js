@@ -7,17 +7,23 @@
 
 import {Platform, StyleSheet} from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
+import {
+  Colors, // https://github.com/facebook/react-native/blob/master/Libraries/NewAppScreen/components/Colors.js
+} from 'react-native/Libraries/NewAppScreen';
 
 export const ThemeColor = {
   primary: '#2BB2BC', // 主色调 #4bde77
   bgText: 'snow', // 主色调上的文字颜色
-  bg: 'white', // 页面常规背景颜色
+  bg: Colors.white, // 页面常规背景颜色
   // bg: '#F5FCFF', // 页面常规背景颜色
-  bgBanner: '#F7F7F7', // 页头页尾背景颜色
-  text: '#353535', // 普通文字颜色
+  bgBanner: Colors.lighter, // 页头页尾背景颜色 '#F7F7F7'
+  bgBlock: Colors.light, // 块元素背景颜色
+  title: Colors.black, // Title 文字颜色
+  text: Colors.dark, // 普通文字颜色 '#353535'
+  content: Colors.dark, //  普通文字颜色（同 text，兼容 ThemeColor.content 的写法）
   tips: '#b2b2b2', // Tips 文字颜色
   border: '#efefef', // Border颜色
-  icon: '#888', // icon颜色
+  icon: Colors.dark, // icon颜色 '#888'
   description: '#969696', // 描述文字颜色
   link: 'deepskyblue', // 链接颜色
   heart: '#e64340', // 红心的颜色
@@ -25,6 +31,7 @@ export const ThemeColor = {
 
 export const ThemeSize = {
   title: 16,
+  text: 14,
   content: 14,
   description: 13,
   tips: 12,
@@ -36,7 +43,7 @@ export const ThemeSize = {
 
 export const HeaderHeight = Platform.select({
     android: 56,
-    default: 44,
+    default: 56,
   }) + getStatusBarHeight(true);
 
 // UI主题

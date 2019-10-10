@@ -79,7 +79,8 @@ class ScrollViewPull extends React.Component {
                 height: 45,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: endLoadingStatus === 0 ? 'transparent' : ThemeColor.bgBanner,
+                // backgroundColor: endLoadingStatus === 0 ? 'transparent' : ThemeColor.bgBanner,
+                backgroundColor: 'transparent',
                 display: (endLoadingStatus === 0 || endLoadingStatus === 1 || endLoadingStatus === -1) ? 'flex' : 'none',
               }}
               >

@@ -6,12 +6,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Dimensions, ScrollView, View} from 'react-native';
 import {Text, Button, Header, Icon, Image, SearchBar, ListItem} from 'react-native-elements';
-import DeviceInfo from 'react-native-device-info';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
-import HeaderIcon from './components/HeaderIcon';
-import HeaderLeftBack from './components/HeaderLeftBack';
-import HeaderCenterText from './components/HeaderCenterText';
-import HeaderMenus from './components/HeaderMenus';
 import ScrollViewPull from './components/ScrollViewPull';
 import EmptyBlock from './components/EmptyBlock';
 import ServerApi from './server/api';
@@ -135,7 +130,6 @@ export default class ArticleSearchStack extends Component {
             paddingLeft: 12,
           }}
         >
-          <HeaderLeftBack />
           <SearchBar
             ref={search => this.search = search}
             placeholder={'输入搜索词'}
@@ -149,6 +143,22 @@ export default class ArticleSearchStack extends Component {
             }}
             inputContainerStyle={{
               backgroundColor: ThemeColor.bgBanner,
+              borderRadius: 25,
+            }}
+          />
+          <Button
+            type={'clear'}
+            title={'取消'}
+            titleStyle={{color: ThemeColor.bgText}}
+            buttonStyle={{
+              paddingLeft: 10,
+              paddingRight: 10 + 5,
+            }}
+            containerStyle={{
+              backgroundColor: 'transparent',
+            }}
+            onPress={() => {
+                this.props.navigation.goBack();
             }}
           />
         </View>

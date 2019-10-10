@@ -4,20 +4,18 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Dimensions, ScrollView, View, TouchableOpacity, FlatList} from 'react-native';
+import {Platform, StyleSheet, Dimensions, StatusBar, ScrollView, View, TouchableOpacity, FlatList} from 'react-native';
 import {Text, Button, Header, Icon, Image, ListItem, Divider} from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
-import DeviceInfo from 'react-native-device-info';
-import ArticleList from './components/ArticleList';
-import HeaderIcon from './components/HeaderIcon';
-import HeaderCenterText from './components/HeaderCenterText';
 import HeaderMenus from './components/HeaderMenus';
+import MyHeader from './components/MyHeader';
+import SearchBarNavi from './components/SearchBarNavi';
 import EmptyBlock from './components/EmptyBlock';
 import ServerApi from './server/api';
 
-import {AppTheme, ThemeColor, ThemeSize} from './theme';
+import {AppTheme, ThemeColor, ThemeSize, HeaderHeight} from './theme';
 
-export default class ArticleListScreen extends Component {
+export default class BaikeScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -135,16 +133,15 @@ export default class ArticleListScreen extends Component {
 
     return (
       <View style={AppTheme.pageContainer}>
-        <Header
-          leftComponent={<HeaderIcon icon={{name: 'search1', type: 'antdesign'}} route={'BaikeSearch'}/>}
-          centerComponent = {<HeaderCenterText text={'百科'}/>}
-          rightComponent={
+        <StatusBar barStyle={'light-content'} />
+        <MyHeader style={{position: 'relative', backgroundColor: ThemeColor.primary}}>
+          <SearchBarNavi route={'BaikeSearch'} />
+          <View style={{flex: 0}}>
             <HeaderMenus
               icon={{name: 'options'}}
               menus={[
                 {
                   title: '百科收藏',
-                  // route: 'FavList',
                   onPress: () => {
                     this.props.navigation.push('FavList', {tab: 1});
                   },
@@ -159,68 +156,132 @@ export default class ArticleListScreen extends Component {
                 },
               ]}
             />
-          }
-        />
-        <ScrollView
+          </View>
+        </MyHeader>
+        {/*<View
           style={{
-            flexGrow: 0,
-            paddingLeft: 7,
-            paddingRight: 7,
-            paddingBottom: 2,
+            paddingTop: 4,
+            alignItems: 'flex-start',
             backgroundColor: ThemeColor.bgBanner,
           }}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
+        >
+          <ScrollView
+            style={{
+              flexGrow: 0,
+              paddingLeft: 7,
+              paddingRight: 7,
+              paddingBottom: 4,
+              backgroundColor: ThemeColor.bgBanner,
+            }}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          >
+            {cateList && cateList.length > 0
+              ? cateList.map((cate, i) => (
+                  <TouchableOpacity
+                    key={`${cate.id}`}
+                    activeOpacity={1}
+                    style={{
+                      height: 40,
+                      justifyContent: 'center',
+                    }}
+                    onPress={() => {
+                      this.setState({
+                        curCate: cate.id,
+                      });
+                      // 滚回顶部
+                      this.subcateFlatList && this.subcateFlatList.scrollToIndex({
+                        index: 0, viewOffset: 0, viewPosition: 0,
+                        animated: false,
+                      })
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: cate.id === curCate ? ThemeColor.title : ThemeColor.text,
+                        fontSize: cate.id === curCate ? ThemeSize.title + 6 : ThemeSize.title,
+                        paddingLeft: 8, paddingRight: 8,
+                      }}
+                    >{cate.name}</Text>
+                  </TouchableOpacity>
+                ))
+              : null
+            }
+          </ScrollView>
+        </View>*/}
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1,
+          }}
         >
           {cateList && cateList.length > 0
-            ? cateList.map((cate, i) => (
-                <TouchableOpacity
-                  key={`${cate.id}`}
-                  activeOpacity={1}
-                  style={{
-                    borderBottomWidth: 2,
-                    borderBottomColor: cate.id === curCate ? ThemeColor.primary : ThemeColor.bgBanner,
-                  }}
-                  onPress={() => {
-                    this.setState({
-                      curCate: cate.id,
-                    });
-                    // 滚回顶部
-                    this.subcateFlatList && this.subcateFlatList.scrollToIndex({
-                      index: 0, viewOffset: 0, viewPosition: 0,
-                      animated: false,
-                    })
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: cate.id === curCate ? ThemeColor.primary : ThemeColor.title,
-                      fontSize: ThemeSize.title, paddingTop: 12, paddingBottom: 12, paddingLeft: 8, paddingRight: 8,
-                    }}
-                  >{cate.name}</Text>
-                </TouchableOpacity>
-              ))
-            : null
+            ? <ScrollView
+                style={{
+                  flexGrow: 0,
+                  width: 128,
+                  backgroundColor: ThemeColor.bgBlock,
+                }}
+                showsVerticalScrollIndicator={false}
+              >
+                {cateList && cateList.length > 0
+                  ? cateList.map((cate, i) => (
+                      <TouchableOpacity
+                        key={`${cate.id}`}
+                        // activeOpacity={1}
+                        style={{
+                          height: 69,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: cate.id === curCate ? ThemeColor.bg : ThemeColor.bgBlock,
+                          borderBottomColor: ThemeColor.border,
+                          borderBottomWidth: 1,
+                          borderRightColor: ThemeColor.border,
+                          borderRightWidth: cate.id === curCate ? 0 : 1,
+                        }}
+                        onPress={() => {
+                          this.setState({
+                            curCate: cate.id,
+                          });
+                          // 滚回顶部
+                          this.subcateFlatList && this.subcateFlatList.scrollToIndex({
+                            index: 0, viewOffset: 0, viewPosition: 0,
+                            animated: false,
+                          })
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: cate.id === curCate ? ThemeColor.primary : ThemeColor.title,
+                            fontWeight: cate.id === curCate ? 'bold' : 'normal',
+                            fontSize: ThemeSize.title,
+                            paddingLeft: 8, paddingRight: 8,
+                          }}
+                        >{cate.name}</Text>
+                      </TouchableOpacity>
+                    ))
+                  : null
+                }
+              </ScrollView>
+            : <EmptyBlock />
           }
-        </ScrollView>
-        {subcates && subcates.length > 0
-          ? <FlatList
-              ref = {ref => (this.subcateFlatList = ref)}
-              data={subcates}
-              keyExtractor={(item, index) => `subcate-list-item-${index}`}
-              ItemSeparatorComponent={({highlighted}) => (<Divider />)}
-              renderItem={({item}) => (
-                <ListItem
-                  chevron
-                  title={item.name}
-                  onPress={() => {
-                    this.props.navigation.push('BaikeList', {subcate: item.id, subcateName: item.name});
-                  }}
-                />
-              )}
-            />
-          : <EmptyBlock />
-        }
+          <FlatList
+            ref = {ref => (this.subcateFlatList = ref)}
+            data={subcates}
+            keyExtractor={(item, index) => `subcate-list-item-${index}`}
+            ItemSeparatorComponent={({highlighted}) => (<Divider />)}
+            renderItem={({item}) => (
+              <ListItem
+                chevron
+                title={item.name}
+                onPress={() => {
+                  this.props.navigation.push('BaikeList', {subcate: item.id, subcateName: item.name});
+                }}
+              />
+            )}
+            ListEmptyComponent={<EmptyBlock />}
+          />
+        </View>
       </View>
     )
   }

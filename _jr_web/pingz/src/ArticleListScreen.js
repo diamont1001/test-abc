@@ -4,15 +4,14 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Dimensions, ScrollView, View} from 'react-native';
+import {Platform, StyleSheet, Dimensions, StatusBar, ScrollView, View} from 'react-native';
 import {Text, Button, Header, Icon, Image} from 'react-native-elements';
-import DeviceInfo from 'react-native-device-info';
 import ArticleList from './components/ArticleList';
-import HeaderIcon from './components/HeaderIcon';
-import HeaderCenterText from './components/HeaderCenterText';
+import MyHeader from './components/MyHeader';
+import SearchBarNavi from './components/SearchBarNavi';
 import HeaderMenus from './components/HeaderMenus';
 
-import {AppTheme, ThemeColor, ThemeSize} from './theme';
+import {AppTheme, ThemeColor, ThemeSize, HeaderHeight} from './theme';
 
 export default class ArticleListScreen extends Component {
   constructor(props) {
@@ -22,10 +21,10 @@ export default class ArticleListScreen extends Component {
   render() {
     return (
       <View style={AppTheme.pageContainer}>
-        <Header
-          leftComponent={<HeaderIcon icon={{name: 'search1', type: 'antdesign'}} route={'ArticleSearch'}/>}
-          centerComponent = {<HeaderCenterText text={'冷知识'}/>}
-          rightComponent={
+        <StatusBar barStyle={'light-content'} />
+        <MyHeader style={{position: 'relative', backgroundColor: ThemeColor.primary}}>
+          <SearchBarNavi route={'ArticleSearch'} />
+          <View style={{flex: 0}}>
             <HeaderMenus
               icon={{name: 'options'}}
               menus={[
@@ -43,9 +42,9 @@ export default class ArticleListScreen extends Component {
                 },
               ]}
             />
-          }
-        />
-        <ArticleList />
+          </View>
+        </MyHeader>
+        <ArticleList/>
       </View>
     )
   }

@@ -16,7 +16,7 @@ export class HeaderIcon extends Component {
 
   render() {
     const {
-      icon, // {name, type}
+      icon, // {name, type, color}
       auth, // {true/false} 是否需要登录检测
       onPress, // {function} 优先，如果有传这个则忽略 route
       route, // 点击后的路由（onPress 参数优先）
@@ -27,7 +27,7 @@ export class HeaderIcon extends Component {
         ? (<Icon
             name={icon.name}
             type={icon.type ? icon.type : 'simple-line-icon'}
-            iconStyle={{padding: 10, color: ThemeColor.bgText}}
+            iconStyle={{padding: 10, color: icon && icon.color ? icon.color : ThemeColor.bgText}}
             onPress={(auth || onPress || route)
               ? (() => {
                   if (onPress && typeof onPress === 'function') {

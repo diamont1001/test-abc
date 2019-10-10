@@ -37,8 +37,8 @@ export class ArticleItem extends Component {
           marginRight: ThemeSize.pagePadding,
           paddingBottom: 18,
           paddingTop: 18,
-          borderTopColor: ThemeColor.border,
-          borderTopWidth: .2,
+          borderBottomColor: ThemeColor.border,
+          borderBottomWidth: .5,
           backgroundColor: ThemeColor.bg,
         }}
         activeOpacity={1}

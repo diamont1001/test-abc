@@ -37,7 +37,7 @@ export default class SettingStack extends Component {
                 alignItems: 'center',
               }}
             >
-              <Text style={styles.bannerTitle}>{'有趣冷知识，生活小常识'}</Text>
+              <Text style={styles.bannerTitle}>{'有趣冷知识，小常识百科'}</Text>
               <Text style={styles.bannerDesc}>{DeviceInfo.getApplicationName()} {DeviceInfo.getReadableVersion()}</Text>
             </View>
           )}
