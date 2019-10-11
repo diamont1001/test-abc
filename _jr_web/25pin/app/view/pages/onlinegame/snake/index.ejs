@@ -1,4 +1,6 @@
-<%- include('../../../modules/header/index.ejs', {}) %>
+<% if (!(typeof deviceType !== 'undefined' && deviceType === 'Client')) { %>
+  <%- include('../../../modules/header/index.ejs', {}) %>
+<% } %>
 
 <section class="onlinegame">
   <h1>贪吃蛇</h1>
