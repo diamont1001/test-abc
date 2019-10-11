@@ -82,7 +82,7 @@ export default class ServerApi {
   }
 
   /**
-   * 添加收藏
+   * 添加文章收藏
    * @param  {Object} params {url, title}
    * @return {Promise} -
    */
@@ -98,7 +98,18 @@ export default class ServerApi {
           url,
           title,
         });
-        await AsyncStorage.setItem('_pingz_fav_', JSON.stringify(favList));
+
+        // 去重
+        const hash = {};
+        const listFormat = favList.filter((item) => {
+          if (hash[item.url]) {
+            return false;
+          }
+          hash[item.url] = true;
+          return true;
+        });
+
+        await AsyncStorage.setItem('_pingz_fav_', JSON.stringify(listFormat));
       } else {
         await AsyncStorage.setItem('_pingz_fav_', JSON.stringify([{url, title}]));
       }
@@ -109,8 +120,24 @@ export default class ServerApi {
     return Promise.resolve();
   }
 
+  // 文章收藏列表
+  static async favList() {
+    try {
+      const data = await AsyncStorage.getItem('_pingz_fav_');
+      const list = JSON.parse(data);
+
+      if (typeof list === 'object' && list.length > 0) {
+        return Promise.resolve(list);
+      }
+      return Promise.resolve([]);
+    } catch (err) {
+      console.warn(err);
+      return Promise.resolve([]);
+    }
+  }
+
   /**
-   * 取消收藏
+   * 取消文章收藏
    * @param  {Object} params {url}
    * @return {Promise} -
    */
@@ -232,6 +259,22 @@ export default class ServerApi {
     });
   }
 
+  // 百科收藏列表
+  static async baikeFavList() {
+    try {
+      const data = await AsyncStorage.getItem('_pingz_baike_fav_');
+      const list = JSON.parse(data);
+
+      if (typeof list === 'object' && list.length > 0) {
+        return Promise.resolve(list);
+      }
+      return Promise.resolve([]);
+    } catch (err) {
+      console.warn(err);
+      return Promise.resolve([]);
+    }
+  }
+
   /**
    * 添加收藏
    * @param  {Object} params {id, title}
@@ -249,7 +292,18 @@ export default class ServerApi {
           id,
           title,
         });
-        await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify(favList));
+
+        // 去重
+        const hash = {};
+        const listFormat = favList.filter((item) => {
+          if (hash[item.id]) {
+            return false;
+          }
+          hash[item.id] = true;
+          return true;
+        });
+
+        await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify(listFormat));
       } else {
         await AsyncStorage.setItem('_pingz_baike_fav_', JSON.stringify([{id, title}]));
       }

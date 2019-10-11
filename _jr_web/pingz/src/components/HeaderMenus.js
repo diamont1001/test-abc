@@ -44,7 +44,7 @@ export class HeaderMenus extends Component {
             <MenuOptions
               customStyles={{
                 optionsContainer: {
-                  width: 118,
+                  width: 128,
                 },
                 optionsWrapper: {
                   padding: 4,

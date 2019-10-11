@@ -23,7 +23,7 @@ export default class ArticleListScreen extends Component {
       <View style={AppTheme.pageContainer}>
         <StatusBar barStyle={'light-content'} />
         <MyHeader style={{position: 'relative', backgroundColor: ThemeColor.primary}}>
-          <SearchBarNavi route={'ArticleSearch'} />
+          <SearchBarNavi route={'ArticleSearch'} title={'文章搜索'} />
           <View style={{flex: 0}}>
             <HeaderMenus
               icon={{name: 'options'}}

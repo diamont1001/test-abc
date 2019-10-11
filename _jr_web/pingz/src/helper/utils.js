@@ -27,4 +27,13 @@ export default {
       return number + '';
     }
   },
+
+  // 数据去重
+  arrayUnique: (arr) => {
+    if (!Array.isArray(arr)) {
+      console.warn('[arrayUnique] type error.');
+      return [];
+    }
+    return Array.from(new Set(arr));
+  }
 };

@@ -112,7 +112,7 @@ export default class BaikeSearchStack extends Component {
         >
           <SearchBar
             ref={search => this.search = search}
-            placeholder={'输入搜索词'}
+            placeholder={'输入百科搜索词'}
             onChangeText={this.updateSearch}
             value={this.state.search}
             containerStyle={{

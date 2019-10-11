@@ -7,6 +7,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-elements';
 import ScrollViewPull from './ScrollViewPull';
+import ArticleNavi from './ArticleNavi';
 import ArticleItem from './ArticleItem';
 import EmptyBlock from './EmptyBlock';
 import ServerApi from '../server/api';
@@ -108,6 +109,7 @@ export default class ArticleList extends Component {
         endLoadingStatus={this.state.endLoadingStatus}
         onScrollEnd={() => this.appendList()} // 触底回调
       >
+        <ArticleNavi />
         {this.state.list && this.state.list.length > 0
           ? this.state.list.map((item, i) => (
               <ArticleItem key={i} article={item} />

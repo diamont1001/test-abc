@@ -135,7 +135,7 @@ export default class BaikeScreen extends Component {
       <View style={AppTheme.pageContainer}>
         <StatusBar barStyle={'light-content'} />
         <MyHeader style={{position: 'relative', backgroundColor: ThemeColor.primary}}>
-          <SearchBarNavi route={'BaikeSearch'} />
+          <SearchBarNavi route={'BaikeSearch'} title={'百科搜索'} />
           <View style={{flex: 0}}>
             <HeaderMenus
               icon={{name: 'options'}}

@@ -9,7 +9,6 @@ import {Text, Header, Icon, ListItem} from 'react-native-elements';
 import DeviceInfo from 'react-native-device-info';
 import ParallaxView from './components/ParallaxView';
 import HeaderLeftBack from './components/HeaderLeftBack';
-import HeaderCenterText from './components/HeaderCenterText';
 import MyHeader from './components/MyHeader';
 
 import {AppTheme, ThemeColor, ThemeSize, HeaderHeight} from './theme';

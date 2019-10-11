@@ -5,9 +5,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, StatusBar, View, ScrollView, Alert} from 'react-native';
-import {Text, Header, Icon, ListItem, Divider} from 'react-native-elements';
-import AsyncStorage from '@react-native-community/async-storage';
-import Share from 'react-native-share';
+import {Text, Header, Icon, ListItem} from 'react-native-elements';
 import Toast from 'react-native-root-toast';
 import ActionSheet from 'react-native-actionsheet';
 import HeaderLeftBack from './components/HeaderLeftBack';
@@ -34,43 +32,18 @@ export default class FavListStack extends Component {
     this.tab = this.props.navigation.getParam('tab', 0); // 0：文章收藏 ，1：百科收藏
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({
       tab: this.tab,
     });
 
-    AsyncStorage.getItem('_pingz_fav_')
-      .then(res => {
-        try {
-          const articleList = JSON.parse(res);
-          if (typeof articleList === 'object' && articleList.length > 0) {
-            this.setState({articleList});
-          }
-        } catch (e) {
-          console.warn(e);
-        }
-      })
-      .catch(err => {
-        console.warn(err);
-      });
+    const articleList = await ServerApi.favList();
+    const baikeList = await ServerApi.baikeFavList();
 
-    AsyncStorage.getItem('_pingz_baike_fav_')
-      .then(res => {
-        try {
-          const baikeList = JSON.parse(res);
-          if (typeof baikeList === 'object' && baikeList.length > 0) {
-            this.setState({baikeList});
-          }
-        } catch (e) {
-          console.warn(e);
-        }
-      })
-      .catch(err => {
-        console.warn(err);
-      });
+    this.setState({articleList, baikeList});
   }
 
-  // 清空所有收藏
+  // 清空所有文章收藏
   clearFavConfirm = () => {
     Alert.alert(
       '清空文章收藏',
@@ -95,7 +68,7 @@ export default class FavListStack extends Component {
     );
   }
 
-  // 清空所有收藏
+  // 清空所有百科收藏
   clearFavConfirmBaike = () => {
     Alert.alert(
       '清空百科收藏',
@@ -204,7 +177,7 @@ export default class FavListStack extends Component {
                 },
                 {
                   title: '清空百科收藏',
-                  onPress: this.onMenuConfirmBaike,
+                  onPress: this.clearFavConfirmBaike,
                   disabled: !(this.state.baikeList && this.state.baikeList.length > 0)
                 },
               ]}
@@ -233,12 +206,15 @@ export default class FavListStack extends Component {
           <View
             style={{
               flexDirection: 'row',
-              backgroundColor: ThemeColor.bgBanner,
+              // backgroundColor: ThemeColor.bgBanner,
+              borderWidth: 1,
+              borderColor: ThemeColor.primary,
             }}
           >
             <Text
               style={{
-                color: this.state.tab === 1 ? ThemeColor.content : ThemeColor.primary,
+                color: this.state.tab === 1 ? ThemeColor.primary : ThemeColor.bgText,
+                backgroundColor: this.state.tab === 1 ? 'transparent' : ThemeColor.primary,
                 width: '50%',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -253,14 +229,8 @@ export default class FavListStack extends Component {
             >文章收藏</Text>
             <Text
               style={{
-                paddingTop: 12,
-                paddingBottom: 12,
-                color: ThemeColor.tips,
-              }}
-            >|</Text>
-            <Text
-              style={{
-                color: this.state.tab === 1 ? ThemeColor.primary : ThemeColor.content,
+                color: this.state.tab === 1 ? ThemeColor.bgText : ThemeColor.primary,
+                backgroundColor: this.state.tab === 1 ? ThemeColor.primary : 'transparent',
                 width: '50%',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -279,7 +249,7 @@ export default class FavListStack extends Component {
                 {this.state.articleList.map((item, i) => (
                   <ListItem
                     chevron
-                    key={`fav-list-item-${i}`}
+                    key={`fav-article-list-item-${i}`}
                     title={item.title}
                     titleStyle={{fontSize: ThemeSize.title}}
                     containerStyle={{borderBottomWidth: .5, borderBottomColor: ThemeColor.border}}
@@ -295,7 +265,7 @@ export default class FavListStack extends Component {
                 {this.state.baikeList.map((item, i) => (
                   <ListItem
                     chevron
-                    key={`fav-list-item-${item.id}`}
+                    key={`fav-baike-list-item-${i}`}
                     title={item.title}
                     titleStyle={{fontSize: ThemeSize.title}}
                     containerStyle={{borderBottomWidth: .5, borderBottomColor: ThemeColor.border}}

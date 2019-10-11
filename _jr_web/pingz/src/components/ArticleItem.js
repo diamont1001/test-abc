@@ -52,28 +52,28 @@ export class ArticleItem extends Component {
                   style={styles.articleTitle}
                 >{article.title}</Text>
               </View>
-              <View style={{height: 78, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+              <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <Image style={styles.image3} resizeMode={'cover'} source={{uri: article.images[0]}} />
                 <Image style={styles.image3} resizeMode={'cover'} source={{uri: article.images[1]}} />
                 <Image style={styles.image3} resizeMode={'cover'} source={{uri: article.images[2]}} />
               </View>
-              <View style={{marginTop: 10}}>
-                <Text
-                  style={{fontSize: ThemeSize.tips, color: ThemeColor.tips}}
-                >{article.tagList && article.tagList[0] && article.tagList[0].name ? article.tagList[0].name + '    ' : ''}{moment(article.publishTime).fromNow()}</Text>
+              <View style={{marginTop: 10, flexDirection: 'row'}}>
+                {!!article.isTop && <Text style={[styles.textTips, {color: ThemeColor.primary}]}>置顶</Text>}
+                {!!article.tagList && article.tagList[0] && article.tagList[0].name && <Text style={styles.textTips}>{article.tagList[0].name}</Text>}
+                {!!article.publishTime && <Text style={styles.textTips}>{moment(article.publishTime).fromNow()}</Text>}
               </View>
             </View>
           : article && article.images && article.images.length === 1
-          ? <View style={{height: 78, flexDirection: 'row'}}>
+          ? <View style={{flexDirection: 'row'}}>
               <View style={{flex: 2, justifyContent: 'space-between'}}>
                 <Text
                   ellipsizeMode={'tail'} numberOfLines={2}
-                  style={[styles.articleTitle, {paddingRight: 10}]}
+                  style={[styles.articleTitle, {paddingRight: 10, alignItems: 'flex-start'}]}
                 >{article.title}</Text>
-                <View>
-                  <Text
-                    style={{fontSize: ThemeSize.tips, color: ThemeColor.tips}}
-                  >{article.tagList && article.tagList[0] && article.tagList[0].name ? article.tagList[0].name + '    ' : ''}{moment(article.publishTime).fromNow()}</Text>
+                <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+                  {!!article.isTop && <Text style={[styles.textTips, {color: ThemeColor.primary}]}>置顶</Text>}
+                  {!!article.tagList && article.tagList[0] && article.tagList[0].name && <Text style={styles.textTips}>{article.tagList[0].name}</Text>}
+                  {!!article.publishTime && <Text style={styles.textTips}>{moment(article.publishTime).fromNow()}</Text>}
                 </View>
               </View>
               <Image
@@ -87,10 +87,10 @@ export class ArticleItem extends Component {
                 ellipsizeMode={'tail'} numberOfLines={2}
                 style={styles.articleTitle}
               >{article.title}</Text>
-              <View style={{marginTop: 10}}>
-                <Text
-                  style={{fontSize: ThemeSize.tips, color: ThemeColor.tips}}
-                >{article.tagList && article.tagList[0] && article.tagList[0].name ? article.tagList[0].name + '    ' : ''}{moment(article.publishTime).fromNow()}</Text>
+              <View style={{marginTop: 10, flexDirection: 'row'}}>
+                {!!article.isTop && <Text style={[styles.textTips, {color: ThemeColor.primary}]}>置顶</Text>}
+                {!!article.tagList && article.tagList[0] && article.tagList[0].name && <Text style={styles.textTips}>{article.tagList[0].name}</Text>}
+                {!!article.publishTime && <Text style={styles.textTips}>{moment(article.publishTime).fromNow()}</Text>}
               </View>
             </View>
         }
@@ -99,21 +99,32 @@ export class ArticleItem extends Component {
   }
 }
 
+const image1Width = (WinWidth - ThemeSize.pagePadding * 2) * 0.28;
+const image1Height = image1Width * 0.65;
+const image3Width = (WinWidth - ThemeSize.pagePadding * 2 - 10 * 2) * 0.3333;
+const image3Height = image3Width * 0.65;
+
 const styles = StyleSheet.create({
   articleTitle: {
     fontSize: ThemeSize.title,
     color: ThemeColor.content,
     lineHeight: ThemeSize.title * ThemeSize.lineHeight,
   },
+  textTips: {
+    fontSize: ThemeSize.tips,
+    color: ThemeColor.tips,
+    lineHeight: ThemeSize.tips + 2,
+    marginRight: 12,
+  },
   image1: {
     flex: 1,
-    width: (WinWidth - 20) * 0.3,
-    height: '100%',
+    width: image1Width,
+    height: image1Height,
   },
   image3: {
-    width: (WinWidth - 20 - 2 * 8) * 0.3333,
-    height: '100%',
-  },
+    width: image3Width,
+    height: image3Height,
+  }
 });
 
 export default withNavigation(ArticleItem);
