@@ -206,9 +206,9 @@ export default class FavListStack extends Component {
           <View
             style={{
               flexDirection: 'row',
-              // backgroundColor: ThemeColor.bgBanner,
               borderWidth: 1,
               borderColor: ThemeColor.primary,
+              marginBottom: 8,
             }}
           >
             <Text

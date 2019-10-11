@@ -5,7 +5,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, ScrollView, View, ImageBackground, Linking} from 'react-native';
-import {Text, Header, Icon, ListItem} from 'react-native-elements';
+import {Text, Header, Icon, ListItem, Divider} from 'react-native-elements';
 import DeviceInfo from 'react-native-device-info';
 import ParallaxView from './components/ParallaxView';
 import HeaderLeftBack from './components/HeaderLeftBack';
@@ -43,11 +43,21 @@ export default class SettingStack extends Component {
         >
           <ListItem
             chevron
+            title={'我的收藏'}
+            titleStyle={styles.listItemTitle}
+            containerStyle={styles.listItemContainer}
+            onPress={() => {
+              this.props.navigation.push('FavList');
+            }}
+          />
+          <Divider style={{height: ThemeSize.sectionBannerWidth}} />
+          <ListItem
+            chevron
             title={'关于'}
             titleStyle={styles.listItemTitle}
             containerStyle={styles.listItemContainer}
             onPress={() => {
-              this.props.navigation.push('About')
+              this.props.navigation.push('About');
             }}
           />
           <ListItem

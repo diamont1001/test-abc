@@ -14,6 +14,7 @@ import {MenuProvider} from 'react-native-popup-menu';
 
 import ArticleListScreen from './src/ArticleListScreen';
 import BaikeScreen from './src/BaikeScreen';
+import GameScreen from './src/GameScreen';
 import ArticleSearchStack from './src/ArticleSearchStack';
 import BaikeSearchStack from './src/BaikeSearchStack';
 import ArticleByTagStack from './src/ArticleByTagStack';
@@ -43,6 +44,13 @@ const MyTabNavigator = createBottomTabNavigator({
     },
     path: 'baike',
   },
+  Game: {
+    screen: GameScreen,
+    navigationOptions: {
+      title: '娱乐',
+    },
+    path: 'game',
+  },
 }, {
   initialRouteName: 'Home',
   lazy: false,
@@ -69,7 +77,9 @@ const MyTabNavigator = createBottomTabNavigator({
       if (routeName === 'Home') {
         iconName = 'home';
       } else if (routeName === 'Baike') {
-        iconName = 'book-open';
+        iconName = 'graduation';
+      } else if (routeName === 'Game') {
+        iconName = 'rocket';
       }
 
       return <Icon name={iconName} type={iconType} color={tintColor} />;
@@ -104,7 +114,7 @@ const MainStack = createStackNavigator({
   },
   FavList: {
     screen: FavListStack,
-    path: 'articleTag',
+    path: 'favList',
   },
   BaikeList: {
     screen: BaikeListStack,
