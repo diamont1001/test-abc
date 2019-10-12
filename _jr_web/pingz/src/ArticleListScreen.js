@@ -44,7 +44,7 @@ export default class ArticleListScreen extends Component {
             />
           </View>
         </MyHeader>
-        <ArticleList/>
+        <ArticleList />
       </View>
     )
   }

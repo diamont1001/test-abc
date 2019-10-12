@@ -7,7 +7,6 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, StatusBar, View} from 'react-native';
 import {Text, Header, Icon} from 'react-native-elements';
 import Share from 'react-native-share';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
 import DeviceInfo from 'react-native-device-info';
 import HeaderLeftBack from './components/HeaderLeftBack';
 import HeaderIcon from './components/HeaderIcon';

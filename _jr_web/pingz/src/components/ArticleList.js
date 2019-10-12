@@ -99,7 +99,7 @@ export default class ArticleList extends Component {
   }
 
   render() {
-    const {} = this.props;
+    const {tagId} = this.props;
 
     return (
       <ScrollViewPull
@@ -109,7 +109,7 @@ export default class ArticleList extends Component {
         endLoadingStatus={this.state.endLoadingStatus}
         onScrollEnd={() => this.appendList()} // 触底回调
       >
-        <ArticleNavi />
+        {!tagId && <ArticleNavi />}
         {this.state.list && this.state.list.length > 0
           ? this.state.list.map((item, i) => (
               <ArticleItem key={i} article={item} />
