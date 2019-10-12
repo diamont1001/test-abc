@@ -274,6 +274,7 @@ export default class BaikeScreen extends Component {
               <ListItem
                 chevron
                 title={item.name}
+                titleStyle={{fontSize: ThemeSize.title, color: ThemeColor.content}}
                 onPress={() => {
                   this.props.navigation.push('BaikeList', {subcate: item.id, subcateName: item.name});
                 }}

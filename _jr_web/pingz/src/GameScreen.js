@@ -76,10 +76,13 @@ export default class GameScreen extends Component {
   }
 }
 
+const listItemWidth = (WinWidth - ThemeSize.pagePadding * 2) / 2;
+const listItemHeight = Math.max(168, listItemWidth * 0.618); // 黄金比例
+
 const styles = StyleSheet.create({
   listItemContainer: {
-    width: (WinWidth - ThemeSize.pagePadding * 2) / 2,
-    height: 168,
+    width: listItemWidth,
+    height: listItemHeight,
     alignItems: 'center',
     justifyContent: 'center',
   },

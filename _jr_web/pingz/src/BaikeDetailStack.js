@@ -76,7 +76,7 @@ export default class BaikeDetailStack extends Component {
       + '<style type="text/css">'
       + 'img{max-width: 100%;}'
       + `body{text-align: justify; padding: 12px; background-color: ${ThemeColor.bg};}`
-      + `h1{font-size: 24px;}`
+      + `h1{font-size: 22px;}`
       + `p{font-size: 16px; color: ${ThemeColor.content};}`
       + '</style>'
       + '</head>'

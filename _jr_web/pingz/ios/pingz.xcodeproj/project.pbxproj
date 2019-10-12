@@ -762,7 +762,7 @@
 			baseConfigurationReference = 6028626C23CABDC34229A068 /* Pods-pingz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 2348VM985Y;
 				INFOPLIST_FILE = pingz/Info.plist;
@@ -774,6 +774,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.25pin.pingz;
 				PRODUCT_NAME = pingz;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -783,7 +784,7 @@
 			baseConfigurationReference = C99CDBB4B3DE5135095947AC /* Pods-pingz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2348VM985Y;
 				INFOPLIST_FILE = pingz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -794,6 +795,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.25pin.pingz;
 				PRODUCT_NAME = pingz;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

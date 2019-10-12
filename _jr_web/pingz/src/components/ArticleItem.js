@@ -99,7 +99,7 @@ export class ArticleItem extends Component {
   }
 }
 
-const image1Width = (WinWidth - ThemeSize.pagePadding * 2) * 0.28;
+const image1Width = Math.min(200, (WinWidth - ThemeSize.pagePadding * 2) * 0.28);
 const image1Height = image1Width * 0.65;
 const image3Width = (WinWidth - ThemeSize.pagePadding * 2 - 10 * 2) * 0.3333;
 const image3Height = image3Width * 0.65;
