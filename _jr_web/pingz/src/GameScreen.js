@@ -22,7 +22,7 @@ export default class GameScreen extends Component {
       <View style={AppTheme.pageContainer}>
         <StatusBar barStyle={'light-content'} />
         <Header
-          centerComponent={<HeaderCenterText text={'娱乐频道'} />}
+          centerComponent={<HeaderCenterText text={'放松一下'} />}
         />
         <ScrollView
           contentContainerStyle={{

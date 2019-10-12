@@ -25,16 +25,19 @@ export default class ServerProtocol {
 
   // 设备信息
   static async getUdi() {
-    const udi = {
-      version: DeviceInfo.getReadableVersion(),
-      os: Platform.OS,
-      uniqueID: DeviceInfo.getUniqueID(),
-      // idfa: ,
-      brand: DeviceInfo.getBrand(),
-      model: DeviceInfo.getModel(),
-      systemName: DeviceInfo.getSystemName(),
-      systemVersion: DeviceInfo.getSystemVersion(),
-      isEmulator: DeviceInfo.isEmulator(),
+    const udi = {};
+
+    try {
+      udi.version = await DeviceInfo.getReadableVersion();
+      udi.os = await Platform.OS;
+      udi.uniqueID = await DeviceInfo.getUniqueId();
+      udi.brand = await DeviceInfo.getBrand();
+      udi.model = await DeviceInfo.getModel();
+      udi.systemName = await DeviceInfo.getSystemName();
+      udi.systemVersion = await DeviceInfo.getSystemVersion();
+      udi.isEmulator = await DeviceInfo.isEmulator();
+    } catch (err) {
+      console.warn(err);
     }
 
     // 广告标识 IDFA

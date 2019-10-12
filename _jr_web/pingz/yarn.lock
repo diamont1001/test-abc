@@ -5284,10 +5284,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-device-info@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.3.2.tgz#db2b8f135aaf2515583e367ab791dcc7d2f0d14c"
-  integrity sha512-ccpPuUbwhw5uYdVwN1UJp6ykMZz6U/u82HNM3oJ7O6MP8RIMlMDkHbqR4O0sDtUSuRMGiqqRzFtmOLFYeQ0ODw==
+react-native-device-info@^4.0.1-beta.5:
+  version "4.0.1-beta.5"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-4.0.1-beta.5.tgz#92366e93f1b084ddbd585a66001792cc0b6e1782"
+  integrity sha512-CWlh2ebV1iblUtu/UVKwrq6u5b2kbIhDFJTlobIs0f7V25piwo25QiZhrTd9DBHQw+sQBlL9qsaCvU5clBpisA==
 
 react-native-elements@^1.1.0:
   version "1.1.0"

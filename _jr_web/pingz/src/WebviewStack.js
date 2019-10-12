@@ -28,20 +28,24 @@ export default class WebviewStack extends Component {
       canGoBack: false,
       progress: 0,
       url: '',
+      userAgent: null,
     };
 
-    this.uri = this.props.navigation.getParam('uri');
+    this.uri = this.props.navigation.getParam('uri', '');
     this.noShare = this.props.navigation.getParam('noShare');
   }
 
-  componentDidMount() {
-    if (!this.uri) {
-      this.props.navigation.goBack();
-    } else {
-      this.setState({
-        url: this.uri,
-      });
-    }
+  async componentDidMount() {
+    this.setState({
+      url: this.uri,
+    });
+
+    const userAgent = await DeviceInfo.getUserAgent();
+    const version = await DeviceInfo.getReadableVersion();
+
+    this.setState({
+      userAgent: userAgent + ' pingz/' + version,
+    });
   }
 
   onBack = () => {
@@ -134,23 +138,26 @@ export default class WebviewStack extends Component {
             />
           : null
         }
-        <WebView
-          ref = {ref => (this.webview = ref)}
-          source = {{uri: this.state.url}}
-          originWhitelist={['http://www.25pin.com', 'https://www.25pin.com']}
-          useWebKit={true}
-          userAgent={DeviceInfo.getUserAgent() + ' pingz/' + DeviceInfo.getReadableVersion()}
-          onLoadProgress = {syntheticEvent => {
-            const {nativeEvent} = syntheticEvent;
-            // console.log(nativeEvent);
-            this.setState({
-              title: nativeEvent.title,
-              canGoBack: nativeEvent.canGoBack,
-              progress: nativeEvent.progress,
-              url: nativeEvent.url,
-            });
-          }}
-        />
+        {this.state.userAgent
+          ?  <WebView
+              ref = {ref => (this.webview = ref)}
+              source = {{uri: this.state.url}}
+              originWhitelist={['http://www.25pin.com', 'https://www.25pin.com']}
+              useWebKit={true}
+              userAgent={this.state.userAgent}
+              onLoadProgress = {syntheticEvent => {
+                const {nativeEvent} = syntheticEvent;
+                // console.log(nativeEvent);
+                this.setState({
+                  title: nativeEvent.title,
+                  canGoBack: nativeEvent.canGoBack,
+                  progress: nativeEvent.progress,
+                  url: nativeEvent.url,
+                });
+              }}
+            />
+          : null
+        }
       </View>
     )
   }

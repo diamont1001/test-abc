@@ -22,13 +22,21 @@ export default class BaikeDetailStack extends Component {
 
     this.state = {
       baike: null,
+      userAgent: null,
     };
 
     this.id = this.props.navigation.getParam('id', 0);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.fetchBaikeDetail(this.id);
+
+    const userAgent = await DeviceInfo.getUserAgent();
+    const version = await DeviceInfo.getReadableVersion();
+
+    this.setState({
+      userAgent: userAgent + ' pingz/' + version,
+    });
   }
 
   fetchBaikeDetail(id) {
@@ -97,13 +105,13 @@ export default class BaikeDetailStack extends Component {
             />
           }
         />
-        {this.state.baike
+        {this.state.baike && this.state.userAgent
           ? <WebView
               ref = {ref => (this.webview = ref)}
               source = {{html: this.state.baike ? this.formatHtml(this.state.baike.contentHtml, this.state.baike) : ''}}
               originWhitelist={['*']}
               useWebKit={true}
-              userAgent={DeviceInfo.getUserAgent() + ' pingz/' + DeviceInfo.getReadableVersion()}
+              userAgent={this.state.userAgent}
               showsHorizontalScrollIndicator={false}
               showsVerticalScrollIndicator ={false}
             />
