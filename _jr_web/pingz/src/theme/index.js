@@ -27,6 +27,7 @@ export const ThemeColor = {
   description: '#969696', // 描述文字颜色
   link: 'deepskyblue', // 链接颜色
   heart: '#e64340', // 红心的颜色
+  black: Colors.black,
 };
 
 export const ThemeSize = {

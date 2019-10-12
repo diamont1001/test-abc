@@ -21,6 +21,7 @@ import ArticleByTagStack from './src/ArticleByTagStack';
 import BaikeListStack from './src/BaikeListStack';
 import BaikeDetailStack from './src/BaikeDetailStack';
 import FavListStack from './src/FavListStack';
+import OnlineGameStack from './src/OnlineGameStack';
 import SettingStack from './src/SettingStack';
 import AboutStack from './src/AboutStack';
 import WebviewStack from './src/WebviewStack';
@@ -127,6 +128,10 @@ const MainStack = createStackNavigator({
   BaikeSearch: {
     screen: BaikeSearchStack,
     path: 'baikeSearch',
+  },
+  OnlineGame: {
+    screen: OnlineGameStack,
+    path: 'onlineGame',
   },
   // QrScanner: {
   //   screen: QrCodeScannerStack,

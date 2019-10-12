@@ -4,17 +4,55 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Dimensions, StatusBar, ScrollView, View, TouchableOpacity, Alert} from 'react-native';
-import {Text, Button, Header, Icon, Image} from 'react-native-elements';
+import {Platform, StyleSheet, StatusBar, ScrollView, View, Alert} from 'react-native';
+import {Header} from 'react-native-elements';
 import HeaderCenterText from './components/HeaderCenterText';
+import GameNaviItem from './components/GameNaviItem';
 
 import {AppTheme, ThemeColor, ThemeSize} from './theme';
-
-const WinWidth = Dimensions.get('window').width;
+import EmptyBlock from './components/EmptyBlock';
 
 export default class GameScreen extends Component {
   constructor(props) {
     super(props);
+
+    this.gameList = [
+      {
+        params: {uri: 'http://www.25pin.com/onlinegame/snake'},
+        image: require('./images/game-icon/snake.png'),
+        title: '贪吃蛇小游戏',
+      },
+      {
+        params: {uri: 'http://yx.h5uc.com/liujiaopinpin/'},
+        image: require('./images/game-icon/6jiao.png'),
+        title: '六角拼拼',
+        fullscreen: 1,
+      },
+      {
+        params: {uri: 'http://yx.h5uc.com/eluosifangkuai/'},
+        image: require('./images/game-icon/tetris.png'),
+        title: '俄罗斯方块',
+        fullscreen: 1,
+      },
+      {
+        params: {uri: 'http://yx.h5uc.com/1010/'},
+        image: require('./images/game-icon/tetris2.png'),
+        title: '高逼格俄罗斯',
+        fullscreen: 1,
+      },
+      {
+        params: {uri: 'http://yx.h5uc.com/2048/'},
+        image: require('./images/game-icon/2048.png'),
+        title: '经典2048',
+      },
+      {
+        onPress: () => {
+          Alert.alert('敬请期待');
+        },
+        image: require('./images/game-icon/more.png'),
+        title: '更多好玩',
+      }
+    ];
   }
 
   render() {
@@ -32,85 +70,25 @@ export default class GameScreen extends Component {
             justifyContent: 'flex-start',
           }}
         >
-          <TouchableOpacity
-            style={styles.listItemContainer}
-            // activeOpacity={1}
-            onPress={() => {
-              this.props.navigation.push('Webview', {uri: 'http://www.25pin.com/onlinegame/snake'});
-            }}
-          >
-            <View style={styles.listItemInner}>
-              <View style={styles.listItemInner2}></View>
-              <Image
-                placeholderStyle={{backgroundColor: 'transparent'}}
-                style={styles.image} resizeMode={'cover'} source={require('./images/game-icon/snake.png')}
-              />
-              <View style={{marginTop: 8}}>
-                <Text style={styles.title}>{'贪吃蛇小游戏'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.listItemContainer}
-            // activeOpacity={1}
-            onPress={() => {
-              Alert.alert(
-                '敬请期待',
-              );
-            }}
-          >
-            <View style={styles.listItemInner}>
-              <View style={styles.listItemInner2}></View>
-              <Image
-                placeholderStyle={{backgroundColor: 'transparent'}}
-                style={styles.image} resizeMode={'cover'} source={require('./images/game-icon/more.png')}
-              />
-              <View style={{marginTop: 8}}>
-                <Text style={styles.title}>{'敬请期待'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
+          {this.gameList && this.gameList.length > 0
+            ? this.gameList.map((item, i) => (
+                <GameNaviItem
+                  key={`game-navi-item-${i}`}
+                  onPress={item.onPress}
+                  route={item.route}
+                  params={item.params}
+                  image={item.image}
+                  title={item.title}
+                  fullscreen={item.fullscreen}
+                />
+              ))
+            : <EmptyBlock />
+          }
         </ScrollView>
       </View>
     )
   }
 }
 
-const listItemWidth = (WinWidth - ThemeSize.pagePadding * 2) / 2;
-const listItemHeight = Math.max(168, listItemWidth * 0.618); // 黄金比例
-
 const styles = StyleSheet.create({
-  listItemContainer: {
-    width: listItemWidth,
-    height: listItemHeight,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  listItemInner: {
-    width: '88%',
-    height: '88%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: ThemeColor.border,
-    borderWidth: 1,
-    borderRadius: 20,
-  },
-  listItemInner2: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    top: 3,
-    left: 3,
-    borderColor: ThemeColor.border,
-    borderWidth: 1,
-    borderRadius: 20,
-  },
-  image: {
-    width: 80,
-    height: 80,
-  },
-  title: {
-    fontSize: ThemeSize.title,
-    color: ThemeColor.content,
-  }
 });
