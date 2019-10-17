@@ -12,17 +12,18 @@ import {createStackNavigator, createSwitchNavigator, createDrawerNavigator, crea
 import {ThemeProvider, Header, Icon} from 'react-native-elements';
 import {MenuProvider} from 'react-native-popup-menu';
 
-import ArticleListScreen from './src/ArticleListScreen';
-import BaikeScreen from './src/BaikeScreen';
-import GameScreen from './src/GameScreen';
+import HomeScreen from './src/HomeScreen';
+import SettingScreen from './src/SettingScreen';
+import ArticleStack from './src/ArticleStack';
+import BaikeStack from './src/BaikeStack';
+// import GameScreen from './src/GameScreen';
 import ArticleSearchStack from './src/ArticleSearchStack';
 import BaikeSearchStack from './src/BaikeSearchStack';
 import ArticleByTagStack from './src/ArticleByTagStack';
 import BaikeListStack from './src/BaikeListStack';
 import BaikeDetailStack from './src/BaikeDetailStack';
 import FavListStack from './src/FavListStack';
-import OnlineGameStack from './src/OnlineGameStack';
-import SettingStack from './src/SettingStack';
+// import OnlineGameStack from './src/OnlineGameStack';
 import AboutStack from './src/AboutStack';
 import WebviewStack from './src/WebviewStack';
 // import QrCodeScannerStack from './src/QrCodeScannerStack';
@@ -32,26 +33,26 @@ import {ElementsTheme, ThemeColor} from './src/theme';
 // Tab: 应用主界面组
 const MyTabNavigator = createBottomTabNavigator({
   Home: {
-    screen: ArticleListScreen,
+    screen: HomeScreen,
     navigationOptions: {
-      title: '冷知识',
+      title: '首页',
     },
     path: 'home',
   },
-  Baike: {
-    screen: BaikeScreen,
+  Setting: {
+    screen: SettingScreen,
     navigationOptions: {
-      title: '百科',
+      title: '设置',
     },
-    path: 'baike',
+    path: 'setting',
   },
-  Game: {
-    screen: GameScreen,
-    navigationOptions: {
-      title: '娱乐',
-    },
-    path: 'game',
-  },
+  // Game: {
+  //   screen: GameScreen,
+  //   navigationOptions: {
+  //     title: '娱乐',
+  //   },
+  //   path: 'game',
+  // },
 }, {
   initialRouteName: 'Home',
   lazy: false,
@@ -77,10 +78,8 @@ const MyTabNavigator = createBottomTabNavigator({
       let iconType = 'simple-line-icon';
       if (routeName === 'Home') {
         iconName = 'home';
-      } else if (routeName === 'Baike') {
-        iconName = 'graduation';
-      } else if (routeName === 'Game') {
-        iconName = 'rocket';
+      } else if (routeName === 'Setting') {
+        iconName = 'settings';
       }
 
       return <Icon name={iconName} type={iconType} color={tintColor} />;
@@ -102,8 +101,12 @@ const MainStack = createStackNavigator({
     path: 'about',
   },
   Settings: {
-    screen: SettingStack,
+    screen: SettingScreen,
     path: 'setting',
+  },
+  Article: {
+    screen: ArticleStack,
+    path: 'article',
   },
   ArticleSearch: {
     screen: ArticleSearchStack,
@@ -117,6 +120,10 @@ const MainStack = createStackNavigator({
     screen: FavListStack,
     path: 'favList',
   },
+  Baike: {
+    screen: BaikeStack,
+    path: 'baike',
+  },
   BaikeList: {
     screen: BaikeListStack,
     path: 'baikeList',
@@ -129,10 +136,10 @@ const MainStack = createStackNavigator({
     screen: BaikeSearchStack,
     path: 'baikeSearch',
   },
-  OnlineGame: {
-    screen: OnlineGameStack,
-    path: 'onlineGame',
-  },
+  // OnlineGame: {
+  //   screen: OnlineGameStack,
+  //   path: 'onlineGame',
+  // },
   // QrScanner: {
   //   screen: QrCodeScannerStack,
   //   path: 'qrscanner',

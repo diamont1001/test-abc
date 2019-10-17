@@ -15,16 +15,24 @@ export class SearchBarNavi extends Component {
     super(props);
   }
 
+  static defaultProps = {
+    title: '搜索一下',
+    onPress: null,
+    route: null,
+    style: {},
+  };
+
   render() {
     const {
       title,
       onPress, // {function} 优先，如果有传这个则忽略 route
       route, // 点击后的路由（onPress 参数优先）
+      style,
     } = this.props;
 
     return (
       <TouchableOpacity
-        style={{
+        style={[{
           flex: 1,
           margin: 8,
           marginTop: 8,
@@ -38,7 +46,7 @@ export class SearchBarNavi extends Component {
           alignItems: 'center',
           borderRadius: 25,
           height: 38,
-        }}
+        }, style]}
         activeOpacity={1}
         onPress={(onPress || route)
           ? (() => {
@@ -54,7 +62,7 @@ export class SearchBarNavi extends Component {
         }
       >
         <Icon name={'search1'} type={'antdesign'} size={16} color={ThemeColor.tips} />
-        <Text style={{paddingLeft: 10, fontSize: ThemeSize.content, color: ThemeColor.tips}}>{title ? title : '搜索一下'}</Text>
+        <Text style={{paddingLeft: 10, fontSize: ThemeSize.content, color: ThemeColor.tips}}>{title}</Text>
       </TouchableOpacity>
     );
   }

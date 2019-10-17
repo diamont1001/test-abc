@@ -132,7 +132,7 @@ export default class ArticleSearchStack extends Component {
         >
           <SearchBar
             ref={search => this.search = search}
-            placeholder={'输入文章搜索词'}
+            placeholder={'文章搜索'}
             onChangeText={this.updateSearch}
             value={this.state.search}
             containerStyle={{

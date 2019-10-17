@@ -7,9 +7,9 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Dimensions, StatusBar, ScrollView, View, TouchableOpacity, FlatList} from 'react-native';
 import {Text, Button, Header, Icon, Image, ListItem, Divider} from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
-import HeaderMenus from './components/HeaderMenus';
-import MyHeader from './components/MyHeader';
-import SearchBarNavi from './components/SearchBarNavi';
+import HeaderLeftBack from './components/HeaderLeftBack';
+import HeaderIcon from './components/HeaderIcon';
+import HeaderCenterText from './components/HeaderCenterText';
 import EmptyBlock from './components/EmptyBlock';
 import ServerApi from './server/api';
 
@@ -24,9 +24,15 @@ export default class BaikeScreen extends Component {
       subcateList: [], // 百科二级分类列表
       curCate: 0,
     }
+
+    this.cate = this.props.navigation.getParam('cate', 0);
   }
 
   async componentDidMount() {
+    this.setState({
+      curCate: this.cate,
+    });
+
     await this.getBaikeCateFromLocal();
     await this.getBaikeSubcateFromLocal();
 
@@ -134,30 +140,16 @@ export default class BaikeScreen extends Component {
     return (
       <View style={AppTheme.pageContainer}>
         <StatusBar barStyle={'light-content'} />
-        <MyHeader style={{position: 'relative', backgroundColor: ThemeColor.primary}}>
-          <SearchBarNavi route={'BaikeSearch'} title={'百科搜索'} />
-          <View style={{flex: 0}}>
-            <HeaderMenus
-              icon={{name: 'options'}}
-              menus={[
-                {
-                  title: '百科收藏',
-                  onPress: () => {
-                    this.props.navigation.push('FavList', {tab: 1});
-                  },
-                },
-                {
-                  title: '设置',
-                  route: 'Settings',
-                },
-                {
-                  title: '关于',
-                  route: 'About',
-                },
-              ]}
-            />
-          </View>
-        </MyHeader>
+        <Header
+          leftComponent={<HeaderLeftBack />}
+          centerComponent={<HeaderCenterText text={'百科知识'} />}
+          rightComponent={
+            <View style={{flexDirection: 'row'}}>
+              <HeaderIcon icon={{name: 'magnifier'}} route={'BaikeSearch'} />
+              <HeaderIcon icon={{name: 'heart'}} route={'FavList'} params={{tab: 1}} />
+            </View>
+          }
+        />
         {/*<View
           style={{
             paddingTop: 4,

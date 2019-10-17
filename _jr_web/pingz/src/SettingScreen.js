@@ -4,16 +4,14 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, ScrollView, View, ImageBackground, Linking} from 'react-native';
-import {Text, Header, Icon, ListItem, Divider} from 'react-native-elements';
+import {Platform, StyleSheet, ScrollView, View, Linking} from 'react-native';
+import {Text, ListItem, Divider} from 'react-native-elements';
 import DeviceInfo from 'react-native-device-info';
 import ParallaxView from './components/ParallaxView';
-import HeaderLeftBack from './components/HeaderLeftBack';
-import MyHeader from './components/MyHeader';
 
 import {AppTheme, ThemeColor, ThemeSize, HeaderHeight} from './theme';
 
-export default class SettingStack extends Component {
+export default class SettingScreen extends Component {
   constructor(props) {
     super(props);
   }
@@ -21,9 +19,6 @@ export default class SettingStack extends Component {
   render() {
     return (
       <View style={AppTheme.pageContainer}>
-        <MyHeader
-          leftComponent={<HeaderLeftBack />}
-        />
         <ParallaxView
           ref={component => this._scrollView = component}
           backgroundSource={require('./images/bg_setting.jpg')}

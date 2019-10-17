@@ -14,12 +14,19 @@ export class HeaderIcon extends Component {
     super(props);
   }
 
+  static defaultProps = {
+    icon: null,
+    onPress: null,
+    route: null,
+    params: {},
+  };
+
   render() {
     const {
       icon, // {name, type, color}
-      auth, // {true/false} 是否需要登录检测
       onPress, // {function} 优先，如果有传这个则忽略 route
       route, // 点击后的路由（onPress 参数优先）
+      params, // 配合路由使用
     } = this.props;
 
     return (
@@ -28,7 +35,7 @@ export class HeaderIcon extends Component {
             name={icon.name}
             type={icon.type ? icon.type : 'simple-line-icon'}
             iconStyle={{padding: 10, color: icon && icon.color ? icon.color : ThemeColor.bgText}}
-            onPress={(auth || onPress || route)
+            onPress={(onPress || route)
               ? (() => {
                   if (onPress && typeof onPress === 'function') {
                     onPress();
@@ -36,7 +43,7 @@ export class HeaderIcon extends Component {
                   }
 
                   if (route) {
-                    this.props.navigation.push(route);
+                    this.props.navigation.push(route, params);
                   }
                 })
               : null
