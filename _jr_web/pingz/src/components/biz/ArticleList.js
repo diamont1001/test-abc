@@ -5,13 +5,15 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
-import {Text} from 'react-native-elements';
-import ScrollViewPull from './ScrollViewPull';
+import ScrollViewPull from '../ScrollViewPull';
+import ArticleNavi from './ArticleNavi';
+import ArticleCard from './ArticleCard';
 import ArticleItem from './ArticleItem';
-import EmptyBlock from './EmptyBlock';
-import ServerApi from '../server/api';
+import SearchBarNavi from '../SearchBarNavi';
+import EmptyBlock from '../EmptyBlock';
+import ServerApi from '../../server/api';
 
-import {AppTheme, ThemeColor, ThemeSize} from '../theme';
+import {AppTheme, ThemeColor, ThemeSize} from '../../theme';
  
 export default class ArticleList extends Component {
   constructor(props) {
@@ -29,6 +31,9 @@ export default class ArticleList extends Component {
     listType: 0,
     tagId: 0,
     containerStyle: null,
+    navi: false, // 是否显示导航
+    searchBar: false, // 是否显示搜索条
+    styleType: 0, // 列表展示形式（0：普通列表，1：卡片样式）
   };
 
   componentDidMount() {
@@ -106,9 +111,24 @@ export default class ArticleList extends Component {
         endLoadingStatus={this.state.endLoadingStatus}
         onScrollEnd={() => this.appendList()} // 触底回调
       >
+        {this.props.searchBar
+          ? <SearchBarNavi
+          route={'ArticleSearch'}
+          style={{
+            backgroundColor: ThemeColor.bgBanner,
+            marginLeft: ThemeSize.pagePadding,
+            marginRight: ThemeSize.pagePadding,
+            marginTop: ThemeSize.pagePadding,
+          }}
+          />
+          : null
+        }
+        {this.props.navi ? <ArticleNavi noheader /> : null}
         {this.state.list && this.state.list.length > 0
           ? this.state.list.map((item, i) => (
-              <ArticleItem key={i} article={item} />
+              this.props.styleType === 1
+                ? <ArticleCard key={i} article={item} />
+                : <ArticleItem key={i} article={item} />
             ))
           : <EmptyBlock />
         }

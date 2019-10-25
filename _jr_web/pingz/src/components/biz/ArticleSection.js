@@ -5,10 +5,10 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
-import ArticleItem from '../ArticleItem';
+import ArticleCard from './ArticleCard';
 import SectionHeader from '../SectionHeader';
-import SearchBarNavi from '../SearchBarNavi';
 import ServerApi from '../../server/api';
+
 import { ThemeColor, ThemeSize } from '../../theme';
  
 export default class ArticleSection extends Component {
@@ -35,7 +35,7 @@ export default class ArticleSection extends Component {
 
     ServerApi.getArticleList({
       listType: this.props.listType,
-      limit: 15,
+      limit: 12,
     })
       .then((res) => {
         if (res && res.data && res.data.content) {
@@ -61,18 +61,9 @@ export default class ArticleSection extends Component {
     return (
       this.state.list && this.state.list.length > 0
       ? <View>
-          <SectionHeader title={'最新文章'} route={'Article'}/>
-          <SearchBarNavi
-            route={'ArticleSearch'}
-            style={{
-              backgroundColor: ThemeColor.bgBanner,
-              marginLeft: ThemeSize.pagePadding,
-              marginRight: ThemeSize.pagePadding,
-              marginTop: ThemeSize.pagePadding,
-            }}
-          />
+          <SectionHeader title={'最新文章'} route={'Article'} border />
           {this.state.list.map((item, i) => (
-            <ArticleItem key={i} article={item} />
+            <ArticleCard key={i} article={item} />
           ))}
         </View>
       : null

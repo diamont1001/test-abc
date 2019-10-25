@@ -11,7 +11,7 @@ import DeviceInfo from 'react-native-device-info';
 import HeaderLeftBack from './components/HeaderLeftBack';
 import HeaderIcon from './components/HeaderIcon';
 import HeaderCenterText from './components/HeaderCenterText';
-import ArticleList from './components/ArticleList';
+import ArticleList from './components/biz/ArticleList';
 
 import {AppTheme, ThemeColor} from './theme';
 

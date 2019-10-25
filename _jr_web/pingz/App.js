@@ -13,7 +13,6 @@ import {ThemeProvider, Header, Icon} from 'react-native-elements';
 import {MenuProvider} from 'react-native-popup-menu';
 
 import HomeScreen from './src/HomeScreen';
-import SettingScreen from './src/SettingScreen';
 import ArticleStack from './src/ArticleStack';
 import BaikeStack from './src/BaikeStack';
 // import GameScreen from './src/GameScreen';
@@ -24,72 +23,66 @@ import BaikeListStack from './src/BaikeListStack';
 import BaikeDetailStack from './src/BaikeDetailStack';
 import FavListStack from './src/FavListStack';
 // import OnlineGameStack from './src/OnlineGameStack';
+import SettingStack from './src/SettingStack';
 import AboutStack from './src/AboutStack';
 import WebviewStack from './src/WebviewStack';
 // import QrCodeScannerStack from './src/QrCodeScannerStack';
 
 import {ElementsTheme, ThemeColor} from './src/theme';
 
-// Tab: 应用主界面组
-const MyTabNavigator = createBottomTabNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: {
-      title: '首页',
-    },
-    path: 'home',
-  },
-  Setting: {
-    screen: SettingScreen,
-    navigationOptions: {
-      title: '设置',
-    },
-    path: 'setting',
-  },
-  // Game: {
-  //   screen: GameScreen,
-  //   navigationOptions: {
-  //     title: '娱乐',
-  //   },
-  //   path: 'game',
-  // },
-}, {
-  initialRouteName: 'Home',
-  lazy: false,
-  tabBarOptions: {
-    activeTintColor: ThemeColor.primary,
-    // activeBackgroundColor: 'red',
-    inactiveTintColor: ThemeColor.icon,
-    // inactiveBackgroundColor: 'red',
-    showLabel: true,
-    showIcon: true,
-    labelStyle: {
-      // fontSize: 12,
-      // color: ThemeColor.text,
-    },
-    style: {
-      backgroundColor: ThemeColor.bgBanner,
-    },
-  },
-  defaultNavigationOptions: ({ navigation }) => ({
-    tabBarIcon: ({ focused, horizontal, tintColor }) => {
-      const { routeName } = navigation.state;
-      let iconName;
-      let iconType = 'simple-line-icon';
-      if (routeName === 'Home') {
-        iconName = 'home';
-      } else if (routeName === 'Setting') {
-        iconName = 'settings';
-      }
+// // Tab: 应用主界面组
+// const MyTabNavigator = createBottomTabNavigator({
+//   Home: {
+//     screen: HomeScreen,
+//     navigationOptions: {
+//       title: '首页',
+//     },
+//     path: 'home',
+//   },
+//   // Game: {
+//   //   screen: GameScreen,
+//   //   navigationOptions: {
+//   //     title: '娱乐',
+//   //   },
+//   //   path: 'game',
+//   // },
+// }, {
+//   initialRouteName: 'Home',
+//   lazy: false,
+//   tabBarOptions: {
+//     activeTintColor: ThemeColor.primary,
+//     // activeBackgroundColor: 'red',
+//     inactiveTintColor: ThemeColor.icon,
+//     // inactiveBackgroundColor: 'red',
+//     showLabel: true,
+//     showIcon: true,
+//     labelStyle: {
+//       // fontSize: 12,
+//       // color: ThemeColor.text,
+//     },
+//     style: {
+//       backgroundColor: ThemeColor.bgBanner,
+//     },
+//   },
+//   defaultNavigationOptions: ({ navigation }) => ({
+//     tabBarIcon: ({ focused, horizontal, tintColor }) => {
+//       const { routeName } = navigation.state;
+//       let iconName;
+//       let iconType = 'simple-line-icon';
+//       if (routeName === 'Home') {
+//         iconName = 'home';
+//       } else if (routeName === 'Setting') {
+//         iconName = 'settings';
+//       }
 
-      return <Icon name={iconName} type={iconType} color={tintColor} />;
-    },
-  }),
-});
+//       return <Icon name={iconName} type={iconType} color={tintColor} />;
+//     },
+//   }),
+// });
 
 const MainStack = createStackNavigator({
   App: {
-    screen: MyTabNavigator,
+    screen: HomeScreen,
     path: 'app',
   },
   Webview: {
@@ -101,7 +94,7 @@ const MainStack = createStackNavigator({
     path: 'about',
   },
   Settings: {
-    screen: SettingScreen,
+    screen: SettingStack,
     path: 'setting',
   },
   Article: {

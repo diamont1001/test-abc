@@ -125,6 +125,7 @@ export default class BaikeSearchStack extends Component {
               backgroundColor: ThemeColor.bgBanner,
               borderRadius: 25,
             }}
+            autoFocus={true}
           />
           <Button
             type={'clear'}

@@ -6,7 +6,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Dimensions, StatusBar, ScrollView, View} from 'react-native';
 import {Text, Button, Header, Icon, Image} from 'react-native-elements';
-import ArticleList from './components/ArticleList';
+import ArticleList from './components/biz/ArticleList';
 import HeaderIcon from './components/HeaderIcon';
 import HeaderLeftBack from './components/HeaderLeftBack';
 import HeaderCenterText from './components/HeaderCenterText';
@@ -27,12 +27,12 @@ export default class ArticleStack extends Component {
           centerComponent={<HeaderCenterText text={'冷知识'} />}
           rightComponent={
             <View style={{flexDirection: 'row'}}>
-              <HeaderIcon icon={{name: 'magnifier'}} route={'ArticleSearch'} />
+              {/* <HeaderIcon icon={{name: 'magnifier'}} route={'ArticleSearch'} /> */}
               <HeaderIcon icon={{name: 'heart'}} route={'FavList'} />
             </View>
           }
         />
-        <ArticleList />
+        <ArticleList searchBar/>
       </View>
     )
   }

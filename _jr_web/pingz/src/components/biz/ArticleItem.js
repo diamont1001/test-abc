@@ -5,12 +5,11 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Dimensions, View, TouchableOpacity} from 'react-native';
-import {Text, Image, Icon} from 'react-native-elements';
+import {Text, Image} from 'react-native-elements';
 import {withNavigation} from 'react-navigation';
 import moment from 'moment/moment';
-import utils from '../helper/utils';
 
-import {AppTheme, ThemeColor, ThemeSize} from '../theme';
+import {AppTheme, ThemeColor, ThemeSize} from '../../theme';
 
 const WinWidth = Dimensions.get('window').width;
 

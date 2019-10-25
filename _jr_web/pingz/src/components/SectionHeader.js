@@ -44,7 +44,7 @@ export class SectionHeader extends Component {
             flex: 3,
           }}
         >
-          <Text style={{color: ThemeColor.title, fontSize: ThemeSize.title + 1}}>{title}</Text>
+          <Text style={{color: ThemeColor.title, fontSize: ThemeSize.title}}>{title}</Text>
         </View>
         <View
           style={{

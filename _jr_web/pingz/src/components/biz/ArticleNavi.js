@@ -29,10 +29,14 @@ export class ArticleNavi extends Component {
     ];
   }
 
+  static defaultProps = {
+    noheader: false, // 是否不要头部
+  };
+
   render() {
     return (
       <View>
-        <SectionHeader title={'冷知识'} />
+        {this.props.noheader ? null : <SectionHeader title={'冷知识'} border />}
         <View
           style={{
             flexDirection: 'row',

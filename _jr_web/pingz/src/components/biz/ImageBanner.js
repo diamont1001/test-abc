@@ -18,23 +18,35 @@ export class ImageBanner extends Component {
     super(props);
 
     this.dataList = [
+      // {
+      //   image: require('../../images/banner/lengzhishi.jpg'),
+      //   route: 'Article',
+      //   params: {},
+      //   title: '冷知识大全',
+      // },
+      // {
+      //   image: require('../../images/banner/baike.png'),
+      //   route: 'Baike',
+      //   params: {},
+      //   title: '百科知识',
+      // },
       {
-        image: require('../../images/banner/lengzhishi.jpg'),
-        route: 'Article',
-        params: {},
-        title: '冷知识大全',
-      },
-      {
-        image: require('../../images/banner/baike.png'),
-        route: 'Baike',
-        params: {},
-        title: '百科知识',
+        image: require('../../images/banner/meishi8.jpg'),
+        route: 'Webview',
+        params: {uri: 'http://www.25pin.com/article/10000867'},
+        title: '中国八大菜系',
       },
       {
         image: require('../../images/banner/yuezican.jpg'),
         route: 'Webview',
         params: {uri: 'http://www.25pin.com/article/20026084'},
         title: '42天月子餐食谱全攻略',
+      },
+      {
+        image: require('../../images/banner/yajiankang.jpeg'),
+        route: 'BaikeDetail',
+        params: {id: 10072012},
+        title: '亚健康怎么调理',
       },
     ];
   }
