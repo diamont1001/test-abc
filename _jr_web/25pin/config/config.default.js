@@ -81,7 +81,7 @@ module.exports = appInfo => {
   config.signSecret = 'pingz@25pin.com';
 
   // layout 版本号，每次发版前需要把它修改一下
-  config.layoutVersion = '2019082301';
+  config.layoutVersion = '2019102501';
   config.currentYear = new Date().getYear() + 1900;
 
   return config;
