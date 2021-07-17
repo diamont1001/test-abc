@@ -68,4 +68,5 @@ module.exports = app => {
 
   // 其他
   router.get('/privacy', controller.home.privacy);
+  router.get('/privacy/luckynum', controller.home.privacyLuckyNum);
 };

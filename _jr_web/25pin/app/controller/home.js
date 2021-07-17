@@ -6,7 +6,7 @@ const CResourceType = require('../constant/CResourceType');
 
 class HomeController extends Controller {
   async index() {
-    const [ articleList, articleHotList/*, ugirlsList, ugirlsHotList*/] = await Promise.all([
+    const [ articleList, articleHotList/* , ugirlsList, ugirlsHotList*/ ] = await Promise.all([
       this.service.article.getAvailableList(0, 15),
       this.service.article.getHotList(0, 12),
       // this.service.ugirls.getUgirlsList(0, 0, 6),
@@ -81,7 +81,15 @@ class HomeController extends Controller {
   }
 
   async privacy() {
-    await this.ctx.render('pages/privacy/index.ejs');
+    await this.ctx.render('pages/privacy/index.ejs', {
+      appName: '瓶子老师',
+    });
+  }
+
+  async privacyLuckyNum() {
+    await this.ctx.render('pages/privacy/index.ejs', {
+      appName: 'LuckyNum',
+    });
   }
 }
 
