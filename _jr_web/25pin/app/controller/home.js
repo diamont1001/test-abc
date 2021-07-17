@@ -91,6 +91,12 @@ class HomeController extends Controller {
       appName: 'LuckyNum',
     });
   }
+
+  async privacyLuckyNum_EN() {
+    await this.ctx.render('pages/privacy/index_en.ejs', {
+      appName: 'LuckyNum',
+    });
+  }
 }
 
 module.exports = HomeController;
