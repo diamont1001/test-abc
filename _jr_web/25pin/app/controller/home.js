@@ -97,6 +97,18 @@ class HomeController extends Controller {
       appName: 'LuckyNum',
     });
   }
+
+  async privacyEasylife() {
+    await this.ctx.render('pages/privacy/index.ejs', {
+      appName: 'Easylife',
+    });
+  }
+
+  async privacyEasylife_EN() {
+    await this.ctx.render('pages/privacy/index_en.ejs', {
+      appName: 'Easylife',
+    });
+  }
 }
 
 module.exports = HomeController;

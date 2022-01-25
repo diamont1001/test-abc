@@ -70,4 +70,6 @@ module.exports = app => {
   router.get('/privacy', controller.home.privacy);
   router.get('/privacy/luckynum', controller.home.privacyLuckyNum);
   router.get('/privacy/luckynum/en', controller.home.privacyLuckyNum_EN);
+  router.get('/privacy/easylife', controller.home.privacyEasylife);
+  router.get('/privacy/easylife/en', controller.home.privacyEasylife_EN);
 };
