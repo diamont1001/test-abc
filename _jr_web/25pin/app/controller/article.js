@@ -48,6 +48,7 @@ class ArticleController extends Controller {
       canonical,
       breadcrumb: [{ url: '/article', name: '知识' }],
       ld_json, // 熊掌号主页展示
+      osType: this.ctx.osType,
       article,
       preArticle,
       nextArticle,
