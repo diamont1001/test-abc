@@ -25,4 +25,7 @@ module.exports = app => {
   // 搜索引擎相关
   router.get('/sitemap.xml', controller.sitemap.index);
   router.get('/robots.txt', controller.sitemap.robots);
+
+  // google ad
+  router.get('/ads.txt', controller.sitemap.google_ads);
 };

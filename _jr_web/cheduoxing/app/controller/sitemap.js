@@ -67,6 +67,10 @@ class SitemapController extends Controller {
       'Disallow: /api/\n' + 
       'Disallow: /about/\n';
   }
+
+  async google_ads() {
+    this.ctx.body = 'google.com, pub-2849990666568160, DIRECT, f08c47fec0942fa0';
+  }
 }
 
 module.exports = SitemapController;
