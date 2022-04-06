@@ -65,6 +65,9 @@ module.exports = app => {
   router.get('/robots.txt', controller.home.robots);
   router.get('/sitemap.xml', controller.sitemap.index);
   router.get('/sitemap/baidusearch.xml', controller.sitemap.searchBD);
+  
+  // google ad
+  router.get('/ads.txt', controller.sitemap.google_ads);
 
   // 其他
   router.get('/privacy', controller.home.privacy);
