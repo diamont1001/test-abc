@@ -105,6 +105,10 @@ class SitemapController extends Controller {
     this.ctx.body = str;
     this.ctx.status = 200;
   }
+  
+  async google_ads() {
+    this.ctx.body = 'google.com, pub-2849990666568160, DIRECT, f08c47fec0942fa0';
+  }
 }
 
 module.exports = SitemapController;
