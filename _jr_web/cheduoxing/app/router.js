@@ -28,4 +28,5 @@ module.exports = app => {
 
   // google ad
   router.get('/ads.txt', controller.sitemap.google_ads);
+  router.get('/app-ads.txt', controller.sitemap.google_ads);
 };
